@@ -112,7 +112,8 @@
 .triple-skill-item {
     transition: all 0.3s ease;
     position: relative;
-    overflow: hidden;
+    border: 2px solid transparent;
+    background-clip: padding-box;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -130,13 +131,31 @@
     transition: left 0.5s ease;
 }
 
+.triple-skill-item::after {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    border-radius: inherit;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
 .triple-skill-item:hover::before {
     left: 100%;
 }
 
+.triple-skill-item:hover::after {
+    opacity: 0.15;
+}
+
 .triple-skill-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 12px 30px rgba(102, 126, 234, 0.15);
 }
 
 .fusion-skill-item {
@@ -157,7 +176,7 @@
     left: -2px;
     right: -2px;
     bottom: -2px;
-    background: linear-gradient(135deg, var(--ai-primary), var(--frontend-primary), var(--design-primary));
+    background: linear-gradient(135deg, #667eea, #764ba2);
     border-radius: inherit;
     z-index: -1;
     opacity: 0;
@@ -165,11 +184,12 @@
 }
 
 .fusion-skill-item:hover::after {
-    opacity: 1;
+    opacity: 0.15;
 }
 
 .fusion-skill-item:hover {
     transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 12px 30px rgba(102, 126, 234, 0.15);
 }
 
 /* 三重技能页脚样式 */
@@ -226,6 +246,11 @@
 
 .skill-icon {
     font-size: 1.2rem;
+}
+
+.skill-icon .iconfont {
+    font-size: 1.2rem;
+    color: inherit;
 }
 
 .skill-text {

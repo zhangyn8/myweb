@@ -1,0 +1,42 @@
+/* IconFont 回退方案 - 使用Unicode符号 */
+.iconfont {
+  font-family: "iconfont", "Segoe UI Symbol", "Symbola", sans-serif !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 1;
+}
+
+/* Unicode 符号回退 */
+.icon-ai-robot:before { content: "🤖"; }  /* 机器人表情 */
+.icon-computer:before { content: "💻"; }  /* 电脑 */
+.icon-design:before { content: "🎨"; }    /* 调色板 */
+.icon-lightning:before { content: "⚡"; }  /* 闪电 */
+.icon-chart:before { content: "📊"; }     /* 条形图 */
+.icon-globe:before { content: "🌐"; }     /* 地球 */
+.icon-email:before { content: "📧"; }     /* 邮件 */
+.icon-github:before { content: "🐙"; }   /* 章鱼猫 */
+.icon-phone:before { content: "📱"; }    /* 手机 */
+.icon-music:before { content: "🎵"; }    /* 音符 */
+.icon-article:before { content: "📝"; }  /* 文档 */
+.icon-resume:before { content: "📄"; }    /* 文件 */
+
+/* 如果图标字体加载失败，使用这些样式 */
+.iconfont-fallback {
+  font-size: 1.2em;
+  margin-right: 0.2em;
+}
+
+/* 确保图标在容器中居中 */
+.cali-skill-icon .iconfont,
+.cali-project-image .iconfont,
+.skill-icon .iconfont {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
