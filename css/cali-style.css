@@ -900,7 +900,7 @@ body {
 }
 
 .cali-contact-title {
-    color: var(--white);
+    color: var(--white) !important;
     margin-bottom: 1rem;
     font-size: 3rem;
     font-weight: 700;
