@@ -796,13 +796,6 @@ body {
     background-color: rgba(255, 255, 255, 0.95);
 }
 
-.cali-project-card:hover .cali-project-content {
-    background-color: rgba(0, 245, 255, 0.1); /* 使用卡片hover光晕的颜色 */
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border-radius: 0 0 var(--border-radius) var(--border-radius); /* 匹配卡片圆角 */
-}
-
 .cali-project-title {
     font-size: 1.3rem;
     font-weight: 700;
@@ -814,8 +807,8 @@ body {
 }
 
 .cali-project-card:hover .cali-project-title {
-    color: #ffffff;
-    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    color: #667eea;
+    text-shadow: 0 0 10px rgba(102, 126, 234, 0.3);
     transform: translateY(-2px);
 }
 
@@ -827,7 +820,7 @@ body {
 }
 
 .cali-project-card:hover .cali-project-description {
-    color: #ffffff;
+    color: var(--text-secondary);
     transform: translateY(-1px);
 }
 
