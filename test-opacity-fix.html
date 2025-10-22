@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>照片透明度修复测试</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        .test-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+        .test-section {
+            margin: 30px 0;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+        }
+        .hero-photo {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            object-fit: cover;
+            transition: all 0.3s ease;
+        }
+        .hero-photo:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.4);
+        }
+        .status {
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+            background: rgba(0, 0, 0, 0.3);
+        }
+        .success { color: #4CAF50; }
+        .error { color: #f44336; }
+        .info { color: #2196F3; }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>🔍 照片透明度修复测试</h1>
+        <p>这个页面用于验证个人照片透明度修复是否成功</p>
+        
+        <div class="test-section">
+            <h2>📸 个人照片测试</h2>
+            <img src="assets/profile-photo.jpg" alt="个人照片" class="hero-photo" id="test-photo">
+            <div id="photo-status" class="status"></div>
+        </div>
+        
+        <div class="test-section">
+            <h2>📊 测试结果</h2>
+            <div id="test-results"></div>
+        </div>
+        
+        <div class="test-section">
+            <h2>🛠️ 调试信息</h2>
+            <div id="debug-info"></div>
+        </div>
+    </div>
+
+    <script src="js/image-fallback.js"></script>
+    <script>
+        // 等待页面加载完成
+        window.addEventListener('load', function() {
+            setTimeout(runTests, 500); // 稍微延迟以确保所有脚本执行完毕
+        });
+        
+        function runTests() {
+            const photo = document.getElementById('test-photo');
+            const statusDiv = document.getElementById('photo-status');
+            const resultsDiv = document.getElementById('test-results');
+            const debugDiv = document.getElementById('debug-info');
+            
+            let testsPassed = 0;
+            let totalTests = 0;
+            
+            // 测试1: 检查图片是否可见
+            totalTests++;
+            const isVisible = window.getComputedStyle(photo).opacity !== '0';
+            if (isVisible) {
+                testsPassed++;
+                statusDiv.innerHTML = '<span class="success">✅ 照片可见 - 透明度修复成功！</span>';
+            } else {
+                statusDiv.innerHTML = '<span class="error">❌ 照片不可见 - 透明度仍为0</span>';
+            }
+            
+            // 测试2: 检查图片加载状态
+            totalTests++;
+            let loadStatus = '';
+            if (photo.complete) {
+                if (photo.naturalWidth > 0) {
+                    testsPassed++;
+                    loadStatus = '<span class="success">✅ 图片加载成功</span>';
+                } else {
+                    loadStatus = '<span class="error">❌ 图片加载失败（naturalWidth为0）</span>';
+                }
+            } else {
+                loadStatus = '<span class="info">⏳ 图片正在加载中...</span>';
+            }
+            
+            // 测试3: 检查透明度值
+            totalTests++;
+            const opacity = window.getComputedStyle(photo).opacity;
+            let opacityStatus = '';
+            if (opacity === '1') {
+                testsPassed++;
+                opacityStatus = '<span class="success">✅ 透明度为1（完全可见）</span>';
+            } else if (opacity === '0') {
+                opacityStatus = '<span class="error">❌ 透明度为0（完全不可见）</span>';
+            } else {
+                opacityStatus = `<span class="info">ℹ️ 透明度为${opacity}（部分可见）</span>`;
+            }
+            
+            // 显示测试结果
+            resultsDiv.innerHTML = `
+                <div class="status">${loadStatus}</div>
+                <div class="status">${opacityStatus}</div>
+                <div class="status"><strong>测试通过率: ${testsPassed}/${totalTests}</strong></div>
+            `;
+            
+            // 显示调试信息
+            debugDiv.innerHTML = `
+                <div class="status info">
+                    <strong>调试信息:</strong><br>
+                    图片完成状态: ${photo.complete}<br>
+                    自然宽度: ${photo.naturalWidth}px<br>
+                    计算透明度: ${opacity}<br>
+                    图片源: ${photo.src}<br>
+                    图片类名: ${photo.className}
+                </div>
+            `;
+            
+            // 如果测试失败，提供额外的调试信息
+            if (testsPassed < totalTests) {
+                debugDiv.innerHTML += `
+                    <div class="status error">
+                        <strong>修复建议:</strong><br>
+                        1. 检查浏览器控制台是否有JavaScript错误<br>
+                        2. 确认image-fallback.js文件已正确加载<br>
+                        3. 检查是否有其他CSS或JavaScript覆盖了透明度设置<br>
+                        4. 尝试清除浏览器缓存后刷新页面
+                    </div>
+                `;
+            }
+        }
+        
+        // 添加控制台日志以便进一步调试
+        console.log('照片透明度修复测试开始...');
+        console.log('当前页面URL:', window.location.href);
+        console.log('image-fallback.js 已加载:', typeof window.imageFallback !== 'undefined');
+    </script>
+</body>
+</html>

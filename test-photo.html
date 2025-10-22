@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>照片测试</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .test-container { margin: 20px 0; }
+        .test-image { max-width: 300px; border: 2px solid #ccc; }
+        .error { color: red; }
+        .success { color: green; }
+    </style>
+</head>
+<body>
+    <h1>个人照片显示测试</h1>
+    
+    <div class="test-container">
+        <h3>测试1: 直接引用本地照片</h3>
+        <img src="/assets/profile-photo.jpg" alt="个人照片" class="test-image" onload="this.style.border='2px solid green'; document.getElementById('result1').innerHTML='✅ 本地照片加载成功'" onerror="this.style.border='2px solid red'; document.getElementById('result1').innerHTML='❌ 本地照片加载失败'">
+        <div id="result1"></div>
+    </div>
+    
+    <div class="test-container">
+        <h3>测试2: 使用CDN备用地址</h3>
+        <img src="https://cdn.jsdelivr.net/gh/zhangyn8/myweb@gh-pages/assets/profile-photo.jpg" alt="CDN照片" class="test-image" onload="this.style.border='2px solid green'; document.getElementById('result2').innerHTML='✅ CDN照片加载成功'" onerror="this.style.border='2px solid red'; document.getElementById('result2').innerHTML='❌ CDN照片加载失败'">
+        <div id="result2"></div>
+    </div>
+    
+    <div class="test-container">
+        <h3>测试3: 带备用方案的完整测试</h3>
+        <img src="/assets/profile-photo.jpg" alt="个人照片" class="test-image" onerror="this.src='https://cdn.jsdelivr.net/gh/zhangyn8/myweb@gh-pages/assets/profile-photo.jpg'" onload="this.style.border='2px solid green'; document.getElementById('result3').innerHTML='✅ 照片加载成功（主地址或备用地址）'" >
+        <div id="result3"></div>
+    </div>
+    
+    <div class="test-container">
+        <h3>文件信息</h3>
+        <p>文件路径: /assets/profile-photo.jpg</p>
+        <p>文件大小: 150498 字节</p>
+        <p>文件格式: JPEG (1080x1037)</p>
+    </div>
+    
+    <div class="test-container">
+        <h3>网络测试</h3>
+        <button onclick="testNetwork()">测试网络连接</button>
+        <div id="network-result"></div>
+    </div>
+    
+    <script>
+        function testNetwork() {
+            fetch('/assets/profile-photo.jpg', { method: 'HEAD' })
+                .then(response => {
+                    if (response.ok) {
+                        document.getElementById('network-result').innerHTML = '✅ 网络连接正常，照片文件可访问';
+                        document.getElementById('network-result').className = 'success';
+                    } else {
+                        document.getElementById('network-result').innerHTML = '❌ 网络连接问题: ' + response.status;
+                        document.getElementById('network-result').className = 'error';
+                    }
+                })
+                .catch(error => {
+                    document.getElementById('network-result').innerHTML = '❌ 网络连接失败: ' + error.message;
+                    document.getElementById('network-result').className = 'error';
+                });
+        }
+        
+        // 页面加载完成后自动测试
+        window.addEventListener('load', function() {
+            setTimeout(testNetwork, 1000);
+        });
+    </script>
+</body>
+</html>

@@ -94,16 +94,19 @@ function checkImageLoading() {
 function addLoadingIndicator() {
     const images = document.querySelectorAll('.hero-photo, .project-image');
     images.forEach(img => {
-        img.style.opacity = '0';
-        img.style.transition = 'opacity 0.3s ease';
-        
-        img.addEventListener('load', function() {
-            this.style.opacity = '1';
-        });
-        
-        img.addEventListener('error', function() {
-            this.style.opacity = '1';
-        });
+        // 只在图片还未加载时设置透明度为0
+        if (!img.complete) {
+            img.style.opacity = '0';
+            img.style.transition = 'opacity 0.3s ease';
+            
+            img.addEventListener('load', function() {
+                this.style.opacity = '1';
+            });
+            
+            img.addEventListener('error', function() {
+                this.style.opacity = '1';
+            });
+        }
     });
 }
 
