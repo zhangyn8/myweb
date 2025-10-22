@@ -82,6 +82,20 @@
                                 <a href="#contact" class="cali-button cali-button-secondary">联系我</a>
                             </div>
                         </div>
+                        <div class="cali-project-card">
+                            <div class="cali-project-image"><i class="iconfont icon-design"></i></div>
+                            <div class="cali-project-content">
+                                <h3 class="cali-project-title">AI文档处理与展示</h3>
+                                <p class="cali-project-description">开发基于Markdown的AI文档系统，支持技术文档自动编写、代码注释生成、API文档自动化构建。实现文档的智能索引和检索功能。</p>
+                                <div class="cali-project-tech">
+                                    <span class="tech-tag">Markdown</span>
+                                    <span class="tech-tag">文档自动化</span>
+                                    <span class="tech-tag">智能索引</span>
+                                    <span class="tech-tag">代码文档</span>
+                                    <span class="tech-tag">API文档</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -133,7 +147,17 @@
                 <div class="cali-container">
                     <h2 class="cali-section-title">AI项目经验</h2>
                     <p class="cali-section-subtitle">展示我在大语言模型训练与优化方面的核心项目成果</p>
-                    <div class="cali-projects-grid">
+                    
+                    <!-- Tab导航 -->
+                    <div class="project-tabs">
+                        <button class="tab-button active" data-tab="model-training">模型训练</button>
+                        <button class="tab-button" data-tab="ai-platform">AI平台</button>
+                        <button class="tab-button" data-tab="data-optimization">数据优化</button>
+                        <button class="tab-button" data-tab="ai-tools">AI工具</button>
+                    </div>
+                    
+                    <!-- Tab内容容器 -->
+                    <div class="tab-content active" id="model-training">
                         <div class="cali-project-card">
                             <div class="cali-project-image"><i class="iconfont icon-ai-robot"></i></div>
                             <div class="cali-project-content">
@@ -147,6 +171,9 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
+                    
+                    <div class="tab-content" id="ai-platform">
                         <div class="cali-project-card">
                             <div class="cali-project-image"><i class="iconfont icon-chart"></i></div>
                             <div class="cali-project-content">
@@ -160,6 +187,9 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
+                    
+                    <div class="tab-content" id="data-optimization">
                         <div class="cali-project-card">
                             <div class="cali-project-image"><i class="iconfont icon-globe"></i></div>
                             <div class="cali-project-content">
@@ -173,6 +203,9 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
+                    
+                    <div class="tab-content" id="ai-tools">
                         <div class="cali-project-card">
                             <div class="cali-project-image"><i class="iconfont icon-ai-robot"></i></div>
                             <div class="cali-project-content">
@@ -353,6 +386,24 @@
                     }
                 });
             }
+
+        // 项目Tab切换功能
+        const tabButtons = document.querySelectorAll('.tab-button');
+        const tabContents = document.querySelectorAll('.tab-content');
+        
+        tabButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const targetTab = button.getAttribute('data-tab');
+                
+                // 移除所有活跃状态
+                tabButtons.forEach(btn => btn.classList.remove('active'));
+                tabContents.forEach(content => content.classList.remove('active'));
+                
+                // 添加活跃状态到当前选中的tab
+                button.classList.add('active');
+                document.getElementById(targetTab).classList.add('active');
+            });
+        });
         });
 
         // 导航高亮更新（优化版）

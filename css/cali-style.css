@@ -733,11 +733,53 @@ body {
     font-size: 0.95rem;
 }
 
-/* Projects showcase */
+/* Projects showcase/* 项目Tab分类 */
+.project-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin: 2rem 0;
+    flex-wrap: wrap;
+}
+
+.tab-button {
+    padding: 0.8rem 1.5rem;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 25px;
+    color: #ffffff;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.tab-button:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+}
+
+.tab-button.active {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-color: transparent;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* 项目卡片 */
 .cali-projects-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 2.5rem;
+    gap: 2rem;
     margin-top: 3rem;
 }
 
@@ -1215,6 +1257,15 @@ body {
     
     .cali-card {
         padding: 2rem;
+    }
+    
+    .project-tabs {
+        gap: 0.5rem;
+    }
+    
+    .tab-button {
+        padding: 0.6rem 1rem;
+        font-size: 0.8rem;
     }
     
     .cali-projects-grid {
