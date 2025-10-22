@@ -1,361 +1,579 @@
-<!doctype html><html lang=zh-cn><head><meta charset=UTF-8><meta name=viewport content="width=device-width,initial-scale=1"><title>Modern JavaScript Features - 我的个人网站</title>
-<meta name=description content="Exploring modern JavaScript features that every developer should know"><link rel=preconnect href=https://fonts.googleapis.com><link rel=preconnect href=https://fonts.gstatic.com crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel=stylesheet><link rel=stylesheet href=/myweb/css/main.css><link rel=stylesheet href=/myweb/css/custom.css><link rel=icon type=image/x-icon href=/myweb/favicon.ico><meta name=theme-color content="#667eea"><meta property="og:type" content="website"><meta property="og:url" content="https://zhangyn8.github.io/myweb/posts/modern-javascript-features/"><meta property="og:title" content="Modern JavaScript Features"><meta property="og:description" content="Exploring modern JavaScript features that every developer should know"><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://zhangyn8.github.io/myweb/posts/modern-javascript-features/"><meta property="twitter:title" content="Modern JavaScript Features"><meta property="twitter:description" content="Exploring modern JavaScript features that every developer should know"><script type=application/ld+json>{"@context":"https://schema.org","@type":"WebSite","name":"我的个人网站","description":"Chrystal的个人网站 - AI训练师 \u0026 开发者","url":"https:\/\/zhangyn8.github.io\/myweb\/","author":{"@type":"Person","name":"Chrystal"}}</script></head><body><div class=main-container><main class=main-content><article class=post><header class=post-header><h1 class=post-title>Modern JavaScript Features</h1><div class=post-meta><time datetime=2024-01-20>January 20, 2024</time><div class=post-tags><span class=tag>javascript</span>
-<span class=tag>es6</span>
-<span class=tag>programming</span></div></div></header><div class=post-content><h1 id=modern-javascript-features>Modern JavaScript Features</h1><p>JavaScript has evolved significantly over the years, introducing powerful features that make development more efficient and code more readable. Let&rsquo;s explore some of the most important modern JavaScript features.</p><h2 id=arrow-functions>Arrow Functions</h2><p>Arrow functions provide a concise syntax for writing functions and automatically bind the <code>this</code> context.</p><div class=highlight><div style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 2
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 3
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 4
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 5
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 6
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 7
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 8
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 9
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">10
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">11
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">12
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">13
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">14
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">15
-</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-javascript data-lang=javascript><span style=display:flex><span><span style=color:#57606a>// Traditional function
-</span></span></span><span style=display:flex><span><span style=color:#57606a></span><span style=color:#cf222e>function</span> <span style=color:#1f2328>add</span><span style=color:#1f2328>(</span><span style=color:#1f2328>a</span><span style=color:#1f2328>,</span> <span style=color:#1f2328>b</span><span style=color:#1f2328>)</span> <span style=color:#1f2328>{</span>
-</span></span><span style=display:flex><span>    <span style=color:#cf222e>return</span> <span style=color:#1f2328>a</span> <span style=color:#0550ae>+</span> <span style=color:#1f2328>b</span><span style=color:#1f2328>;</span>
-</span></span><span style=display:flex><span><span style=color:#1f2328>}</span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#57606a>// Arrow function
-</span></span></span><span style=display:flex><span><span style=color:#57606a></span><span style=color:#cf222e>const</span> <span style=color:#1f2328>add</span> <span style=color:#0550ae>=</span> <span style=color:#1f2328>(</span><span style=color:#1f2328>a</span><span style=color:#1f2328>,</span> <span style=color:#1f2328>b</span><span style=color:#1f2328>)</span> <span style=color:#1f2328>=&gt;</span> <span style=color:#1f2328>a</span> <span style=color:#0550ae>+</span> <span style=color:#1f2328>b</span><span style=color:#1f2328>;</span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#57606a>// With single parameter
-</span></span></span><span style=display:flex><span><span style=color:#57606a></span><span style=color:#cf222e>const</span> <span style=color:#1f2328>square</span> <span style=color:#0550ae>=</span> <span style=color:#1f2328>x</span> <span style=color:#1f2328>=&gt;</span> <span style=color:#1f2328>x</span> <span style=color:#0550ae>*</span> <span style=color:#1f2328>x</span><span style=color:#1f2328>;</span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#57606a>// With block body
-</span></span></span><span style=display:flex><span><span style=color:#57606a></span><span style=color:#cf222e>const</span> <span style=color:#1f2328>greet</span> <span style=color:#0550ae>=</span> <span style=color:#1f2328>name</span> <span style=color:#1f2328>=&gt;</span> <span style=color:#1f2328>{</span>
-</span></span><span style=display:flex><span>    <span style=color:#cf222e>return</span> <span style=color:#0a3069>`Hello, </span><span style=color:#0a3069>${</span><span style=color:#1f2328>name</span><span style=color:#0a3069>}</span><span style=color:#0a3069>!`</span><span style=color:#1f2328>;</span>
-</span></span><span style=display:flex><span><span style=color:#1f2328>};</span>
-</span></span></code></pre></td></tr></table></div></div><h2 id=destructuring-assignment>Destructuring Assignment</h2><p>Destructuring allows you to extract values from arrays and objects in a more readable way.</p><div class=highlight><div style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 2
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 3
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 4
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 5
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 6
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 7
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 8
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 9
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">10
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">11
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">12
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">13
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">14
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">15
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">16
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">17
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">18
-</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-javascript data-lang=javascript><span style=display:flex><span><span style=color:#57606a>// Array destructuring
-</span></span></span><span style=display:flex><span><span style=color:#57606a></span><span style=color:#cf222e>const</span> <span style=color:#1f2328>colors</span> <span style=color:#0550ae>=</span> <span style=color:#1f2328>[</span><span style=color:#0a3069>&#39;red&#39;</span><span style=color:#1f2328>,</span> <span style=color:#0a3069>&#39;green&#39;</span><span style=color:#1f2328>,</span> <span style=color:#0a3069>&#39;blue&#39;</span><span style=color:#1f2328>];</span>
-</span></span><span style=display:flex><span><span style=color:#cf222e>const</span> <span style=color:#1f2328>[</span><span style=color:#1f2328>first</span><span style=color:#1f2328>,</span> <span style=color:#1f2328>second</span><span style=color:#1f2328>,</span> <span style=color:#1f2328>third</span><span style=color:#1f2328>]</span> <span style=color:#0550ae>=</span> <span style=color:#1f2328>colors</span><span style=color:#1f2328>;</span>
-</span></span><span style=display:flex><span><span style=color:#1f2328>console</span><span style=color:#1f2328>.</span><span style=color:#1f2328>log</span><span style=color:#1f2328>(</span><span style=color:#1f2328>first</span><span style=color:#1f2328>);</span> <span style=color:#57606a>// &#39;red&#39;
-</span></span></span><span style=display:flex><span><span style=color:#57606a></span>
-</span></span><span style=display:flex><span><span style=color:#57606a>// Object destructuring
-</span></span></span><span style=display:flex><span><span style=color:#57606a></span><span style=color:#cf222e>const</span> <span style=color:#1f2328>person</span> <span style=color:#0550ae>=</span> <span style=color:#1f2328>{</span>
-</span></span><span style=display:flex><span>    <span style=color:#1f2328>name</span><span style=color:#0550ae>:</span> <span style=color:#0a3069>&#39;John&#39;</span><span style=color:#1f2328>,</span>
-</span></span><span style=display:flex><span>    <span style=color:#1f2328>age</span><span style=color:#0550ae>:</span> <span style=color:#0550ae>30</span><span style=color:#1f2328>,</span>
-</span></span><span style=display:flex><span>    <span style=color:#1f2328>city</span><span style=color:#0550ae>:</span> <span style=color:#0a3069>&#39;New York&#39;</span>
-</span></span><span style=display:flex><span><span style=color:#1f2328>};</span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#cf222e>const</span> <span style=color:#1f2328>{</span> <span style=color:#1f2328>name</span><span style=color:#1f2328>,</span> <span style=color:#1f2328>age</span><span style=color:#1f2328>,</span> <span style=color:#1f2328>city</span> <span style=color:#1f2328>}</span> <span style=color:#0550ae>=</span> <span style=color:#1f2328>person</span><span style=color:#1f2328>;</span>
-</span></span><span style=display:flex><span><span style=color:#1f2328>console</span><span style=color:#1f2328>.</span><span style=color:#1f2328>log</span><span style=color:#1f2328>(</span><span style=color:#1f2328>name</span><span style=color:#1f2328>);</span> <span style=color:#57606a>// &#39;John&#39;
-</span></span></span><span style=display:flex><span><span style=color:#57606a></span>
-</span></span><span style=display:flex><span><span style=color:#57606a>// With default values
-</span></span></span><span style=display:flex><span><span style=color:#57606a></span><span style=color:#cf222e>const</span> <span style=color:#1f2328>{</span> <span style=color:#1f2328>country</span> <span style=color:#0550ae>=</span> <span style=color:#0a3069>&#39;USA&#39;</span> <span style=color:#1f2328>}</span> <span style=color:#0550ae>=</span> <span style=color:#1f2328>person</span><span style=color:#1f2328>;</span>
-</span></span><span style=display:flex><span><span style=color:#1f2328>console</span><span style=color:#1f2328>.</span><span style=color:#1f2328>log</span><span style=color:#1f2328>(</span><span style=color:#1f2328>country</span><span style=color:#1f2328>);</span> <span style=color:#57606a>// &#39;USA&#39;
-</span></span></span></code></pre></td></tr></table></div></div><h2 id=template-literals>Template Literals</h2><p>Template literals provide an easier way to work with strings, including multi-line strings and string interpolation.</p><div class=highlight><div style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 2
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 3
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 4
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 5
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 6
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 7
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 8
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 9
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">10
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">11
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">12
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">13
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">14
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">15
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">16
-</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-javascript data-lang=javascript><span style=display:flex><span><span style=color:#cf222e>const</span> <span style=color:#1f2328>name</span> <span style=color:#0550ae>=</span> <span style=color:#0a3069>&#39;Alice&#39;</span><span style=color:#1f2328>;</span>
-</span></span><span style=display:flex><span><span style=color:#cf222e>const</span> <span style=color:#1f2328>age</span> <span style=color:#0550ae>=</span> <span style=color:#0550ae>25</span><span style=color:#1f2328>;</span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#57606a>// String interpolation
-</span></span></span><span style=display:flex><span><span style=color:#57606a></span><span style=color:#cf222e>const</span> <span style=color:#1f2328>message</span> <span style=color:#0550ae>=</span> <span style=color:#0a3069>`Hello, my name is </span><span style=color:#0a3069>${</span><span style=color:#1f2328>name</span><span style=color:#0a3069>}</span><span style=color:#0a3069> and I am </span><span style=color:#0a3069>${</span><span style=color:#1f2328>age</span><span style=color:#0a3069>}</span><span style=color:#0a3069> years old.`</span><span style=color:#1f2328>;</span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#57606a>// Multi-line strings
-</span></span></span><span style=display:flex><span><span style=color:#57606a></span><span style=color:#cf222e>const</span> <span style=color:#1f2328>html</span> <span style=color:#0550ae>=</span> <span style=color:#0a3069>`
-</span></span></span><span style=display:flex><span><span style=color:#0a3069>    &lt;div&gt;
-</span></span></span><span style=display:flex><span><span style=color:#0a3069>        &lt;h1&gt;</span><span style=color:#0a3069>${</span><span style=color:#1f2328>name</span><span style=color:#0a3069>}</span><span style=color:#0a3069>&lt;/h1&gt;
-</span></span></span><span style=display:flex><span><span style=color:#0a3069>        &lt;p&gt;Age: </span><span style=color:#0a3069>${</span><span style=color:#1f2328>age</span><span style=color:#0a3069>}</span><span style=color:#0a3069>&lt;/p&gt;
-</span></span></span><span style=display:flex><span><span style=color:#0a3069>    &lt;/div&gt;
-</span></span></span><span style=display:flex><span><span style=color:#0a3069>`</span><span style=color:#1f2328>;</span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#57606a>// Expression evaluation
-</span></span></span><span style=display:flex><span><span style=color:#57606a></span><span style=color:#cf222e>const</span> <span style=color:#1f2328>result</span> <span style=color:#0550ae>=</span> <span style=color:#0a3069>`The sum of 2 + 2 is </span><span style=color:#0a3069>${</span><span style=color:#0550ae>2</span> <span style=color:#0550ae>+</span> <span style=color:#0550ae>2</span><span style=color:#0a3069>}</span><span style=color:#0a3069>`</span><span style=color:#1f2328>;</span>
-</span></span></code></pre></td></tr></table></div></div><h2 id=spread-operator>Spread Operator</h2><p>The spread operator allows you to expand arrays and objects in various contexts.</p><div class=highlight><div style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 2
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 3
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 4
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 5
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 6
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 7
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 8
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 9
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">10
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">11
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">12
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">13
-</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-javascript data-lang=javascript><span style=display:flex><span><span style=color:#57606a>// Array spreading
-</span></span></span><span style=display:flex><span><span style=color:#57606a></span><span style=color:#cf222e>const</span> <span style=color:#1f2328>numbers</span> <span style=color:#0550ae>=</span> <span style=color:#1f2328>[</span><span style=color:#0550ae>1</span><span style=color:#1f2328>,</span> <span style=color:#0550ae>2</span><span style=color:#1f2328>,</span> <span style=color:#0550ae>3</span><span style=color:#1f2328>];</span>
-</span></span><span style=display:flex><span><span style=color:#cf222e>const</span> <span style=color:#1f2328>moreNumbers</span> <span style=color:#0550ae>=</span> <span style=color:#1f2328>[...</span><span style=color:#1f2328>numbers</span><span style=color:#1f2328>,</span> <span style=color:#0550ae>4</span><span style=color:#1f2328>,</span> <span style=color:#0550ae>5</span><span style=color:#1f2328>,</span> <span style=color:#0550ae>6</span><span style=color:#1f2328>];</span>
-</span></span><span style=display:flex><span><span style=color:#1f2328>console</span><span style=color:#1f2328>.</span><span style=color:#1f2328>log</span><span style=color:#1f2328>(</span><span style=color:#1f2328>moreNumbers</span><span style=color:#1f2328>);</span> <span style=color:#57606a>// [1, 2, 3, 4, 5, 6]
-</span></span></span><span style=display:flex><span><span style=color:#57606a></span>
-</span></span><span style=display:flex><span><span style=color:#57606a>// Object spreading
-</span></span></span><span style=display:flex><span><span style=color:#57606a></span><span style=color:#cf222e>const</span> <span style=color:#1f2328>user</span> <span style=color:#0550ae>=</span> <span style=color:#1f2328>{</span> <span style=color:#1f2328>name</span><span style=color:#0550ae>:</span> <span style=color:#0a3069>&#39;John&#39;</span><span style=color:#1f2328>,</span> <span style=color:#1f2328>age</span><span style=color:#0550ae>:</span> <span style=color:#0550ae>30</span> <span style=color:#1f2328>};</span>
-</span></span><span style=display:flex><span><span style=color:#cf222e>const</span> <span style=color:#1f2328>updatedUser</span> <span style=color:#0550ae>=</span> <span style=color:#1f2328>{</span> <span style=color:#1f2328>...</span><span style=color:#1f2328>user</span><span style=color:#1f2328>,</span> <span style=color:#1f2328>city</span><span style=color:#0550ae>:</span> <span style=color:#0a3069>&#39;Boston&#39;</span> <span style=color:#1f2328>};</span>
-</span></span><span style=display:flex><span><span style=color:#1f2328>console</span><span style=color:#1f2328>.</span><span style=color:#1f2328>log</span><span style=color:#1f2328>(</span><span style=color:#1f2328>updatedUser</span><span style=color:#1f2328>);</span> <span style=color:#57606a>// { name: &#39;John&#39;, age: 30, city: &#39;Boston&#39; }
-</span></span></span><span style=display:flex><span><span style=color:#57606a></span>
-</span></span><span style=display:flex><span><span style=color:#57606a>// Function arguments
-</span></span></span><span style=display:flex><span><span style=color:#57606a></span><span style=color:#cf222e>const</span> <span style=color:#1f2328>maxNumber</span> <span style=color:#0550ae>=</span> <span style=color:#6639ba>Math</span><span style=color:#1f2328>.</span><span style=color:#1f2328>max</span><span style=color:#1f2328>(...</span><span style=color:#1f2328>numbers</span><span style=color:#1f2328>);</span>
-</span></span><span style=display:flex><span><span style=color:#1f2328>console</span><span style=color:#1f2328>.</span><span style=color:#1f2328>log</span><span style=color:#1f2328>(</span><span style=color:#1f2328>maxNumber</span><span style=color:#1f2328>);</span> <span style=color:#57606a>// 3
-</span></span></span></code></pre></td></tr></table></div></div><h2 id=asyncawait>Async/Await</h2><p>Async/await provides a cleaner way to work with promises and asynchronous code.</p><div class=highlight><div style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 2
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 3
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 4
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 5
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 6
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 7
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 8
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 9
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">10
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">11
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">12
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">13
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">14
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">15
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">16
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">17
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">18
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">19
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">20
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">21
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">22
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">23
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">24
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">25
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">26
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">27
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">28
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">29
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">30
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">31
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">32
-</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-javascript data-lang=javascript><span style=display:flex><span><span style=color:#57606a>// Traditional promise chain
-</span></span></span><span style=display:flex><span><span style=color:#57606a></span><span style=color:#cf222e>function</span> <span style=color:#1f2328>fetchUserData</span><span style=color:#1f2328>(</span><span style=color:#1f2328>userId</span><span style=color:#1f2328>)</span> <span style=color:#1f2328>{</span>
-</span></span><span style=display:flex><span>    <span style=color:#cf222e>return</span> <span style=color:#1f2328>fetch</span><span style=color:#1f2328>(</span><span style=color:#0a3069>`/api/users/</span><span style=color:#0a3069>${</span><span style=color:#1f2328>userId</span><span style=color:#0a3069>}</span><span style=color:#0a3069>`</span><span style=color:#1f2328>)</span>
-</span></span><span style=display:flex><span>        <span style=color:#1f2328>.</span><span style=color:#1f2328>then</span><span style=color:#1f2328>(</span><span style=color:#1f2328>response</span> <span style=color:#1f2328>=&gt;</span> <span style=color:#1f2328>response</span><span style=color:#1f2328>.</span><span style=color:#1f2328>json</span><span style=color:#1f2328>())</span>
-</span></span><span style=display:flex><span>        <span style=color:#1f2328>.</span><span style=color:#1f2328>then</span><span style=color:#1f2328>(</span><span style=color:#1f2328>data</span> <span style=color:#1f2328>=&gt;</span> <span style=color:#1f2328>console</span><span style=color:#1f2328>.</span><span style=color:#1f2328>log</span><span style=color:#1f2328>(</span><span style=color:#1f2328>data</span><span style=color:#1f2328>))</span>
-</span></span><span style=display:flex><span>        <span style=color:#1f2328>.</span><span style=color:#cf222e>catch</span><span style=color:#1f2328>(</span><span style=color:#1f2328>error</span> <span style=color:#1f2328>=&gt;</span> <span style=color:#1f2328>console</span><span style=color:#1f2328>.</span><span style=color:#1f2328>error</span><span style=color:#1f2328>(</span><span style=color:#1f2328>error</span><span style=color:#1f2328>));</span>
-</span></span><span style=display:flex><span><span style=color:#1f2328>}</span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#57606a>// With async/await
-</span></span></span><span style=display:flex><span><span style=color:#57606a></span><span style=color:#cf222e>async</span> <span style=color:#cf222e>function</span> <span style=color:#1f2328>fetchUserData</span><span style=color:#1f2328>(</span><span style=color:#1f2328>userId</span><span style=color:#1f2328>)</span> <span style=color:#1f2328>{</span>
-</span></span><span style=display:flex><span>    <span style=color:#cf222e>try</span> <span style=color:#1f2328>{</span>
-</span></span><span style=display:flex><span>        <span style=color:#cf222e>const</span> <span style=color:#1f2328>response</span> <span style=color:#0550ae>=</span> <span style=color:#cf222e>await</span> <span style=color:#1f2328>fetch</span><span style=color:#1f2328>(</span><span style=color:#0a3069>`/api/users/</span><span style=color:#0a3069>${</span><span style=color:#1f2328>userId</span><span style=color:#0a3069>}</span><span style=color:#0a3069>`</span><span style=color:#1f2328>);</span>
-</span></span><span style=display:flex><span>        <span style=color:#cf222e>const</span> <span style=color:#1f2328>data</span> <span style=color:#0550ae>=</span> <span style=color:#cf222e>await</span> <span style=color:#1f2328>response</span><span style=color:#1f2328>.</span><span style=color:#1f2328>json</span><span style=color:#1f2328>();</span>
-</span></span><span style=display:flex><span>        <span style=color:#1f2328>console</span><span style=color:#1f2328>.</span><span style=color:#1f2328>log</span><span style=color:#1f2328>(</span><span style=color:#1f2328>data</span><span style=color:#1f2328>);</span>
-</span></span><span style=display:flex><span>    <span style=color:#1f2328>}</span> <span style=color:#cf222e>catch</span> <span style=color:#1f2328>(</span><span style=color:#1f2328>error</span><span style=color:#1f2328>)</span> <span style=color:#1f2328>{</span>
-</span></span><span style=display:flex><span>        <span style=color:#1f2328>console</span><span style=color:#1f2328>.</span><span style=color:#1f2328>error</span><span style=color:#1f2328>(</span><span style=color:#1f2328>error</span><span style=color:#1f2328>);</span>
-</span></span><span style=display:flex><span>    <span style=color:#1f2328>}</span>
-</span></span><span style=display:flex><span><span style=color:#1f2328>}</span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#57606a>// Multiple async operations
-</span></span></span><span style=display:flex><span><span style=color:#57606a></span><span style=color:#cf222e>async</span> <span style=color:#cf222e>function</span> <span style=color:#1f2328>fetchMultipleResources</span><span style=color:#1f2328>()</span> <span style=color:#1f2328>{</span>
-</span></span><span style=display:flex><span>    <span style=color:#cf222e>try</span> <span style=color:#1f2328>{</span>
-</span></span><span style=display:flex><span>        <span style=color:#cf222e>const</span> <span style=color:#1f2328>[</span><span style=color:#1f2328>users</span><span style=color:#1f2328>,</span> <span style=color:#1f2328>posts</span><span style=color:#1f2328>]</span> <span style=color:#0550ae>=</span> <span style=color:#cf222e>await</span> <span style=color:#6639ba>Promise</span><span style=color:#1f2328>.</span><span style=color:#1f2328>all</span><span style=color:#1f2328>([</span>
-</span></span><span style=display:flex><span>            <span style=color:#1f2328>fetch</span><span style=color:#1f2328>(</span><span style=color:#0a3069>&#39;/api/users&#39;</span><span style=color:#1f2328>).</span><span style=color:#1f2328>then</span><span style=color:#1f2328>(</span><span style=color:#1f2328>r</span> <span style=color:#1f2328>=&gt;</span> <span style=color:#1f2328>r</span><span style=color:#1f2328>.</span><span style=color:#1f2328>json</span><span style=color:#1f2328>()),</span>
-</span></span><span style=display:flex><span>            <span style=color:#1f2328>fetch</span><span style=color:#1f2328>(</span><span style=color:#0a3069>&#39;/api/posts&#39;</span><span style=color:#1f2328>).</span><span style=color:#1f2328>then</span><span style=color:#1f2328>(</span><span style=color:#1f2328>r</span> <span style=color:#1f2328>=&gt;</span> <span style=color:#1f2328>r</span><span style=color:#1f2328>.</span><span style=color:#1f2328>json</span><span style=color:#1f2328>())</span>
-</span></span><span style=display:flex><span>        <span style=color:#1f2328>]);</span>
-</span></span><span style=display:flex><span>        
-</span></span><span style=display:flex><span>        <span style=color:#cf222e>return</span> <span style=color:#1f2328>{</span> <span style=color:#1f2328>users</span><span style=color:#1f2328>,</span> <span style=color:#1f2328>posts</span> <span style=color:#1f2328>};</span>
-</span></span><span style=display:flex><span>    <span style=color:#1f2328>}</span> <span style=color:#cf222e>catch</span> <span style=color:#1f2328>(</span><span style=color:#1f2328>error</span><span style=color:#1f2328>)</span> <span style=color:#1f2328>{</span>
-</span></span><span style=display:flex><span>        <span style=color:#1f2328>console</span><span style=color:#1f2328>.</span><span style=color:#1f2328>error</span><span style=color:#1f2328>(</span><span style=color:#0a3069>&#39;Failed to fetch resources:&#39;</span><span style=color:#1f2328>,</span> <span style=color:#1f2328>error</span><span style=color:#1f2328>);</span>
-</span></span><span style=display:flex><span>    <span style=color:#1f2328>}</span>
-</span></span><span style=display:flex><span><span style=color:#1f2328>}</span>
-</span></span></code></pre></td></tr></table></div></div><h2 id=modules-importexport>Modules (Import/Export)</h2><p>ES6 modules provide a standardized way to organize and share code.</p><div class=highlight><div style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 2
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 3
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 4
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 5
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 6
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 7
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 8
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 9
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">10
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">11
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">12
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">13
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">14
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">15
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">16
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">17
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">18
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">19
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">20
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">21
-</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-javascript data-lang=javascript><span style=display:flex><span><span style=color:#57606a>// math.js - Exporting
-</span></span></span><span style=display:flex><span><span style=color:#57606a></span><span style=color:#cf222e>export</span> <span style=color:#cf222e>const</span> <span style=color:#1f2328>PI</span> <span style=color:#0550ae>=</span> <span style=color:#0550ae>3.14159</span><span style=color:#1f2328>;</span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#cf222e>export</span> <span style=color:#cf222e>function</span> <span style=color:#1f2328>add</span><span style=color:#1f2328>(</span><span style=color:#1f2328>a</span><span style=color:#1f2328>,</span> <span style=color:#1f2328>b</span><span style=color:#1f2328>)</span> <span style=color:#1f2328>{</span>
-</span></span><span style=display:flex><span>    <span style=color:#cf222e>return</span> <span style=color:#1f2328>a</span> <span style=color:#0550ae>+</span> <span style=color:#1f2328>b</span><span style=color:#1f2328>;</span>
-</span></span><span style=display:flex><span><span style=color:#1f2328>}</span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#cf222e>export</span> <span style=color:#cf222e>default</span> <span style=color:#cf222e>function</span> <span style=color:#1f2328>multiply</span><span style=color:#1f2328>(</span><span style=color:#1f2328>a</span><span style=color:#1f2328>,</span> <span style=color:#1f2328>b</span><span style=color:#1f2328>)</span> <span style=color:#1f2328>{</span>
-</span></span><span style=display:flex><span>    <span style=color:#cf222e>return</span> <span style=color:#1f2328>a</span> <span style=color:#0550ae>*</span> <span style=color:#1f2328>b</span><span style=color:#1f2328>;</span>
-</span></span><span style=display:flex><span><span style=color:#1f2328>}</span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#57606a>// main.js - Importing
-</span></span></span><span style=display:flex><span><span style=color:#57606a></span><span style=color:#cf222e>import</span> <span style=color:#1f2328>multiply</span><span style=color:#1f2328>,</span> <span style=color:#1f2328>{</span> <span style=color:#1f2328>PI</span><span style=color:#1f2328>,</span> <span style=color:#1f2328>add</span> <span style=color:#1f2328>}</span> <span style=color:#1f2328>from</span> <span style=color:#0a3069>&#39;./math.js&#39;</span><span style=color:#1f2328>;</span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#1f2328>console</span><span style=color:#1f2328>.</span><span style=color:#1f2328>log</span><span style=color:#1f2328>(</span><span style=color:#1f2328>PI</span><span style=color:#1f2328>);</span> <span style=color:#57606a>// 3.14159
-</span></span></span><span style=display:flex><span><span style=color:#57606a></span><span style=color:#1f2328>console</span><span style=color:#1f2328>.</span><span style=color:#1f2328>log</span><span style=color:#1f2328>(</span><span style=color:#1f2328>add</span><span style=color:#1f2328>(</span><span style=color:#0550ae>2</span><span style=color:#1f2328>,</span> <span style=color:#0550ae>3</span><span style=color:#1f2328>));</span> <span style=color:#57606a>// 5
-</span></span></span><span style=display:flex><span><span style=color:#57606a></span><span style=color:#1f2328>console</span><span style=color:#1f2328>.</span><span style=color:#1f2328>log</span><span style=color:#1f2328>(</span><span style=color:#1f2328>multiply</span><span style=color:#1f2328>(</span><span style=color:#0550ae>4</span><span style=color:#1f2328>,</span> <span style=color:#0550ae>5</span><span style=color:#1f2328>));</span> <span style=color:#57606a>// 20
-</span></span></span><span style=display:flex><span><span style=color:#57606a></span>
-</span></span><span style=display:flex><span><span style=color:#57606a>// Importing everything
-</span></span></span><span style=display:flex><span><span style=color:#57606a></span><span style=color:#cf222e>import</span> <span style=color:#0550ae>*</span> <span style=color:#1f2328>as</span> <span style=color:#1f2328>math</span> <span style=color:#1f2328>from</span> <span style=color:#0a3069>&#39;./math.js&#39;</span><span style=color:#1f2328>;</span>
-</span></span><span style=display:flex><span><span style=color:#1f2328>console</span><span style=color:#1f2328>.</span><span style=color:#1f2328>log</span><span style=color:#1f2328>(</span><span style=color:#1f2328>math</span><span style=color:#1f2328>.</span><span style=color:#1f2328>PI</span><span style=color:#1f2328>);</span> <span style=color:#57606a>// 3.14159
-</span></span></span></code></pre></td></tr></table></div></div><h2 id=optional-chaining>Optional Chaining</h2><p>Optional chaining provides a safe way to access nested object properties.</p><div class=highlight><div style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 2
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 3
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 4
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 5
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 6
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 7
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 8
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 9
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">10
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">11
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">12
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">13
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">14
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">15
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">16
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">17
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">18
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">19
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">20
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">21
-</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-javascript data-lang=javascript><span style=display:flex><span><span style=color:#cf222e>const</span> <span style=color:#1f2328>user</span> <span style=color:#0550ae>=</span> <span style=color:#1f2328>{</span>
-</span></span><span style=display:flex><span>    <span style=color:#1f2328>profile</span><span style=color:#0550ae>:</span> <span style=color:#1f2328>{</span>
-</span></span><span style=display:flex><span>        <span style=color:#1f2328>name</span><span style=color:#0550ae>:</span> <span style=color:#0a3069>&#39;John&#39;</span><span style=color:#1f2328>,</span>
-</span></span><span style=display:flex><span>        <span style=color:#1f2328>address</span><span style=color:#0550ae>:</span> <span style=color:#1f2328>{</span>
-</span></span><span style=display:flex><span>            <span style=color:#1f2328>city</span><span style=color:#0550ae>:</span> <span style=color:#0a3069>&#39;New York&#39;</span>
-</span></span><span style=display:flex><span>        <span style=color:#1f2328>}</span>
-</span></span><span style=display:flex><span>    <span style=color:#1f2328>}</span>
-</span></span><span style=display:flex><span><span style=color:#1f2328>};</span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#57606a>// Traditional approach
-</span></span></span><span style=display:flex><span><span style=color:#57606a></span><span style=color:#cf222e>const</span> <span style=color:#1f2328>city</span> <span style=color:#0550ae>=</span> <span style=color:#1f2328>user</span> <span style=color:#0550ae>&amp;&amp;</span> <span style=color:#1f2328>user</span><span style=color:#1f2328>.</span><span style=color:#1f2328>profile</span> <span style=color:#0550ae>&amp;&amp;</span> <span style=color:#1f2328>user</span><span style=color:#1f2328>.</span><span style=color:#1f2328>profile</span><span style=color:#1f2328>.</span><span style=color:#1f2328>address</span> <span style=color:#0550ae>&amp;&amp;</span> <span style=color:#1f2328>user</span><span style=color:#1f2328>.</span><span style=color:#1f2328>profile</span><span style=color:#1f2328>.</span><span style=color:#1f2328>address</span><span style=color:#1f2328>.</span><span style=color:#1f2328>city</span><span style=color:#1f2328>;</span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#57606a>// With optional chaining
-</span></span></span><span style=display:flex><span><span style=color:#57606a></span><span style=color:#cf222e>const</span> <span style=color:#1f2328>city</span> <span style=color:#0550ae>=</span> <span style=color:#1f2328>user</span><span style=color:#0550ae>?</span><span style=color:#1f2328>.</span><span style=color:#1f2328>profile</span><span style=color:#0550ae>?</span><span style=color:#1f2328>.</span><span style=color:#1f2328>address</span><span style=color:#0550ae>?</span><span style=color:#1f2328>.</span><span style=color:#1f2328>city</span><span style=color:#1f2328>;</span>
-</span></span><span style=display:flex><span><span style=color:#1f2328>console</span><span style=color:#1f2328>.</span><span style=color:#1f2328>log</span><span style=color:#1f2328>(</span><span style=color:#1f2328>city</span><span style=color:#1f2328>);</span> <span style=color:#57606a>// &#39;New York&#39;
-</span></span></span><span style=display:flex><span><span style=color:#57606a></span>
-</span></span><span style=display:flex><span><span style=color:#57606a>// With method calls
-</span></span></span><span style=display:flex><span><span style=color:#57606a></span><span style=color:#cf222e>const</span> <span style=color:#1f2328>userName</span> <span style=color:#0550ae>=</span> <span style=color:#1f2328>user</span><span style=color:#1f2328>.</span><span style=color:#1f2328>profile</span><span style=color:#0550ae>?</span><span style=color:#1f2328>.</span><span style=color:#1f2328>getName</span><span style=color:#0550ae>?</span><span style=color:#1f2328>.();</span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#57606a>// With array access
-</span></span></span><span style=display:flex><span><span style=color:#57606a></span><span style=color:#cf222e>const</span> <span style=color:#1f2328>firstItem</span> <span style=color:#0550ae>=</span> <span style=color:#1f2328>array</span><span style=color:#0550ae>?</span><span style=color:#1f2328>.[</span><span style=color:#0550ae>0</span><span style=color:#1f2328>];</span>
-</span></span></code></pre></td></tr></table></div></div><h2 id=nullish-coalescing>Nullish Coalescing</h2><p>The nullish coalescing operator provides a better way to handle default values.</p><div class=highlight><div style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 2
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 3
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 4
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 5
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 6
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 7
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 8
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 9
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">10
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">11
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">12
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">13
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">14
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">15
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">16
-</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-javascript data-lang=javascript><span style=display:flex><span><span style=color:#57606a>// Traditional approach (problematic with falsy values)
-</span></span></span><span style=display:flex><span><span style=color:#57606a></span><span style=color:#cf222e>const</span> <span style=color:#1f2328>count</span> <span style=color:#0550ae>=</span> <span style=color:#1f2328>value</span> <span style=color:#0550ae>||</span> <span style=color:#0550ae>0</span><span style=color:#1f2328>;</span> <span style=color:#57606a>// This would replace 0, &#39;&#39;, false with 0
-</span></span></span><span style=display:flex><span><span style=color:#57606a></span>
-</span></span><span style=display:flex><span><span style=color:#57606a>// With nullish coalescing
-</span></span></span><span style=display:flex><span><span style=color:#57606a></span><span style=color:#cf222e>const</span> <span style=color:#1f2328>count</span> <span style=color:#0550ae>=</span> <span style=color:#1f2328>value</span> <span style=color:#0550ae>??</span> <span style=color:#0550ae>0</span><span style=color:#1f2328>;</span> <span style=color:#57606a>// Only replaces null/undefined with 0
-</span></span></span><span style=display:flex><span><span style=color:#57606a></span>
-</span></span><span style=display:flex><span><span style=color:#57606a>// Practical example
-</span></span></span><span style=display:flex><span><span style=color:#57606a></span><span style=color:#cf222e>const</span> <span style=color:#1f2328>settings</span> <span style=color:#0550ae>=</span> <span style=color:#1f2328>{</span>
-</span></span><span style=display:flex><span>    <span style=color:#1f2328>theme</span><span style=color:#0550ae>:</span> <span style=color:#0a3069>&#39;dark&#39;</span><span style=color:#1f2328>,</span>
-</span></span><span style=display:flex><span>    <span style=color:#1f2328>fontSize</span><span style=color:#0550ae>:</span> <span style=color:#0550ae>0</span><span style=color:#1f2328>,</span> <span style=color:#57606a>// User explicitly set to 0
-</span></span></span><span style=display:flex><span><span style=color:#57606a></span>    <span style=color:#1f2328>autoSave</span><span style=color:#0550ae>:</span> <span style=color:#cf222e>false</span> <span style=color:#57606a>// User explicitly set to false
-</span></span></span><span style=display:flex><span><span style=color:#57606a></span><span style=color:#1f2328>};</span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#cf222e>const</span> <span style=color:#1f2328>theme</span> <span style=color:#0550ae>=</span> <span style=color:#1f2328>settings</span><span style=color:#1f2328>.</span><span style=color:#1f2328>theme</span> <span style=color:#0550ae>??</span> <span style=color:#0a3069>&#39;light&#39;</span><span style=color:#1f2328>;</span> <span style=color:#57606a>// &#39;dark&#39;
-</span></span></span><span style=display:flex><span><span style=color:#57606a></span><span style=color:#cf222e>const</span> <span style=color:#1f2328>fontSize</span> <span style=color:#0550ae>=</span> <span style=color:#1f2328>settings</span><span style=color:#1f2328>.</span><span style=color:#1f2328>fontSize</span> <span style=color:#0550ae>??</span> <span style=color:#0550ae>14</span><span style=color:#1f2328>;</span> <span style=color:#57606a>// 0 (not replaced)
-</span></span></span><span style=display:flex><span><span style=color:#57606a></span><span style=color:#cf222e>const</span> <span style=color:#1f2328>autoSave</span> <span style=color:#0550ae>=</span> <span style=color:#1f2328>settings</span><span style=color:#1f2328>.</span><span style=color:#1f2328>autoSave</span> <span style=color:#0550ae>??</span> <span style=color:#cf222e>true</span><span style=color:#1f2328>;</span> <span style=color:#57606a>// false (not replaced)
-</span></span></span></code></pre></td></tr></table></div></div><h2 id=private-class-fields>Private Class Fields</h2><p>Modern JavaScript supports private class fields that cannot be accessed from outside the class.</p><div class=highlight><div style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 2
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 3
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 4
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 5
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 6
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 7
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 8
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 9
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">10
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">11
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">12
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">13
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">14
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">15
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">16
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">17
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">18
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">19
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">20
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">21
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">22
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">23
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">24
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">25
-</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-javascript data-lang=javascript><span style=display:flex><span><span style=color:#cf222e>class</span> <span style=color:#1f2328>BankAccount</span> <span style=color:#1f2328>{</span>
-</span></span><span style=display:flex><span>    <span style=color:#f6f8fa;background-color:#82071e>#</span><span style=color:#1f2328>balance</span> <span style=color:#0550ae>=</span> <span style=color:#0550ae>0</span><span style=color:#1f2328>;</span> <span style=color:#57606a>// Private field
-</span></span></span><span style=display:flex><span><span style=color:#57606a></span>    
-</span></span><span style=display:flex><span>    <span style=color:#1f2328>constructor</span><span style=color:#1f2328>(</span><span style=color:#1f2328>initialBalance</span><span style=color:#1f2328>)</span> <span style=color:#1f2328>{</span>
-</span></span><span style=display:flex><span>        <span style=color:#cf222e>this</span><span style=color:#1f2328>.</span><span style=color:#f6f8fa;background-color:#82071e>#</span><span style=color:#1f2328>balance</span> <span style=color:#0550ae>=</span> <span style=color:#1f2328>initialBalance</span><span style=color:#1f2328>;</span>
-</span></span><span style=display:flex><span>    <span style=color:#1f2328>}</span>
-</span></span><span style=display:flex><span>    
-</span></span><span style=display:flex><span>    <span style=color:#1f2328>deposit</span><span style=color:#1f2328>(</span><span style=color:#1f2328>amount</span><span style=color:#1f2328>)</span> <span style=color:#1f2328>{</span>
-</span></span><span style=display:flex><span>        <span style=color:#cf222e>if</span> <span style=color:#1f2328>(</span><span style=color:#1f2328>amount</span> <span style=color:#0550ae>&gt;</span> <span style=color:#0550ae>0</span><span style=color:#1f2328>)</span> <span style=color:#1f2328>{</span>
-</span></span><span style=display:flex><span>            <span style=color:#cf222e>this</span><span style=color:#1f2328>.</span><span style=color:#f6f8fa;background-color:#82071e>#</span><span style=color:#1f2328>balance</span> <span style=color:#0550ae>+=</span> <span style=color:#1f2328>amount</span><span style=color:#1f2328>;</span>
-</span></span><span style=display:flex><span>        <span style=color:#1f2328>}</span>
-</span></span><span style=display:flex><span>    <span style=color:#1f2328>}</span>
-</span></span><span style=display:flex><span>    
-</span></span><span style=display:flex><span>    <span style=color:#1f2328>getBalance</span><span style=color:#1f2328>()</span> <span style=color:#1f2328>{</span>
-</span></span><span style=display:flex><span>        <span style=color:#cf222e>return</span> <span style=color:#cf222e>this</span><span style=color:#1f2328>.</span><span style=color:#f6f8fa;background-color:#82071e>#</span><span style=color:#1f2328>balance</span><span style=color:#1f2328>;</span>
-</span></span><span style=display:flex><span>    <span style=color:#1f2328>}</span>
-</span></span><span style=display:flex><span>    
-</span></span><span style=display:flex><span>    <span style=color:#f6f8fa;background-color:#82071e>#</span><span style=color:#1f2328>calculateInterest</span><span style=color:#1f2328>()</span> <span style=color:#1f2328>{</span> <span style=color:#57606a>// Private method
-</span></span></span><span style=display:flex><span><span style=color:#57606a></span>        <span style=color:#cf222e>return</span> <span style=color:#cf222e>this</span><span style=color:#1f2328>.</span><span style=color:#f6f8fa;background-color:#82071e>#</span><span style=color:#1f2328>balance</span> <span style=color:#0550ae>*</span> <span style=color:#0550ae>0.05</span><span style=color:#1f2328>;</span>
-</span></span><span style=display:flex><span>    <span style=color:#1f2328>}</span>
-</span></span><span style=display:flex><span><span style=color:#1f2328>}</span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#cf222e>const</span> <span style=color:#1f2328>account</span> <span style=color:#0550ae>=</span> <span style=color:#cf222e>new</span> <span style=color:#1f2328>BankAccount</span><span style=color:#1f2328>(</span><span style=color:#0550ae>1000</span><span style=color:#1f2328>);</span>
-</span></span><span style=display:flex><span><span style=color:#1f2328>console</span><span style=color:#1f2328>.</span><span style=color:#1f2328>log</span><span style=color:#1f2328>(</span><span style=color:#1f2328>account</span><span style=color:#1f2328>.</span><span style=color:#1f2328>getBalance</span><span style=color:#1f2328>());</span> <span style=color:#57606a>// 1000
-</span></span></span><span style=display:flex><span><span style=color:#57606a></span><span style=color:#1f2328>console</span><span style=color:#1f2328>.</span><span style=color:#1f2328>log</span><span style=color:#1f2328>(</span><span style=color:#1f2328>account</span><span style=color:#1f2328>.</span><span style=color:#f6f8fa;background-color:#82071e>#</span><span style=color:#1f2328>balance</span><span style=color:#1f2328>);</span> <span style=color:#57606a>// Error: Private field
-</span></span></span></code></pre></td></tr></table></div></div><h2 id=conclusion>Conclusion</h2><p>These modern JavaScript features make code more readable, maintainable, and efficient. By incorporating these features into your development workflow, you can write cleaner and more professional JavaScript code. Keep learning and experimenting with these features to become a more effective JavaScript developer!</p></div></article></main></div><script>document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",function(e){e.preventDefault();const t=document.querySelector(this.getAttribute("href"));t&&t.scrollIntoView({behavior:"smooth",block:"start"})})});const lazyImages=document.querySelectorAll(".lazy-image");if("IntersectionObserver"in window){const e=new IntersectionObserver((e,t)=>{e.forEach(e=>{if(e.isIntersecting){const n=e.target;n.classList.add("loaded"),t.unobserve(n)}})});lazyImages.forEach(t=>{e.observe(t)})}else lazyImages.forEach(e=>{e.classList.add("loaded")});document.querySelectorAll(".project-image").forEach(e=>{e.addEventListener("click",function(){const e=document.createElement("div");e.style.cssText=`
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern JavaScript Features - 我的个人网站</title>
+    <meta name="description" content="Exploring modern JavaScript features that every developer should know">
+    
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    
+    <link rel="stylesheet" href="/myweb/css/main.css">
+    <link rel="stylesheet" href="/myweb/css/custom.css">
+    
+    
+    <link rel="icon" type="image/x-icon" href="/myweb/favicon.ico">
+    
+    
+    <meta name="theme-color" content="#667eea">
+    
+    
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://zhangyn8.github.io/myweb/posts/modern-javascript-features/">
+    <meta property="og:title" content="Modern JavaScript Features">
+    <meta property="og:description" content="Exploring modern JavaScript features that every developer should know">
+    
+    
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://zhangyn8.github.io/myweb/posts/modern-javascript-features/">
+    <meta property="twitter:title" content="Modern JavaScript Features">
+    <meta property="twitter:description" content="Exploring modern JavaScript features that every developer should know">
+    
+    
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "我的个人网站",
+        "description": "Chrystal的个人网站 - AI训练师 \u0026 开发者",
+        "url": "https:\/\/zhangyn8.github.io\/myweb\/",
+        "author": {
+            "@type": "Person",
+            "name": "Chrystal"
+        }
+    }
+    </script>
+    
+    
+    
+    
+</head>
+<body>
+    
+    
+    
+    <div class="main-container">
+        
+        
+        
+        
+        <main class="main-content">
+            
+<article class="post">
+    <header class="post-header">
+        <h1 class="post-title">Modern JavaScript Features</h1>
+        
+        <div class="post-meta">
+            <time datetime="2024-01-20">January 20, 2024</time>
+            
+            <div class="post-tags">
+                
+                <span class="tag">javascript</span>
+                
+                <span class="tag">es6</span>
+                
+                <span class="tag">programming</span>
+                
+            </div>
+            
+        </div>
+        
+    </header>
+    
+    <div class="post-content">
+        <h1 id="modern-javascript-features">Modern JavaScript Features</h1>
+<p>JavaScript has evolved significantly over the years, introducing powerful features that make development more efficient and code more readable. Let&rsquo;s explore some of the most important modern JavaScript features.</p>
+<h2 id="arrow-functions">Arrow Functions</h2>
+<p>Arrow functions provide a concise syntax for writing functions and automatically bind the <code>this</code> context.</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#57606a">// Traditional function
+</span></span></span><span style="display:flex;"><span><span style="color:#57606a"></span><span style="color:#cf222e">function</span> <span style="color:#1f2328">add</span><span style="color:#1f2328">(</span><span style="color:#1f2328">a</span><span style="color:#1f2328">,</span> <span style="color:#1f2328">b</span><span style="color:#1f2328">)</span> <span style="color:#1f2328">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#cf222e">return</span> <span style="color:#1f2328">a</span> <span style="color:#0550ae">+</span> <span style="color:#1f2328">b</span><span style="color:#1f2328">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#1f2328">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#57606a">// Arrow function
+</span></span></span><span style="display:flex;"><span><span style="color:#57606a"></span><span style="color:#cf222e">const</span> <span style="color:#1f2328">add</span> <span style="color:#0550ae">=</span> <span style="color:#1f2328">(</span><span style="color:#1f2328">a</span><span style="color:#1f2328">,</span> <span style="color:#1f2328">b</span><span style="color:#1f2328">)</span> <span style="color:#1f2328">=&gt;</span> <span style="color:#1f2328">a</span> <span style="color:#0550ae">+</span> <span style="color:#1f2328">b</span><span style="color:#1f2328">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#57606a">// With single parameter
+</span></span></span><span style="display:flex;"><span><span style="color:#57606a"></span><span style="color:#cf222e">const</span> <span style="color:#1f2328">square</span> <span style="color:#0550ae">=</span> <span style="color:#1f2328">x</span> <span style="color:#1f2328">=&gt;</span> <span style="color:#1f2328">x</span> <span style="color:#0550ae">*</span> <span style="color:#1f2328">x</span><span style="color:#1f2328">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#57606a">// With block body
+</span></span></span><span style="display:flex;"><span><span style="color:#57606a"></span><span style="color:#cf222e">const</span> <span style="color:#1f2328">greet</span> <span style="color:#0550ae">=</span> <span style="color:#1f2328">name</span> <span style="color:#1f2328">=&gt;</span> <span style="color:#1f2328">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#cf222e">return</span> <span style="color:#0a3069">`Hello, </span><span style="color:#0a3069">${</span><span style="color:#1f2328">name</span><span style="color:#0a3069">}</span><span style="color:#0a3069">!`</span><span style="color:#1f2328">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#1f2328">};</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="destructuring-assignment">Destructuring Assignment</h2>
+<p>Destructuring allows you to extract values from arrays and objects in a more readable way.</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#57606a">// Array destructuring
+</span></span></span><span style="display:flex;"><span><span style="color:#57606a"></span><span style="color:#cf222e">const</span> <span style="color:#1f2328">colors</span> <span style="color:#0550ae">=</span> <span style="color:#1f2328">[</span><span style="color:#0a3069">&#39;red&#39;</span><span style="color:#1f2328">,</span> <span style="color:#0a3069">&#39;green&#39;</span><span style="color:#1f2328">,</span> <span style="color:#0a3069">&#39;blue&#39;</span><span style="color:#1f2328">];</span>
+</span></span><span style="display:flex;"><span><span style="color:#cf222e">const</span> <span style="color:#1f2328">[</span><span style="color:#1f2328">first</span><span style="color:#1f2328">,</span> <span style="color:#1f2328">second</span><span style="color:#1f2328">,</span> <span style="color:#1f2328">third</span><span style="color:#1f2328">]</span> <span style="color:#0550ae">=</span> <span style="color:#1f2328">colors</span><span style="color:#1f2328">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#1f2328">console</span><span style="color:#1f2328">.</span><span style="color:#1f2328">log</span><span style="color:#1f2328">(</span><span style="color:#1f2328">first</span><span style="color:#1f2328">);</span> <span style="color:#57606a">// &#39;red&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#57606a"></span>
+</span></span><span style="display:flex;"><span><span style="color:#57606a">// Object destructuring
+</span></span></span><span style="display:flex;"><span><span style="color:#57606a"></span><span style="color:#cf222e">const</span> <span style="color:#1f2328">person</span> <span style="color:#0550ae">=</span> <span style="color:#1f2328">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#1f2328">name</span><span style="color:#0550ae">:</span> <span style="color:#0a3069">&#39;John&#39;</span><span style="color:#1f2328">,</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#1f2328">age</span><span style="color:#0550ae">:</span> <span style="color:#0550ae">30</span><span style="color:#1f2328">,</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#1f2328">city</span><span style="color:#0550ae">:</span> <span style="color:#0a3069">&#39;New York&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#1f2328">};</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#cf222e">const</span> <span style="color:#1f2328">{</span> <span style="color:#1f2328">name</span><span style="color:#1f2328">,</span> <span style="color:#1f2328">age</span><span style="color:#1f2328">,</span> <span style="color:#1f2328">city</span> <span style="color:#1f2328">}</span> <span style="color:#0550ae">=</span> <span style="color:#1f2328">person</span><span style="color:#1f2328">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#1f2328">console</span><span style="color:#1f2328">.</span><span style="color:#1f2328">log</span><span style="color:#1f2328">(</span><span style="color:#1f2328">name</span><span style="color:#1f2328">);</span> <span style="color:#57606a">// &#39;John&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#57606a"></span>
+</span></span><span style="display:flex;"><span><span style="color:#57606a">// With default values
+</span></span></span><span style="display:flex;"><span><span style="color:#57606a"></span><span style="color:#cf222e">const</span> <span style="color:#1f2328">{</span> <span style="color:#1f2328">country</span> <span style="color:#0550ae">=</span> <span style="color:#0a3069">&#39;USA&#39;</span> <span style="color:#1f2328">}</span> <span style="color:#0550ae">=</span> <span style="color:#1f2328">person</span><span style="color:#1f2328">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#1f2328">console</span><span style="color:#1f2328">.</span><span style="color:#1f2328">log</span><span style="color:#1f2328">(</span><span style="color:#1f2328">country</span><span style="color:#1f2328">);</span> <span style="color:#57606a">// &#39;USA&#39;
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="template-literals">Template Literals</h2>
+<p>Template literals provide an easier way to work with strings, including multi-line strings and string interpolation.</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#cf222e">const</span> <span style="color:#1f2328">name</span> <span style="color:#0550ae">=</span> <span style="color:#0a3069">&#39;Alice&#39;</span><span style="color:#1f2328">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#cf222e">const</span> <span style="color:#1f2328">age</span> <span style="color:#0550ae">=</span> <span style="color:#0550ae">25</span><span style="color:#1f2328">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#57606a">// String interpolation
+</span></span></span><span style="display:flex;"><span><span style="color:#57606a"></span><span style="color:#cf222e">const</span> <span style="color:#1f2328">message</span> <span style="color:#0550ae">=</span> <span style="color:#0a3069">`Hello, my name is </span><span style="color:#0a3069">${</span><span style="color:#1f2328">name</span><span style="color:#0a3069">}</span><span style="color:#0a3069"> and I am </span><span style="color:#0a3069">${</span><span style="color:#1f2328">age</span><span style="color:#0a3069">}</span><span style="color:#0a3069"> years old.`</span><span style="color:#1f2328">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#57606a">// Multi-line strings
+</span></span></span><span style="display:flex;"><span><span style="color:#57606a"></span><span style="color:#cf222e">const</span> <span style="color:#1f2328">html</span> <span style="color:#0550ae">=</span> <span style="color:#0a3069">`
+</span></span></span><span style="display:flex;"><span><span style="color:#0a3069">    &lt;div&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#0a3069">        &lt;h1&gt;</span><span style="color:#0a3069">${</span><span style="color:#1f2328">name</span><span style="color:#0a3069">}</span><span style="color:#0a3069">&lt;/h1&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#0a3069">        &lt;p&gt;Age: </span><span style="color:#0a3069">${</span><span style="color:#1f2328">age</span><span style="color:#0a3069">}</span><span style="color:#0a3069">&lt;/p&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#0a3069">    &lt;/div&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#0a3069">`</span><span style="color:#1f2328">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#57606a">// Expression evaluation
+</span></span></span><span style="display:flex;"><span><span style="color:#57606a"></span><span style="color:#cf222e">const</span> <span style="color:#1f2328">result</span> <span style="color:#0550ae">=</span> <span style="color:#0a3069">`The sum of 2 + 2 is </span><span style="color:#0a3069">${</span><span style="color:#0550ae">2</span> <span style="color:#0550ae">+</span> <span style="color:#0550ae">2</span><span style="color:#0a3069">}</span><span style="color:#0a3069">`</span><span style="color:#1f2328">;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="spread-operator">Spread Operator</h2>
+<p>The spread operator allows you to expand arrays and objects in various contexts.</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#57606a">// Array spreading
+</span></span></span><span style="display:flex;"><span><span style="color:#57606a"></span><span style="color:#cf222e">const</span> <span style="color:#1f2328">numbers</span> <span style="color:#0550ae">=</span> <span style="color:#1f2328">[</span><span style="color:#0550ae">1</span><span style="color:#1f2328">,</span> <span style="color:#0550ae">2</span><span style="color:#1f2328">,</span> <span style="color:#0550ae">3</span><span style="color:#1f2328">];</span>
+</span></span><span style="display:flex;"><span><span style="color:#cf222e">const</span> <span style="color:#1f2328">moreNumbers</span> <span style="color:#0550ae">=</span> <span style="color:#1f2328">[...</span><span style="color:#1f2328">numbers</span><span style="color:#1f2328">,</span> <span style="color:#0550ae">4</span><span style="color:#1f2328">,</span> <span style="color:#0550ae">5</span><span style="color:#1f2328">,</span> <span style="color:#0550ae">6</span><span style="color:#1f2328">];</span>
+</span></span><span style="display:flex;"><span><span style="color:#1f2328">console</span><span style="color:#1f2328">.</span><span style="color:#1f2328">log</span><span style="color:#1f2328">(</span><span style="color:#1f2328">moreNumbers</span><span style="color:#1f2328">);</span> <span style="color:#57606a">// [1, 2, 3, 4, 5, 6]
+</span></span></span><span style="display:flex;"><span><span style="color:#57606a"></span>
+</span></span><span style="display:flex;"><span><span style="color:#57606a">// Object spreading
+</span></span></span><span style="display:flex;"><span><span style="color:#57606a"></span><span style="color:#cf222e">const</span> <span style="color:#1f2328">user</span> <span style="color:#0550ae">=</span> <span style="color:#1f2328">{</span> <span style="color:#1f2328">name</span><span style="color:#0550ae">:</span> <span style="color:#0a3069">&#39;John&#39;</span><span style="color:#1f2328">,</span> <span style="color:#1f2328">age</span><span style="color:#0550ae">:</span> <span style="color:#0550ae">30</span> <span style="color:#1f2328">};</span>
+</span></span><span style="display:flex;"><span><span style="color:#cf222e">const</span> <span style="color:#1f2328">updatedUser</span> <span style="color:#0550ae">=</span> <span style="color:#1f2328">{</span> <span style="color:#1f2328">...</span><span style="color:#1f2328">user</span><span style="color:#1f2328">,</span> <span style="color:#1f2328">city</span><span style="color:#0550ae">:</span> <span style="color:#0a3069">&#39;Boston&#39;</span> <span style="color:#1f2328">};</span>
+</span></span><span style="display:flex;"><span><span style="color:#1f2328">console</span><span style="color:#1f2328">.</span><span style="color:#1f2328">log</span><span style="color:#1f2328">(</span><span style="color:#1f2328">updatedUser</span><span style="color:#1f2328">);</span> <span style="color:#57606a">// { name: &#39;John&#39;, age: 30, city: &#39;Boston&#39; }
+</span></span></span><span style="display:flex;"><span><span style="color:#57606a"></span>
+</span></span><span style="display:flex;"><span><span style="color:#57606a">// Function arguments
+</span></span></span><span style="display:flex;"><span><span style="color:#57606a"></span><span style="color:#cf222e">const</span> <span style="color:#1f2328">maxNumber</span> <span style="color:#0550ae">=</span> <span style="color:#6639ba">Math</span><span style="color:#1f2328">.</span><span style="color:#1f2328">max</span><span style="color:#1f2328">(...</span><span style="color:#1f2328">numbers</span><span style="color:#1f2328">);</span>
+</span></span><span style="display:flex;"><span><span style="color:#1f2328">console</span><span style="color:#1f2328">.</span><span style="color:#1f2328">log</span><span style="color:#1f2328">(</span><span style="color:#1f2328">maxNumber</span><span style="color:#1f2328">);</span> <span style="color:#57606a">// 3
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="asyncawait">Async/Await</h2>
+<p>Async/await provides a cleaner way to work with promises and asynchronous code.</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#57606a">// Traditional promise chain
+</span></span></span><span style="display:flex;"><span><span style="color:#57606a"></span><span style="color:#cf222e">function</span> <span style="color:#1f2328">fetchUserData</span><span style="color:#1f2328">(</span><span style="color:#1f2328">userId</span><span style="color:#1f2328">)</span> <span style="color:#1f2328">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#cf222e">return</span> <span style="color:#1f2328">fetch</span><span style="color:#1f2328">(</span><span style="color:#0a3069">`/api/users/</span><span style="color:#0a3069">${</span><span style="color:#1f2328">userId</span><span style="color:#0a3069">}</span><span style="color:#0a3069">`</span><span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#1f2328">.</span><span style="color:#1f2328">then</span><span style="color:#1f2328">(</span><span style="color:#1f2328">response</span> <span style="color:#1f2328">=&gt;</span> <span style="color:#1f2328">response</span><span style="color:#1f2328">.</span><span style="color:#1f2328">json</span><span style="color:#1f2328">())</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#1f2328">.</span><span style="color:#1f2328">then</span><span style="color:#1f2328">(</span><span style="color:#1f2328">data</span> <span style="color:#1f2328">=&gt;</span> <span style="color:#1f2328">console</span><span style="color:#1f2328">.</span><span style="color:#1f2328">log</span><span style="color:#1f2328">(</span><span style="color:#1f2328">data</span><span style="color:#1f2328">))</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#1f2328">.</span><span style="color:#cf222e">catch</span><span style="color:#1f2328">(</span><span style="color:#1f2328">error</span> <span style="color:#1f2328">=&gt;</span> <span style="color:#1f2328">console</span><span style="color:#1f2328">.</span><span style="color:#1f2328">error</span><span style="color:#1f2328">(</span><span style="color:#1f2328">error</span><span style="color:#1f2328">));</span>
+</span></span><span style="display:flex;"><span><span style="color:#1f2328">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#57606a">// With async/await
+</span></span></span><span style="display:flex;"><span><span style="color:#57606a"></span><span style="color:#cf222e">async</span> <span style="color:#cf222e">function</span> <span style="color:#1f2328">fetchUserData</span><span style="color:#1f2328">(</span><span style="color:#1f2328">userId</span><span style="color:#1f2328">)</span> <span style="color:#1f2328">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#cf222e">try</span> <span style="color:#1f2328">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#cf222e">const</span> <span style="color:#1f2328">response</span> <span style="color:#0550ae">=</span> <span style="color:#cf222e">await</span> <span style="color:#1f2328">fetch</span><span style="color:#1f2328">(</span><span style="color:#0a3069">`/api/users/</span><span style="color:#0a3069">${</span><span style="color:#1f2328">userId</span><span style="color:#0a3069">}</span><span style="color:#0a3069">`</span><span style="color:#1f2328">);</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#cf222e">const</span> <span style="color:#1f2328">data</span> <span style="color:#0550ae">=</span> <span style="color:#cf222e">await</span> <span style="color:#1f2328">response</span><span style="color:#1f2328">.</span><span style="color:#1f2328">json</span><span style="color:#1f2328">();</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#1f2328">console</span><span style="color:#1f2328">.</span><span style="color:#1f2328">log</span><span style="color:#1f2328">(</span><span style="color:#1f2328">data</span><span style="color:#1f2328">);</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#1f2328">}</span> <span style="color:#cf222e">catch</span> <span style="color:#1f2328">(</span><span style="color:#1f2328">error</span><span style="color:#1f2328">)</span> <span style="color:#1f2328">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#1f2328">console</span><span style="color:#1f2328">.</span><span style="color:#1f2328">error</span><span style="color:#1f2328">(</span><span style="color:#1f2328">error</span><span style="color:#1f2328">);</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#1f2328">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#1f2328">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#57606a">// Multiple async operations
+</span></span></span><span style="display:flex;"><span><span style="color:#57606a"></span><span style="color:#cf222e">async</span> <span style="color:#cf222e">function</span> <span style="color:#1f2328">fetchMultipleResources</span><span style="color:#1f2328">()</span> <span style="color:#1f2328">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#cf222e">try</span> <span style="color:#1f2328">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#cf222e">const</span> <span style="color:#1f2328">[</span><span style="color:#1f2328">users</span><span style="color:#1f2328">,</span> <span style="color:#1f2328">posts</span><span style="color:#1f2328">]</span> <span style="color:#0550ae">=</span> <span style="color:#cf222e">await</span> <span style="color:#6639ba">Promise</span><span style="color:#1f2328">.</span><span style="color:#1f2328">all</span><span style="color:#1f2328">([</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#1f2328">fetch</span><span style="color:#1f2328">(</span><span style="color:#0a3069">&#39;/api/users&#39;</span><span style="color:#1f2328">).</span><span style="color:#1f2328">then</span><span style="color:#1f2328">(</span><span style="color:#1f2328">r</span> <span style="color:#1f2328">=&gt;</span> <span style="color:#1f2328">r</span><span style="color:#1f2328">.</span><span style="color:#1f2328">json</span><span style="color:#1f2328">()),</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#1f2328">fetch</span><span style="color:#1f2328">(</span><span style="color:#0a3069">&#39;/api/posts&#39;</span><span style="color:#1f2328">).</span><span style="color:#1f2328">then</span><span style="color:#1f2328">(</span><span style="color:#1f2328">r</span> <span style="color:#1f2328">=&gt;</span> <span style="color:#1f2328">r</span><span style="color:#1f2328">.</span><span style="color:#1f2328">json</span><span style="color:#1f2328">())</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#1f2328">]);</span>
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#cf222e">return</span> <span style="color:#1f2328">{</span> <span style="color:#1f2328">users</span><span style="color:#1f2328">,</span> <span style="color:#1f2328">posts</span> <span style="color:#1f2328">};</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#1f2328">}</span> <span style="color:#cf222e">catch</span> <span style="color:#1f2328">(</span><span style="color:#1f2328">error</span><span style="color:#1f2328">)</span> <span style="color:#1f2328">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#1f2328">console</span><span style="color:#1f2328">.</span><span style="color:#1f2328">error</span><span style="color:#1f2328">(</span><span style="color:#0a3069">&#39;Failed to fetch resources:&#39;</span><span style="color:#1f2328">,</span> <span style="color:#1f2328">error</span><span style="color:#1f2328">);</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#1f2328">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#1f2328">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="modules-importexport">Modules (Import/Export)</h2>
+<p>ES6 modules provide a standardized way to organize and share code.</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#57606a">// math.js - Exporting
+</span></span></span><span style="display:flex;"><span><span style="color:#57606a"></span><span style="color:#cf222e">export</span> <span style="color:#cf222e">const</span> <span style="color:#1f2328">PI</span> <span style="color:#0550ae">=</span> <span style="color:#0550ae">3.14159</span><span style="color:#1f2328">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#cf222e">export</span> <span style="color:#cf222e">function</span> <span style="color:#1f2328">add</span><span style="color:#1f2328">(</span><span style="color:#1f2328">a</span><span style="color:#1f2328">,</span> <span style="color:#1f2328">b</span><span style="color:#1f2328">)</span> <span style="color:#1f2328">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#cf222e">return</span> <span style="color:#1f2328">a</span> <span style="color:#0550ae">+</span> <span style="color:#1f2328">b</span><span style="color:#1f2328">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#1f2328">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#cf222e">export</span> <span style="color:#cf222e">default</span> <span style="color:#cf222e">function</span> <span style="color:#1f2328">multiply</span><span style="color:#1f2328">(</span><span style="color:#1f2328">a</span><span style="color:#1f2328">,</span> <span style="color:#1f2328">b</span><span style="color:#1f2328">)</span> <span style="color:#1f2328">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#cf222e">return</span> <span style="color:#1f2328">a</span> <span style="color:#0550ae">*</span> <span style="color:#1f2328">b</span><span style="color:#1f2328">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#1f2328">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#57606a">// main.js - Importing
+</span></span></span><span style="display:flex;"><span><span style="color:#57606a"></span><span style="color:#cf222e">import</span> <span style="color:#1f2328">multiply</span><span style="color:#1f2328">,</span> <span style="color:#1f2328">{</span> <span style="color:#1f2328">PI</span><span style="color:#1f2328">,</span> <span style="color:#1f2328">add</span> <span style="color:#1f2328">}</span> <span style="color:#1f2328">from</span> <span style="color:#0a3069">&#39;./math.js&#39;</span><span style="color:#1f2328">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#1f2328">console</span><span style="color:#1f2328">.</span><span style="color:#1f2328">log</span><span style="color:#1f2328">(</span><span style="color:#1f2328">PI</span><span style="color:#1f2328">);</span> <span style="color:#57606a">// 3.14159
+</span></span></span><span style="display:flex;"><span><span style="color:#57606a"></span><span style="color:#1f2328">console</span><span style="color:#1f2328">.</span><span style="color:#1f2328">log</span><span style="color:#1f2328">(</span><span style="color:#1f2328">add</span><span style="color:#1f2328">(</span><span style="color:#0550ae">2</span><span style="color:#1f2328">,</span> <span style="color:#0550ae">3</span><span style="color:#1f2328">));</span> <span style="color:#57606a">// 5
+</span></span></span><span style="display:flex;"><span><span style="color:#57606a"></span><span style="color:#1f2328">console</span><span style="color:#1f2328">.</span><span style="color:#1f2328">log</span><span style="color:#1f2328">(</span><span style="color:#1f2328">multiply</span><span style="color:#1f2328">(</span><span style="color:#0550ae">4</span><span style="color:#1f2328">,</span> <span style="color:#0550ae">5</span><span style="color:#1f2328">));</span> <span style="color:#57606a">// 20
+</span></span></span><span style="display:flex;"><span><span style="color:#57606a"></span>
+</span></span><span style="display:flex;"><span><span style="color:#57606a">// Importing everything
+</span></span></span><span style="display:flex;"><span><span style="color:#57606a"></span><span style="color:#cf222e">import</span> <span style="color:#0550ae">*</span> <span style="color:#1f2328">as</span> <span style="color:#1f2328">math</span> <span style="color:#1f2328">from</span> <span style="color:#0a3069">&#39;./math.js&#39;</span><span style="color:#1f2328">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#1f2328">console</span><span style="color:#1f2328">.</span><span style="color:#1f2328">log</span><span style="color:#1f2328">(</span><span style="color:#1f2328">math</span><span style="color:#1f2328">.</span><span style="color:#1f2328">PI</span><span style="color:#1f2328">);</span> <span style="color:#57606a">// 3.14159
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="optional-chaining">Optional Chaining</h2>
+<p>Optional chaining provides a safe way to access nested object properties.</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#cf222e">const</span> <span style="color:#1f2328">user</span> <span style="color:#0550ae">=</span> <span style="color:#1f2328">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#1f2328">profile</span><span style="color:#0550ae">:</span> <span style="color:#1f2328">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#1f2328">name</span><span style="color:#0550ae">:</span> <span style="color:#0a3069">&#39;John&#39;</span><span style="color:#1f2328">,</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#1f2328">address</span><span style="color:#0550ae">:</span> <span style="color:#1f2328">{</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#1f2328">city</span><span style="color:#0550ae">:</span> <span style="color:#0a3069">&#39;New York&#39;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#1f2328">}</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#1f2328">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#1f2328">};</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#57606a">// Traditional approach
+</span></span></span><span style="display:flex;"><span><span style="color:#57606a"></span><span style="color:#cf222e">const</span> <span style="color:#1f2328">city</span> <span style="color:#0550ae">=</span> <span style="color:#1f2328">user</span> <span style="color:#0550ae">&amp;&amp;</span> <span style="color:#1f2328">user</span><span style="color:#1f2328">.</span><span style="color:#1f2328">profile</span> <span style="color:#0550ae">&amp;&amp;</span> <span style="color:#1f2328">user</span><span style="color:#1f2328">.</span><span style="color:#1f2328">profile</span><span style="color:#1f2328">.</span><span style="color:#1f2328">address</span> <span style="color:#0550ae">&amp;&amp;</span> <span style="color:#1f2328">user</span><span style="color:#1f2328">.</span><span style="color:#1f2328">profile</span><span style="color:#1f2328">.</span><span style="color:#1f2328">address</span><span style="color:#1f2328">.</span><span style="color:#1f2328">city</span><span style="color:#1f2328">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#57606a">// With optional chaining
+</span></span></span><span style="display:flex;"><span><span style="color:#57606a"></span><span style="color:#cf222e">const</span> <span style="color:#1f2328">city</span> <span style="color:#0550ae">=</span> <span style="color:#1f2328">user</span><span style="color:#0550ae">?</span><span style="color:#1f2328">.</span><span style="color:#1f2328">profile</span><span style="color:#0550ae">?</span><span style="color:#1f2328">.</span><span style="color:#1f2328">address</span><span style="color:#0550ae">?</span><span style="color:#1f2328">.</span><span style="color:#1f2328">city</span><span style="color:#1f2328">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#1f2328">console</span><span style="color:#1f2328">.</span><span style="color:#1f2328">log</span><span style="color:#1f2328">(</span><span style="color:#1f2328">city</span><span style="color:#1f2328">);</span> <span style="color:#57606a">// &#39;New York&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#57606a"></span>
+</span></span><span style="display:flex;"><span><span style="color:#57606a">// With method calls
+</span></span></span><span style="display:flex;"><span><span style="color:#57606a"></span><span style="color:#cf222e">const</span> <span style="color:#1f2328">userName</span> <span style="color:#0550ae">=</span> <span style="color:#1f2328">user</span><span style="color:#1f2328">.</span><span style="color:#1f2328">profile</span><span style="color:#0550ae">?</span><span style="color:#1f2328">.</span><span style="color:#1f2328">getName</span><span style="color:#0550ae">?</span><span style="color:#1f2328">.();</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#57606a">// With array access
+</span></span></span><span style="display:flex;"><span><span style="color:#57606a"></span><span style="color:#cf222e">const</span> <span style="color:#1f2328">firstItem</span> <span style="color:#0550ae">=</span> <span style="color:#1f2328">array</span><span style="color:#0550ae">?</span><span style="color:#1f2328">.[</span><span style="color:#0550ae">0</span><span style="color:#1f2328">];</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="nullish-coalescing">Nullish Coalescing</h2>
+<p>The nullish coalescing operator provides a better way to handle default values.</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#57606a">// Traditional approach (problematic with falsy values)
+</span></span></span><span style="display:flex;"><span><span style="color:#57606a"></span><span style="color:#cf222e">const</span> <span style="color:#1f2328">count</span> <span style="color:#0550ae">=</span> <span style="color:#1f2328">value</span> <span style="color:#0550ae">||</span> <span style="color:#0550ae">0</span><span style="color:#1f2328">;</span> <span style="color:#57606a">// This would replace 0, &#39;&#39;, false with 0
+</span></span></span><span style="display:flex;"><span><span style="color:#57606a"></span>
+</span></span><span style="display:flex;"><span><span style="color:#57606a">// With nullish coalescing
+</span></span></span><span style="display:flex;"><span><span style="color:#57606a"></span><span style="color:#cf222e">const</span> <span style="color:#1f2328">count</span> <span style="color:#0550ae">=</span> <span style="color:#1f2328">value</span> <span style="color:#0550ae">??</span> <span style="color:#0550ae">0</span><span style="color:#1f2328">;</span> <span style="color:#57606a">// Only replaces null/undefined with 0
+</span></span></span><span style="display:flex;"><span><span style="color:#57606a"></span>
+</span></span><span style="display:flex;"><span><span style="color:#57606a">// Practical example
+</span></span></span><span style="display:flex;"><span><span style="color:#57606a"></span><span style="color:#cf222e">const</span> <span style="color:#1f2328">settings</span> <span style="color:#0550ae">=</span> <span style="color:#1f2328">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#1f2328">theme</span><span style="color:#0550ae">:</span> <span style="color:#0a3069">&#39;dark&#39;</span><span style="color:#1f2328">,</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#1f2328">fontSize</span><span style="color:#0550ae">:</span> <span style="color:#0550ae">0</span><span style="color:#1f2328">,</span> <span style="color:#57606a">// User explicitly set to 0
+</span></span></span><span style="display:flex;"><span><span style="color:#57606a"></span>    <span style="color:#1f2328">autoSave</span><span style="color:#0550ae">:</span> <span style="color:#cf222e">false</span> <span style="color:#57606a">// User explicitly set to false
+</span></span></span><span style="display:flex;"><span><span style="color:#57606a"></span><span style="color:#1f2328">};</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#cf222e">const</span> <span style="color:#1f2328">theme</span> <span style="color:#0550ae">=</span> <span style="color:#1f2328">settings</span><span style="color:#1f2328">.</span><span style="color:#1f2328">theme</span> <span style="color:#0550ae">??</span> <span style="color:#0a3069">&#39;light&#39;</span><span style="color:#1f2328">;</span> <span style="color:#57606a">// &#39;dark&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#57606a"></span><span style="color:#cf222e">const</span> <span style="color:#1f2328">fontSize</span> <span style="color:#0550ae">=</span> <span style="color:#1f2328">settings</span><span style="color:#1f2328">.</span><span style="color:#1f2328">fontSize</span> <span style="color:#0550ae">??</span> <span style="color:#0550ae">14</span><span style="color:#1f2328">;</span> <span style="color:#57606a">// 0 (not replaced)
+</span></span></span><span style="display:flex;"><span><span style="color:#57606a"></span><span style="color:#cf222e">const</span> <span style="color:#1f2328">autoSave</span> <span style="color:#0550ae">=</span> <span style="color:#1f2328">settings</span><span style="color:#1f2328">.</span><span style="color:#1f2328">autoSave</span> <span style="color:#0550ae">??</span> <span style="color:#cf222e">true</span><span style="color:#1f2328">;</span> <span style="color:#57606a">// false (not replaced)
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="private-class-fields">Private Class Fields</h2>
+<p>Modern JavaScript supports private class fields that cannot be accessed from outside the class.</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#cf222e">class</span> <span style="color:#1f2328">BankAccount</span> <span style="color:#1f2328">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f6f8fa;background-color:#82071e">#</span><span style="color:#1f2328">balance</span> <span style="color:#0550ae">=</span> <span style="color:#0550ae">0</span><span style="color:#1f2328">;</span> <span style="color:#57606a">// Private field
+</span></span></span><span style="display:flex;"><span><span style="color:#57606a"></span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#1f2328">constructor</span><span style="color:#1f2328">(</span><span style="color:#1f2328">initialBalance</span><span style="color:#1f2328">)</span> <span style="color:#1f2328">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#cf222e">this</span><span style="color:#1f2328">.</span><span style="color:#f6f8fa;background-color:#82071e">#</span><span style="color:#1f2328">balance</span> <span style="color:#0550ae">=</span> <span style="color:#1f2328">initialBalance</span><span style="color:#1f2328">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#1f2328">}</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#1f2328">deposit</span><span style="color:#1f2328">(</span><span style="color:#1f2328">amount</span><span style="color:#1f2328">)</span> <span style="color:#1f2328">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#cf222e">if</span> <span style="color:#1f2328">(</span><span style="color:#1f2328">amount</span> <span style="color:#0550ae">&gt;</span> <span style="color:#0550ae">0</span><span style="color:#1f2328">)</span> <span style="color:#1f2328">{</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#cf222e">this</span><span style="color:#1f2328">.</span><span style="color:#f6f8fa;background-color:#82071e">#</span><span style="color:#1f2328">balance</span> <span style="color:#0550ae">+=</span> <span style="color:#1f2328">amount</span><span style="color:#1f2328">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#1f2328">}</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#1f2328">}</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#1f2328">getBalance</span><span style="color:#1f2328">()</span> <span style="color:#1f2328">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#cf222e">return</span> <span style="color:#cf222e">this</span><span style="color:#1f2328">.</span><span style="color:#f6f8fa;background-color:#82071e">#</span><span style="color:#1f2328">balance</span><span style="color:#1f2328">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#1f2328">}</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#f6f8fa;background-color:#82071e">#</span><span style="color:#1f2328">calculateInterest</span><span style="color:#1f2328">()</span> <span style="color:#1f2328">{</span> <span style="color:#57606a">// Private method
+</span></span></span><span style="display:flex;"><span><span style="color:#57606a"></span>        <span style="color:#cf222e">return</span> <span style="color:#cf222e">this</span><span style="color:#1f2328">.</span><span style="color:#f6f8fa;background-color:#82071e">#</span><span style="color:#1f2328">balance</span> <span style="color:#0550ae">*</span> <span style="color:#0550ae">0.05</span><span style="color:#1f2328">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#1f2328">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#1f2328">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#cf222e">const</span> <span style="color:#1f2328">account</span> <span style="color:#0550ae">=</span> <span style="color:#cf222e">new</span> <span style="color:#1f2328">BankAccount</span><span style="color:#1f2328">(</span><span style="color:#0550ae">1000</span><span style="color:#1f2328">);</span>
+</span></span><span style="display:flex;"><span><span style="color:#1f2328">console</span><span style="color:#1f2328">.</span><span style="color:#1f2328">log</span><span style="color:#1f2328">(</span><span style="color:#1f2328">account</span><span style="color:#1f2328">.</span><span style="color:#1f2328">getBalance</span><span style="color:#1f2328">());</span> <span style="color:#57606a">// 1000
+</span></span></span><span style="display:flex;"><span><span style="color:#57606a"></span><span style="color:#1f2328">console</span><span style="color:#1f2328">.</span><span style="color:#1f2328">log</span><span style="color:#1f2328">(</span><span style="color:#1f2328">account</span><span style="color:#1f2328">.</span><span style="color:#f6f8fa;background-color:#82071e">#</span><span style="color:#1f2328">balance</span><span style="color:#1f2328">);</span> <span style="color:#57606a">// Error: Private field
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="conclusion">Conclusion</h2>
+<p>These modern JavaScript features make code more readable, maintainable, and efficient. By incorporating these features into your development workflow, you can write cleaner and more professional JavaScript code. Keep learning and experimenting with these features to become a more effective JavaScript developer!</p>
+
+    </div>
+    
+    
+</article>
+
+        </main>
+    </div>
+    
+    
+    
+    
+    
+    
+    
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+        
+        
+        const lazyImages = document.querySelectorAll('.lazy-image');
+        
+        if ('IntersectionObserver' in window) {
+            const imageObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const image = entry.target;
+                        image.classList.add('loaded');
+                        observer.unobserve(image);
+                    }
+                });
+            });
+            
+            lazyImages.forEach(image => {
+                imageObserver.observe(image);
+            });
+        } else {
+            
+            lazyImages.forEach(image => {
+                image.classList.add('loaded');
+            });
+        }
+        
+        
+        document.querySelectorAll('.project-image').forEach(image => {
+            image.addEventListener('click', function() {
+                
+                const modal = document.createElement('div');
+                modal.style.cssText = `
                     position: fixed;
                     top: 0;
                     left: 0;
@@ -367,9 +585,34 @@
                     align-items: center;
                     z-index: 1000;
                     cursor: pointer;
-                `;const t=document.createElement("img");t.src=this.src,t.alt=this.alt,t.style.cssText=`
+                `;
+                
+                const modalImage = document.createElement('img');
+                modalImage.src = this.src;
+                modalImage.alt = this.alt;
+                modalImage.style.cssText = `
                     max-width: 90%;
                     max-height: 90%;
                     border-radius: 8px;
                     box-shadow: 0 8px 16px rgba(0,0,0,0.3);
-                `,e.appendChild(t),document.body.appendChild(e),e.addEventListener("click",function(){document.body.removeChild(e)}),document.addEventListener("keydown",function(t){t.key==="Escape"&&e.parentNode&&document.body.removeChild(e)})})})</script></body></html>
+                `;
+                
+                modal.appendChild(modalImage);
+                document.body.appendChild(modal);
+                
+                
+                modal.addEventListener('click', function() {
+                    document.body.removeChild(modal);
+                });
+                
+                
+                document.addEventListener('keydown', function(e) {
+                    if (e.key === 'Escape' && modal.parentNode) {
+                        document.body.removeChild(modal);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
