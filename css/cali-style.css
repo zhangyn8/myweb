@@ -775,6 +775,13 @@ body {
     display: block;
 }
 
+.tab-content .cali-projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+    margin-top: 0;
+}
+
 /* 项目卡片 */
 .cali-projects-grid {
     display: grid;
@@ -1271,6 +1278,11 @@ body {
     .cali-projects-grid {
         grid-template-columns: 1fr;
         gap: 2rem;
+    }
+    
+    .tab-content .cali-projects-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
     }
     
     .cali-skills-grid {
