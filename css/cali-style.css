@@ -794,6 +794,9 @@ body {
     padding: 2rem;
     transition: all 0.3s ease;
     background-color: rgba(255, 255, 255, 0.95);
+    min-height: 280px;
+    display: flex;
+    flex-direction: column;
 }
 
 .cali-project-title {
@@ -829,7 +832,8 @@ body {
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
-    margin-top: 1rem;
+    margin-top: auto;
+    padding-top: 1rem;
 }
 
 .cali-project-tech .tech-tag {
@@ -1259,6 +1263,12 @@ body {
     .cali-project-tech .tech-tag {
         font-size: 0.7rem;
         padding: 0.2rem 0.6rem;
+    }
+    
+    /* 移动端项目卡片内容高度调整 */
+    .cali-project-content {
+        min-height: auto;
+        padding: 1.5rem;
     }
 }
 
