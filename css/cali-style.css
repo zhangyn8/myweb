@@ -1504,23 +1504,7 @@ html {
     transform: scale(0.95);
 }
 
-/* 打字机效果 */
-.typewriter {
-    overflow: hidden;
-    border-right: 0.15em solid var(--primary-color);
-    white-space: nowrap;
-    animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
-}
 
-@keyframes typing {
-    from { width: 0; }
-    to { width: 100%; }
-}
-
-@keyframes blink-caret {
-    from, to { border-color: transparent; }
-    50% { border-color: var(--primary-color); }
-}
 
 /* 粒子背景效果 */
 .particles {

@@ -87,7 +87,7 @@
                             <div class="hero-photo-glow"></div>
                         </div>
                         <div class="hero-text-content">
-                            <h1 class="cali-hero-title typewriter">Chrystal</h1>
+                            <h1 class="cali-hero-title">Chrystal</h1>
                             <div class="hero-skills-tagline">AI模型训练 × 前端开发 × UI设计</div>
                             <p class="cali-hero-description">专注于大语言模型训练与优化，具备深度学习、自然语言处理和对话系统开发经验。同时运用前端开发和UI设计技能，打造用户友好的AI产品界面，让复杂的技术以优雅的方式服务用户。</p>
                             <div class="hero-actions">
@@ -589,35 +589,7 @@
         // 初始化粒子效果
         createParticles();
 
-        // 打字机效果增强
-        const typewriterElements = document.querySelectorAll('.typewriter');
-        typewriterElements.forEach(element => {
-            const text = element.textContent;
-            element.textContent = '';
-            
-            let i = 0;
-            const typeSpeed = 100;
-            
-            function typeWriter() {
-                if (i < text.length) {
-                    element.textContent += text.charAt(i);
-                    i++;
-                    setTimeout(typeWriter, typeSpeed);
-                }
-            }
-            
-            // 当元素进入视口时开始打字效果
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        typeWriter();
-                        observer.unobserve(entry.target);
-                    }
-                });
-            });
-            
-            observer.observe(element);
-        });
+
 
         // 技能图标悬停效果增强
         const skillItems = document.querySelectorAll('.cali-skill-item');
