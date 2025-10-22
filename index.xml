@@ -572,6 +572,24 @@
 &lt;h2 id="-开源贡献">🛠️ 开源贡献&lt;/h2>
 &lt;h3 id="hugo主题优化">Hugo主题优化&lt;/h3>
 &lt;p>为静态网站生成器Hugo贡献代码，优化了多个主题的响应式设计和性能表现。&lt;/p></description></item><item><title/><link>https://zhangyn8.github.io/myweb/contact/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://zhangyn8.github.io/myweb/contact/</guid><description>&lt;style>
+.contact-section-dark{background:linear-gradient(135deg,#1a1a2e 0%,#16213e 50%,#0f3460 100%);color:#ffffff;padding:5rem 0;position:relative;overflow:hidden;}
+.contact-section-dark::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:url('data:image/svg+xml,&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000">&lt;defs>&lt;radialGradient id="a" cx="50%" cy="50%">&lt;stop offset="0%" style="stop-color:rgba(255,255,255,0.05)"/>&lt;stop offset="100%" style="stop-color:rgba(255,255,255,0)"/>&lt;/radialGradient>&lt;/defs>&lt;circle cx="200" cy="200" r="100" fill="url(%23a)"/>&lt;circle cx="800" cy="300" r="150" fill="url(%23a)"/>&lt;circle cx="400" cy="700" r="120" fill="url(%23a)"/>&lt;/svg>');z-index:1;}
+.contact-section-dark .cali-container{position:relative;z-index:2;}
+.contact-section-dark .cali-section-title{color:#ffffff;margin-bottom:1rem;}
+.contact-section-dark .cali-section-subtitle{color:rgba(255,255,255,0.8);margin-bottom:4rem;}
+.contact-card-dark{background:rgba(255,255,255,0.08);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,0.1);border-radius:24px;padding:2.5rem;margin-bottom:2rem;transition:all 0.4s cubic-bezier(0.4,0,0.2,1);position:relative;overflow:hidden;}
+.contact-card-dark::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.1),transparent);transition:left 0.6s ease;}
+.contact-card-dark:hover::before{left:100%;}
+.contact-card-dark:hover{transform:translateY(-8px) scale(1.02);box-shadow:0 20px 40px rgba(0,0,0,0.3);border-color:rgba(255,255,255,0.2);background:rgba(255,255,255,0.12);}
+.contact-card-dark h3{color:#ffffff;font-size:1.5rem;font-weight:600;margin-bottom:1.5rem;position:relative;}
+.contact-card-dark h3::after{content:'';position:absolute;bottom:-8px;left:0;width:40px;height:2px;background:linear-gradient(90deg,#667eea,#764ba2);border-radius:2px;}
+.contact-card-dark ul{list-style:none;padding:0;}
+.contact-card-dark li{color:rgba(255,255,255,0.85);margin-bottom:0.8rem;padding-left:1.5rem;position:relative;line-height:1.6;}
+.contact-card-dark li::before{content:'▸';position:absolute;left:0;color:#667eea;font-weight:bold;}
+.contact-card-dark strong{color:#ffffff;font-weight:600;}
+.contact-card-dark .highlight{background:linear-gradient(120deg,#667eea,#764ba2);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-weight:600;}
+.contact-card-dark .tag{display:inline-block;background:rgba(102,126,234,0.2);color:#ffffff;padding:0.3rem 0.8rem;border-radius:20px;font-size:0.85rem;margin:0.2rem;border:1px solid rgba(102,126,234,0.3);transition:all 0.3s ease;}
+.contact-card-dark .tag:hover{background:rgba(102,126,234,0.3);transform:translateY(-1px);}
 .contact-grid{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));}
 .contact-card{background:#fff;border:1px solid #e5e7eb;border-radius:8px;padding:1rem;box-shadow:0 1px 3px rgba(0,0,0,.05);}
 .contact-card h3{margin-top:0;margin-bottom:.5rem;font-size:1rem;}
@@ -589,6 +607,11 @@
 .form-group textarea{resize:vertical;min-height:4rem;}
 .btn-submit{background:#0366d6;color:#fff;border:none;border-radius:4px;padding:.5rem 1rem;font-size:.875rem;cursor:pointer;}
 .btn-submit:active{transform:scale(.98);}
+@media(max-width:768px){
+.contact-section-dark{padding:3rem 0;}
+.contact-card-dark{padding:2rem;margin-bottom:1.5rem;}
+.contact-card-dark:hover{transform:translateY(-4px) scale(1.01);}
+}
 @media(max-width:480px){
 .contact-grid{grid-template-columns:1fr;}
 .contact-card{padding:.75rem;}
@@ -598,27 +621,4 @@
 &lt;h2 id="date-2024-01-01">title: &amp;ldquo;联系我&amp;rdquo;
 date: 2024-01-01&lt;/h2>
 &lt;h1 id="联系我">联系我&lt;/h1>
-&lt;p>很高兴你对我的工作和项目感兴趣！我随时欢迎技术交流、合作机会或只是简单的问候。&lt;/p>
-&lt;div class="contact-grid">
-&lt;div class="contact-card">
-&lt;h3>📧 联系方式&lt;/h3>
-&lt;p>&lt;strong>工作邮箱&lt;/strong>: &lt;a href="mailto:your.work.email@example.com">your.work.email@example.com&lt;/a>&lt;/p>
-&lt;p>&lt;strong>个人邮箱&lt;/strong>: &lt;a href="mailto:your.personal.email@example.com">your.personal.email@example.com&lt;/a>&lt;/p>
-&lt;p>&lt;strong>微信&lt;/strong>: your_wechat_id&lt;/p>
-&lt;p>&lt;strong>手机&lt;/strong>: &lt;a href="tel:+8613800000000">+86 138-0000-0000&lt;/a>&lt;/p>
-&lt;p>&lt;small>工作时段：周一至周五 9:00-18:00 (GMT+8)&lt;/small>&lt;/p>
-&lt;/div>
-&lt;div class="contact-card">
-&lt;h3>🌐 社交媒体&lt;/h3>
-&lt;ul class="social-list">
-&lt;li>&lt;a href="https://github.com/yourname" target="_blank">GitHub&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://linkedin.com/in/yourname" target="_blank">LinkedIn&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://blog.yourname.com" target="_blank">技术博客&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://www.douyin.com/user/your_douyin_id" target="_blank">抖音&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://www.xiaohongshu.com/user/profile/your_profile_id" target="_blank">小红书&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://twitter.com/your_twitter" target="_blank">Twitter&lt;/a>&lt;/li>
-&lt;/ul>
-&lt;/div>
-&lt;div class="contact-card">
-&lt;h3>🏢 工作信息&lt;/h3>
-&lt;p>&lt;strong>职位&lt;/strong>: 高级全栈开发工程师&lt;/p></description></item></channel></rss>
+&lt;p>很高兴你对我的工作和项目感兴趣！我随时欢迎技术交流、合作机会或只是简单的问候。&lt;/p></description></item></channel></rss>
