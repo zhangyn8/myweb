@@ -887,23 +887,65 @@ body {
 
 /* Contact section */
 .cali-contact {
-    background: var(--dark-gradient);
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
     color: var(--white);
     text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.cali-contact::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(120, 219, 255, 0.2) 0%, transparent 50%);
+    animation: backgroundShift 8s ease-in-out infinite;
+}
+
+@keyframes backgroundShift {
+    0%, 100% { opacity: 0.8; }
+    50% { opacity: 1; }
+}
+
+.cali-contact .cali-container {
+    position: relative;
+    z-index: 2;
 }
 
 .cali-contact-title {
     color: var(--white);
     margin-bottom: 1rem;
+    font-size: 3rem;
+    font-weight: 700;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+    animation: titleGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes titleGlow {
+    from { text-shadow: 0 0 20px rgba(255, 255, 255, 0.5); }
+    to { text-shadow: 0 0 30px rgba(255, 255, 255, 0.8), 0 0 40px rgba(255, 255, 255, 0.6); }
 }
 
 .cali-contact-description {
-    font-size: 1.2rem;
-    opacity: 0.8;
+    font-size: 1.3rem;
+    opacity: 0.9;
     margin-bottom: 3rem;
     max-width: 600px;
     margin-left: auto;
     margin-right: auto;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    animation: descriptionFade 1s ease-out;
+}
+
+@keyframes descriptionFade {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 0.9; transform: translateY(0); }
 }
 
 .cali-contact-links {
@@ -911,28 +953,29 @@ body {
     justify-content: center;
     gap: 2rem;
     flex-wrap: wrap;
+    position: relative;
+    z-index: 3;
 }
 
 .cali-contact-link {
     display: inline-flex;
     align-items: center;
     gap: 0.8rem;
-    padding: 1rem 2rem;
-    background: rgba(255, 255, 255, 0.1);
+    padding: 1.2rem 2.5rem;
+    background: linear-gradient(45deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
     color: var(--white);
     text-decoration: none;
-    border-radius: var(--border-radius);
-    backdrop-filter: blur(10px);
-    transition: var(--transition-slow);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50px;
+    backdrop-filter: blur(15px);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: 2px solid transparent;
     position: relative;
     overflow: hidden;
-}
-
-.cali-contact-link:hover {
-    background: rgba(255, 255, 255, 0.2);
-    transform: translateY(-3px) scale(1.02);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    font-weight: 600;
+    font-size: 1.1rem;
+    box-shadow: 
+        0 8px 25px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
 }
 
 .cali-contact-link::before {
@@ -942,12 +985,242 @@ body {
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-    transition: left var(--transition-slow);
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    transition: left 0.6s ease;
+}
+
+.cali-contact-link::after {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #ffeaa7, #ff6b6b);
+    background-size: 300% 300%;
+    border-radius: 50px;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    animation: gradientRotate 3s ease infinite;
+}
+
+@keyframes gradientRotate {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.cali-contact-link:hover {
+    transform: translateY(-8px) scale(1.05);
+    box-shadow: 
+        0 20px 40px rgba(0, 0, 0, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    background: linear-gradient(45deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
 }
 
 .cali-contact-link:hover::before {
     left: 100%;
+}
+
+.cali-contact-link:hover::after {
+    opacity: 1;
+}
+
+.cali-contact-link .iconfont {
+    font-size: 1.4rem;
+    transition: transform 0.3s ease;
+}
+
+.cali-contact-link:hover .iconfont {
+    transform: scale(1.2) rotate(10deg);
+}
+
+/* 添加粒子效果 */
+.cali-contact-links::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    background-image: 
+        radial-gradient(circle, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+        radial-gradient(circle, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+    background-size: 50px 50px, 80px 80px;
+    background-position: 0 0, 25px 25px;
+    animation: particleMove 20s linear infinite;
+}
+
+@keyframes particleMove {
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(-50px, -50px); }
+}
+
+/* 联系模块进入动画 */
+.cali-contact {
+    animation: contactSectionFadeIn 1.2s ease-out;
+}
+
+@keyframes contactSectionFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 联系链接依次出现动画 */
+.cali-contact-link:nth-child(1) { animation: linkFadeInUp 0.6s ease-out 0.2s both; }
+.cali-contact-link:nth-child(2) { animation: linkFadeInUp 0.6s ease-out 0.4s both; }
+.cali-contact-link:nth-child(3) { animation: linkFadeInUp 0.6s ease-out 0.6s both; }
+.cali-contact-link:nth-child(4) { animation: linkFadeInUp 0.6s ease-out 0.8s both; }
+.cali-contact-link:nth-child(5) { animation: linkFadeInUp 0.6s ease-out 1.0s both; }
+.cali-contact-link:nth-child(6) { animation: linkFadeInUp 0.6s ease-out 1.2s both; }
+
+@keyframes linkFadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* 按钮点击效果 */
+.cali-contact-link:active {
+    transform: translateY(-2px) scale(0.98);
+    box-shadow: 
+        0 5px 15px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+/* 响应式优化 */
+@media (max-width: 768px) {
+    .cali-contact-title {
+        font-size: 2.5rem;
+    }
+    
+    .cali-contact-description {
+        font-size: 1.1rem;
+        padding: 0 1rem;
+    }
+    
+    .cali-contact-link {
+        padding: 1rem 2rem;
+        font-size: 1rem;
+        min-width: 200px;
+        justify-content: center;
+    }
+    
+    .cali-contact-links {
+        gap: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .cali-contact-title {
+        font-size: 2rem;
+    }
+    
+    .cali-contact-link {
+        padding: 0.8rem 1.5rem;
+        font-size: 0.9rem;
+        min-width: 160px;
+    }
+}
+
+/* 装饰元素样式 */
+.contact-header {
+    position: relative;
+    z-index: 3;
+    margin-bottom: 3rem;
+}
+
+.contact-decoration {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.decoration-dots {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(circle, rgba(255, 255, 255, 0.15) 2px, transparent 2px),
+        radial-gradient(circle, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+    background-size: 60px 60px, 30px 30px;
+    background-position: 0 0, 15px 15px;
+    animation: dotsFloat 25s linear infinite;
+}
+
+.decoration-circles {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 10% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 20%),
+        radial-gradient(circle at 90% 80%, rgba(255, 255, 255, 0.08) 0%, transparent 25%),
+        radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.05) 0%, transparent 30%);
+    animation: circlesPulse 15s ease-in-out infinite;
+}
+
+@keyframes dotsFloat {
+    0% { transform: translate(0, 0) rotate(0deg); }
+    100% { transform: translate(-30px, -30px) rotate(360deg); }
+}
+
+@keyframes circlesPulse {
+    0%, 100% { opacity: 0.6; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.05); }
+}
+
+/* 联系链接额外效果 */
+.cali-contact-link span {
+    position: relative;
+    z-index: 2;
+}
+
+.cali-contact-link[data-text]::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255, 255, 255, 0.3);
+    font-size: 2em;
+    font-weight: 800;
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+}
+
+.cali-contact-link:hover[data-text]::after {
+    opacity: 1;
+    animation: textShimmer 0.6s ease-in-out;
+}
+
+@keyframes textShimmer {
+    0% { transform: scale(1) rotate(0deg); }
+    50% { transform: scale(1.1) rotate(2deg); }
+    100% { transform: scale(1) rotate(0deg); }
 }
 
 /* Animations */

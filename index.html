@@ -235,15 +235,39 @@
 
             <section class="cali-section cali-contact" id="contact">
                 <div class="cali-container">
-                    <h2 class="cali-section-title cali-contact-title">联系我</h2>
-                    <p class="cali-contact-description">有项目想法或者想要合作？随时欢迎与我联系。让我们一起创造一些特别的东西。</p>
+                    <div class="contact-header">
+                        <h2 class="cali-section-title cali-contact-title">联系我</h2>
+                        <p class="cali-contact-description">有项目想法或者想要合作？随时欢迎与我联系。让我们一起创造一些特别的东西。</p>
+                    </div>
                     <div class="cali-contact-links">
-                        <a href="mailto:chrystal@example.com" class="cali-contact-link"><i class="iconfont icon-email"></i> 发送邮件</a>
-                        <a href="https://github.com/zhangyn8" target="_blank" class="cali-contact-link"><i class="iconfont icon-github"></i> GitHub</a>
-                        <a href="https://www.xiaohongshu.com/user/profile/your_xiaohongshu_id" target="_blank" class="cali-contact-link"><i class="iconfont icon-phone"></i> 小红书</a>
-                        <a href="https://www.douyin.com/user/your_douyin_id" target="_blank" class="cali-contact-link"><i class="iconfont icon-music"></i> 抖音</a>
-                        <a href="your_blog_url" target="_blank" class="cali-contact-link"><i class="iconfont icon-article"></i> 我的文章</a>
-                        <a href="/assets/resume.pdf" target="_blank" class="cali-contact-link"><i class="iconfont icon-resume"></i> 下载简历</a>
+                        <a href="mailto:chrystal@example.com" class="cali-contact-link" data-text="发送邮件">
+                            <i class="iconfont icon-email"></i>
+                            <span>发送邮件</span>
+                        </a>
+                        <a href="https://github.com/zhangyn8" target="_blank" class="cali-contact-link" data-text="GitHub">
+                            <i class="iconfont icon-github"></i>
+                            <span>GitHub</span>
+                        </a>
+                        <a href="https://www.xiaohongshu.com/user/profile/your_xiaohongshu_id" target="_blank" class="cali-contact-link" data-text="小红书">
+                            <i class="iconfont icon-phone"></i>
+                            <span>小红书</span>
+                        </a>
+                        <a href="https://www.douyin.com/user/your_douyin_id" target="_blank" class="cali-contact-link" data-text="抖音">
+                            <i class="iconfont icon-music"></i>
+                            <span>抖音</span>
+                        </a>
+                        <a href="your_blog_url" target="_blank" class="cali-contact-link" data-text="我的文章">
+                            <i class="iconfont icon-article"></i>
+                            <span>我的文章</span>
+                        </a>
+                        <a href="/assets/resume.pdf" target="_blank" class="cali-contact-link" data-text="下载简历">
+                            <i class="iconfont icon-resume"></i>
+                            <span>下载简历</span>
+                        </a>
+                    </div>
+                    <div class="contact-decoration">
+                        <div class="decoration-dots"></div>
+                        <div class="decoration-circles"></div>
                     </div>
                 </div>
             </section>
@@ -431,6 +455,108 @@
 
         window.addEventListener("scroll", handleScrollAnimations);
         window.addEventListener("load", handleScrollAnimations);
+
+        // 联系模块鼠标跟随效果
+        function initContactMouseEffect() {
+            const contactSection = document.querySelector('.cali-contact');
+            const contactLinks = document.querySelectorAll('.cali-contact-link');
+            
+            if (contactSection) {
+                contactSection.addEventListener('mousemove', (e) => {
+                    const rect = contactSection.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    
+                    // 创建光晕效果
+                    contactSection.style.background = `
+                        radial-gradient(circle at ${x}px ${y}px, 
+                            rgba(255, 255, 255, 0.1) 0%, 
+                            transparent 30%),
+                        linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%)
+                    `;
+                });
+                
+                contactSection.addEventListener('mouseleave', () => {
+                    contactSection.style.background = 'linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%)';
+                });
+            }
+            
+            // 联系链接悬停音效模拟（视觉反馈）
+            contactLinks.forEach(link => {
+                link.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-8px) scale(1.05) rotateX(5deg)';
+                    this.style.filter = 'brightness(1.2)';
+                });
+                
+                link.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) scale(1) rotateX(0deg)';
+                    this.style.filter = 'brightness(1)';
+                });
+                
+                // 点击波纹效果
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // 创建波纹元素
+                    const ripple = document.createElement('span');
+                    ripple.className = 'click-ripple';
+                    
+                    const rect = this.getBoundingClientRect();
+                    const size = Math.max(rect.width, rect.height);
+                    const x = e.clientX - rect.left - size / 2;
+                    const y = e.clientY - rect.top - size / 2;
+                    
+                    ripple.style.cssText = `
+                        position: absolute;
+                        width: ${size}px;
+                        height: ${size}px;
+                        left: ${x}px;
+                        top: ${y}px;
+                        background: rgba(255, 255, 255, 0.6);
+                        border-radius: 50%;
+                        transform: scale(0);
+                        animation: rippleEffect 0.6s ease-out;
+                        pointer-events: none;
+                        z-index: 1000;
+                    `;
+                    
+                    this.appendChild(ripple);
+                    
+                    // 清理波纹元素
+                    setTimeout(() => {
+                        ripple.remove();
+                    }, 600);
+                    
+                    // 延迟执行原始链接行为
+                    setTimeout(() => {
+                        const href = this.getAttribute('href');
+                        const target = this.getAttribute('target');
+                        if (href) {
+                            if (target === '_blank') {
+                                window.open(href, '_blank');
+                            } else {
+                                window.location.href = href;
+                            }
+                        }
+                    }, 200);
+                });
+            });
+        }
+        
+        // 添加波纹动画样式
+        const rippleStyle = document.createElement('style');
+        rippleStyle.textContent = `
+            @keyframes rippleEffect {
+                to {
+                    transform: scale(2);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(rippleStyle);
+        
+        // 初始化联系模块效果
+        document.addEventListener('DOMContentLoaded', initContactMouseEffect);
 
         // 添加动画延迟
         function addScrollDelay() {
