@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub Pages CSS 诊断</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .diagnostic-container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .test-item {
+            margin: 15px 0;
+            padding: 15px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+        .test-item.success {
+            background: #d4edda;
+            border-color: #c3e6cb;
+            color: #155724;
+        }
+        .test-item.error {
+            background: #f8d7da;
+            border-color: #f5c6cb;
+            color: #721c24;
+        }
+        .test-item.loading {
+            background: #fff3cd;
+            border-color: #ffeaa7;
+            color: #856404;
+        }
+        .css-test {
+            margin: 20px 0;
+            padding: 15px;
+            border: 2px dashed #ccc;
+            border-radius: 5px;
+            text-align: center;
+        }
+        .css-test.success {
+            border-color: #28a745;
+            background: #d4edda;
+        }
+        .css-test.error {
+            border-color: #dc3545;
+            background: #f8d7da;
+        }
+        .summary {
+            margin-top: 30px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 5px;
+            border-left: 4px solid #007bff;
+        }
+        .status-indicator {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+        .status-success { background: #28a745; }
+        .status-error { background: #dc3545; }
+        .status-loading { background: #ffc107; }
+        code {
+            background: #f1f1f1;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+        }
+        .file-path {
+            font-family: 'Courier New', monospace;
+            background: #f8f9fa;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="diagnostic-container">
+        <h1>🧪 GitHub Pages CSS 加载诊断</h1>
+        
+        <div class="summary">
+            <h3>📋 诊断摘要</h3>
+            <p>此页面用于检测GitHub Pages上的CSS文件加载状态，帮助识别404错误和其他加载问题。</p>
+            <p><strong>当前时间：</strong> <span id="current-time"></span></p>
+            <p><strong>页面URL：</strong> <code id="page-url"></code></p>
+        </div>
+
+        <h3>🔗 CSS文件加载测试</h3>
+        <div id="css-tests">
+            <div class="test-item loading">
+                <span class="status-indicator status-loading"></span>
+                <strong>main.css</strong> - 正在检测...
+                <div class="file-path" id="main-css-path"></div>
+            </div>
+            <div class="test-item loading">
+                <span class="status-indicator status-loading"></span>
+                <strong>cali-style.css</strong> - 正在检测...
+                <div class="file-path" id="cali-style-css-path"></div>
+            </div>
+            <div class="test-item loading">
+                <span class="status-indicator status-loading"></span>
+                <strong>custom.css</strong> - 正在检测...
+                <div class="file-path" id="custom-css-path"></div>
+            </div>
+            <div class="test-item loading">
+                <span class="status-indicator status-loading"></span>
+                <strong>cali-nav.css</strong> - 正在检测...
+                <div class="file-path" id="cali-nav-css-path"></div>
+            </div>
+        </div>
+
+        <h3>🎨 CSS样式应用测试</h3>
+        <div class="css-test" id="style-test">
+            <p><strong>样式测试区域</strong></p>
+            <p>如果CSS加载正常，此区域应该有特定的样式效果。</p>
+            <div id="test-elements">
+                <div class="test-box">测试盒子</div>
+                <div class="test-text">测试文本样式</div>
+                <div class="test-gradient">渐变背景测试</div>
+            </div>
+        </div>
+
+        <h3>🌐 网络请求分析</h3>
+        <div id="network-analysis">
+            <div class="test-item">
+                <strong>基础信息：</strong>
+                <ul>
+                    <li>用户代理： <span id="user-agent"></span></li>
+                    <li>页面加载时间： <span id="load-time"></span></li>
+                    <li>CSS文件总数： <span id="css-count"></span></li>
+                    <li>成功加载： <span id="css-success"></span></li>
+                    <li>加载失败： <span id="css-failed"></span></li>
+                </ul>
+            </div>
+        </div>
+
+        <h3>🔧 常见问题排查</h3>
+        <div class="summary">
+            <h4>GitHub Pages CSS 404 常见原因：</h4>
+            <ol>
+                <li><strong>文件路径错误</strong> - 确保CSS文件存在于仓库中</li>
+                <li><strong>大小写敏感</strong> - GitHub Pages对文件名大小写敏感</li>
+                <li><strong>分支设置</strong> - 确认GitHub Pages配置为正确的分支</li>
+                <li><strong>缓存问题</strong> - GitHub Pages部署可能需要几分钟</li>
+                <li><strong>文件权限</strong> - 确保文件有正确的读取权限</li>
+            </ol>
+            
+            <h4>解决方案：</h4>
+            <ul>
+                <li>检查文件是否存在于GitHub仓库的对应分支</li>
+                <li>确认文件名大小写完全匹配</li>
+                <li>在GitHub仓库设置中检查Pages配置</li>
+                <li>等待几分钟让GitHub完成部署</li>
+                <li>尝试清除浏览器缓存或使用无痕模式</li>
+            </ul>
+        </div>
+
+        <div class="summary" style="margin-top: 20px;">
+            <h4>📁 预期文件路径：</h4>
+            <div class="file-path">
+                <strong>main.css:</strong> /css/main.css<br>
+                <strong>cali-style.css:</strong> /css/cali-style.css<br>
+                <strong>custom.css:</strong> /css/custom.css<br>
+                <strong>cali-nav.css:</strong> /css/cali-nav.css
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 初始化诊断
+        document.addEventListener('DOMContentLoaded', function() {
+            // 设置基本信息
+            document.getElementById('current-time').textContent = new Date().toLocaleString();
+            document.getElementById('page-url').textContent = window.location.href;
+            document.getElementById('user-agent').textContent = navigator.userAgent;
+            
+            // 记录页面加载时间
+            const loadTime = performance.timing.loadEventEnd - performance.timing.navigationStart;
+            document.getElementById('load-time').textContent = loadTime + 'ms';
+            
+            // 测试CSS文件加载
+            testCSSFiles();
+            
+            // 分析样式表
+            analyzeStylesheets();
+        });
+
+        function testCSSFiles() {
+            const cssFiles = [
+                { name: 'main.css', path: '/css/main.css', elementId: 'main-css-path' },
+                { name: 'cali-style.css', path: '/css/cali-style.css', elementId: 'cali-style-css-path' },
+                { name: 'custom.css', path: '/css/custom.css', elementId: 'custom-css-path' },
+                { name: 'cali-nav.css', path: '/css/cali-nav.css', elementId: 'cali-nav-css-path' }
+            ];
+            
+            let successCount = 0;
+            let failedCount = 0;
+            
+            cssFiles.forEach(file => {
+                testCSSFile(file, (success) => {
+                    if (success) {
+                        successCount++;
+                        updateTestResult(file.elementId, 'success', '✅ 加载成功');
+                    } else {
+                        failedCount++;
+                        updateTestResult(file.elementId, 'error', '❌ 加载失败 (404)');
+                    }
+                    
+                    // 更新统计
+                    document.getElementById('css-count').textContent = cssFiles.length;
+                    document.getElementById('css-success').textContent = successCount;
+                    document.getElementById('css-failed').textContent = failedCount;
+                });
+            });
+        }
+
+        function testCSSFile(file, callback) {
+            const link = document.createElement('link');
+            link.rel = 'stylesheet';
+            link.href = file.path;
+            
+            link.onload = function() {
+                callback(true);
+                document.head.removeChild(link);
+            };
+            
+            link.onerror = function() {
+                callback(false);
+                document.head.removeChild(link);
+            };
+            
+            document.head.appendChild(link);
+            document.getElementById(file.elementId).textContent = file.path;
+        }
+
+        function updateTestResult(elementId, status, message) {
+            const element = document.getElementById(elementId).parentElement;
+            element.className = 'test-item ' + status;
+            element.querySelector('strong').textContent = element.querySelector('strong').textContent.replace('正在检测...', message);
+        }
+
+        function analyzeStylesheets() {
+            const stylesheets = document.styleSheets;
+            let externalStylesheets = [];
+            
+            for (let i = 0; i < stylesheets.length; i++) {
+                try {
+                    if (stylesheets[i].href) {
+                        externalStylesheets.push(stylesheets[i].href);
+                    }
+                } catch (e) {
+                    // 处理跨域样式表访问限制
+                }
+            }
+            
+            console.log('外部样式表:', externalStylesheets);
+        }
+
+        // 检查当前域名是否为GitHub Pages
+        function checkGitHubPagesEnvironment() {
+            const hostname = window.location.hostname;
+            const isGitHubPages = hostname.includes('github.io');
+            
+            if (isGitHubPages) {
+                console.log('✅ 当前运行在GitHub Pages环境');
+            } else {
+                console.log('ℹ️  当前运行在本地或其他环境');
+            }
+            
+            return isGitHubPages;
+        }
+
+        // 页面加载完成后执行环境检查
+        window.addEventListener('load', function() {
+            checkGitHubPagesEnvironment();
+        });
+    </script>
+
+    <style>
+        /* 测试样式 */
+        .test-box {
+            width: 100px;
+            height: 50px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            margin: 10px auto;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+        
+        .test-text {
+            font-size: 18px;
+            color: #667eea;
+            font-weight: 600;
+            margin: 10px 0;
+        }
+        
+        .test-gradient {
+            padding: 10px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+    </style>
+</body>
+</html>
