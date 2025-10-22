@@ -794,9 +794,11 @@ body {
     padding: 2rem;
     transition: all 0.3s ease;
     background-color: rgba(255, 255, 255, 0.95);
-    min-height: 280px;
+    min-height: 320px;
     display: flex;
     flex-direction: column;
+    height: 320px;
+    box-sizing: border-box;
 }
 
 .cali-project-title {
@@ -818,8 +820,9 @@ body {
 .cali-project-description {
     color: var(--text-secondary);
     line-height: 1.6;
-    margin-bottom: 1.5rem;
+    margin-bottom: auto;
     transition: var(--transition-slow);
+    flex-grow: 1;
 }
 
 .cali-project-card:hover .cali-project-description {
@@ -834,6 +837,8 @@ body {
     gap: 0.5rem;
     margin-top: auto;
     padding-top: 1rem;
+    align-self: flex-end;
+    width: 100%;
 }
 
 .cali-project-tech .tech-tag {
@@ -1268,6 +1273,7 @@ body {
     /* 移动端项目卡片内容高度调整 */
     .cali-project-content {
         min-height: auto;
+        height: auto;
         padding: 1.5rem;
     }
 }
