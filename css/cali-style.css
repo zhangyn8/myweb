@@ -473,7 +473,7 @@ body {
 .hero-actions {
     display: flex;
     gap: 2rem;
-    justify-content: center;
+    justify-content: flex-start;
     margin-top: 2rem;
     flex-wrap: wrap;
     animation: fadeInUp 0.8s ease-out 0.6s both;
