@@ -1,0 +1,32 @@
+<!-- 这是一个2880×1200的渐变占位符SVG -->
+<svg width="2880" height="1200" viewBox="0 0 2880 1200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="heroGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f8f9fa;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#e9ecef;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#dee2e6;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="accentGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#0071e3;stop-opacity:0.1" />
+      <stop offset="100%" style="stop-color:#0077ed;stop-opacity:0.05" />
+    </linearGradient>
+  </defs>
+  
+  <!-- 主背景渐变 -->
+  <rect width="2880" height="1200" fill="url(#heroGradient)"/>
+  
+  <!-- 装饰性渐变条 -->
+  <rect x="0" y="400" width="2880" height="400" fill="url(#accentGradient)" opacity="0.6"/>
+  
+  <!-- 微妙的几何装饰 -->
+  <circle cx="720" cy="300" r="150" fill="#0071e3" opacity="0.05"/>
+  <circle cx="2160" cy="900" r="200" fill="#0077ed" opacity="0.03"/>
+  
+  <!-- 网格纹理 -->
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#ffffff" stroke-width="1" opacity="0.2"/>
+    </pattern>
+  </defs>
+  <rect width="2880" height="1200" fill="url(#grid)" opacity="0.3"/>
+</svg>

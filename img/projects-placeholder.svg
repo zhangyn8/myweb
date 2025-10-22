@@ -1,0 +1,15 @@
+<!-- 项目页面占位符 - 600×400 SVG -->
+<svg width="600" height="400" viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="projectsGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#fff8f0;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f7f0e6;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="600" height="400" fill="url(#projectsGradient)" rx="12"/>
+  <!-- 项目展示卡片 -->
+  <rect x="80" y="80" width="200" height="120" fill="#0071e3" opacity="0.1" rx="12"/>
+  <rect x="320" y="80" width="200" height="120" fill="#0071e3" opacity="0.15" rx="12"/>
+  <rect x="80" y="220" width="200" height="100" fill="#0071e3" opacity="0.15" rx="12"/>
+  <rect x="320" y="220" width="200" height="100" fill="#0071e3" opacity="0.1" rx="12"/>
+</svg>

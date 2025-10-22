@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Es6 on 我的个人网站</title><link>https://zhangyn8.github.io/myweb/tags/es6/</link><description>Recent content in Es6 on 我的个人网站</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Sat, 20 Jan 2024 14:30:00 +0000</lastBuildDate><atom:link href="https://zhangyn8.github.io/myweb/tags/es6/index.xml" rel="self" type="application/rss+xml"/><item><title>Modern JavaScript Features</title><link>https://zhangyn8.github.io/myweb/posts/modern-javascript-features/</link><pubDate>Sat, 20 Jan 2024 14:30:00 +0000</pubDate><guid>https://zhangyn8.github.io/myweb/posts/modern-javascript-features/</guid><description>&lt;h1 id="modern-javascript-features">Modern JavaScript Features&lt;/h1>
+&lt;p>JavaScript has evolved significantly over the years, introducing powerful features that make development more efficient and code more readable. Let&amp;rsquo;s explore some of the most important modern JavaScript features.&lt;/p>
+&lt;h2 id="arrow-functions">Arrow Functions&lt;/h2>
+&lt;p>Arrow functions provide a concise syntax for writing functions and automatically bind the &lt;code>this&lt;/code> context.&lt;/p>
+&lt;div class="highlight">&lt;div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-javascript" data-lang="javascript">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#57606a">// Traditional function
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#57606a">&lt;/span>&lt;span style="color:#cf222e">function&lt;/span> &lt;span style="color:#1f2328">add&lt;/span>&lt;span style="color:#1f2328">(&lt;/span>&lt;span style="color:#1f2328">a&lt;/span>&lt;span style="color:#1f2328">,&lt;/span> &lt;span style="color:#1f2328">b&lt;/span>&lt;span style="color:#1f2328">)&lt;/span> &lt;span style="color:#1f2328">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#cf222e">return&lt;/span> &lt;span style="color:#1f2328">a&lt;/span> &lt;span style="color:#0550ae">+&lt;/span> &lt;span style="color:#1f2328">b&lt;/span>&lt;span style="color:#1f2328">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#1f2328">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#57606a">// Arrow function
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#57606a">&lt;/span>&lt;span style="color:#cf222e">const&lt;/span> &lt;span style="color:#1f2328">add&lt;/span> &lt;span style="color:#0550ae">=&lt;/span> &lt;span style="color:#1f2328">(&lt;/span>&lt;span style="color:#1f2328">a&lt;/span>&lt;span style="color:#1f2328">,&lt;/span> &lt;span style="color:#1f2328">b&lt;/span>&lt;span style="color:#1f2328">)&lt;/span> &lt;span style="color:#1f2328">=&amp;gt;&lt;/span> &lt;span style="color:#1f2328">a&lt;/span> &lt;span style="color:#0550ae">+&lt;/span> &lt;span style="color:#1f2328">b&lt;/span>&lt;span style="color:#1f2328">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#57606a">// With single parameter
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#57606a">&lt;/span>&lt;span style="color:#cf222e">const&lt;/span> &lt;span style="color:#1f2328">square&lt;/span> &lt;span style="color:#0550ae">=&lt;/span> &lt;span style="color:#1f2328">x&lt;/span> &lt;span style="color:#1f2328">=&amp;gt;&lt;/span> &lt;span style="color:#1f2328">x&lt;/span> &lt;span style="color:#0550ae">*&lt;/span> &lt;span style="color:#1f2328">x&lt;/span>&lt;span style="color:#1f2328">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#57606a">// With block body
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#57606a">&lt;/span>&lt;span style="color:#cf222e">const&lt;/span> &lt;span style="color:#1f2328">greet&lt;/span> &lt;span style="color:#0550ae">=&lt;/span> &lt;span style="color:#1f2328">name&lt;/span> &lt;span style="color:#1f2328">=&amp;gt;&lt;/span> &lt;span style="color:#1f2328">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#cf222e">return&lt;/span> &lt;span style="color:#0a3069">`Hello, &lt;/span>&lt;span style="color:#0a3069">${&lt;/span>&lt;span style="color:#1f2328">name&lt;/span>&lt;span style="color:#0a3069">}&lt;/span>&lt;span style="color:#0a3069">!`&lt;/span>&lt;span style="color:#1f2328">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#1f2328">};&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="destructuring-assignment">Destructuring Assignment&lt;/h2>
+&lt;p>Destructuring allows you to extract values from arrays and objects in a more readable way.&lt;/p></description></item></channel></rss>
