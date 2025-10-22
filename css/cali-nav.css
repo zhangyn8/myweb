@@ -1,369 +1,156 @@
-/* Cali风格导航栏滚动效果 */
-:root {
-  --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  --primary-color: #667eea;
-  --text-primary: #2d3748;
-  --transition: all 0.3s ease;
-  --shadow-light: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
+/*******************************
+ * Cali 风格导航栏样式
+ *******************************/
 
-/* Cali风格导航栏基础样式 */
+/* 基础导航栏样式 */
 .cali-nav {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  height: 70px;
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   z-index: 1000;
   transition: all 0.3s ease;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
 }
 
 .cali-nav.scrolled {
   background: rgba(255, 255, 255, 0.98);
-  box-shadow: var(--shadow-light);
-  height: 60px;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
 }
 
 .cali-nav-container {
   max-width: 1200px;
   margin: 0 auto;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
   padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 70px;
 }
 
 .cali-nav-logo {
   font-size: 1.5rem;
   font-weight: 700;
-  color: var(--primary-color);
+  color: var(--primary-color, #2563eb);
   text-decoration: none;
-  transition: var(--transition);
+  transition: color 0.3s ease;
 }
 
 .cali-nav-logo:hover {
-  transform: scale(1.05);
+  color: var(--primary-hover, #1d4ed8);
 }
 
 .cali-nav-menu {
   display: flex;
-  align-items: center;
   gap: 2rem;
+  align-items: center;
 }
 
 .cali-nav-item {
-  color: var(--text-primary);
+  color: var(--text-primary, #1f2937);
   text-decoration: none;
   font-weight: 500;
-  transition: var(--transition);
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  transition: all 0.3s ease;
   position: relative;
 }
 
 .cali-nav-item:hover {
-  color: var(--primary-color);
+  color: var(--primary-color, #2563eb);
+  background: rgba(37, 99, 235, 0.1);
 }
 
-.cali-nav-item:after {
-  content: '';
-  position: absolute;
-  bottom: -4px;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background: var(--primary-gradient);
-  transition: width 0.3s ease;
+.cali-nav-item:active,
+.cali-nav-item:focus {
+  color: var(--primary-color, #2563eb);
 }
 
-.cali-nav-item:hover:after {
-  width: 100%;
-}
-
-/* 移动端汉堡菜单 */
+/* 移动端汉堡菜单按钮 */
 .cali-nav-toggle {
   display: none;
+  flex-direction: column;
   background: none;
   border: none;
   cursor: pointer;
-  padding: 8px;
-  transition: var(--transition);
+  padding: 0.5rem;
+  z-index: 1100;
 }
 
-.cali-nav-toggle-line {
-  display: block;
+.cali-nav-toggle span {
   width: 25px;
-  height: 2px;
-  background: var(--text-primary);
-  margin: 5px 0;
-  transition: var(--transition);
+  height: 3px;
+  background: var(--text-primary, #1f2937);
+  margin: 3px 0;
+  transition: all 0.3s ease;
   border-radius: 2px;
 }
 
-/* 移动端抽屉菜单 */
-.cali-nav-drawer {
-  position: fixed;
-  top: 70px;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(255, 255, 255, 0.98);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  transform: translateX(100%);
-  transition: transform 0.4s ease;
-  z-index: 999;
-  padding: 2rem;
+.cali-nav-toggle:hover span {
+  background: var(--primary-color, #2563eb);
 }
 
-.cali-nav-drawer.active {
-  transform: translateX(0);
+.cali-nav-toggle.active span:nth-child(1) {
+  transform: rotate(45deg) translate(6px, 6px);
 }
 
-.cali-nav-drawer-menu {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
+.cali-nav-toggle.active span:nth-child(2) {
+  opacity: 0;
 }
 
-.cali-nav-drawer-item {
-  font-size: 1.2rem;
-  color: var(--text-primary);
-  text-decoration: none;
-  padding: 1rem 0;
-  transition: var(--transition);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+.cali-nav-toggle.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
 }
 
-.cali-nav-drawer-item:hover {
-  color: var(--primary-color);
-  padding-left: 1rem;
-}
+
 
 /* 响应式设计 */
 @media (max-width: 768px) {
+  .cali-nav-toggle {
+    display: flex;
+  }
+  
   .cali-nav-menu {
     display: none;
   }
   
-  .cali-nav-toggle {
-    display: block;
+  .cali-nav-container {
+    padding: 0 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+
+}
+
+/* 深色模式支持 */
+@media (prefers-color-scheme: dark) {
+  .cali-nav {
+    background: rgba(17, 24, 39, 0.95);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   }
   
   .cali-nav.scrolled {
-    height: 60px;
+    background: rgba(17, 24, 39, 0.98);
   }
   
-  .cali-nav-drawer {
-    top: 60px;
+  .cali-nav-item {
+    color: var(--text-primary-dark, #f9fafb);
   }
-}cubic-bezier(0.4, 0, 0.2, 1);
-}
+  
+  .cali-nav-item:hover {
+    background: rgba(59, 130, 246, 0.2);
+  }
+  
+  .cali-nav-toggle span {
+    background: var(--text-primary-dark, #f9fafb);
+  }
+  
+  .cali-nav-toggle:hover span {
+    background: var(--primary-color, #3b82f6);
+  }
+  
 
-.cali-nav {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    z-index: 1000;
-    padding: 1rem 0;
-    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.cali-nav.scrolled {
-    background: rgba(255, 255, 255, 0.98);
-    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.12);
-    padding: 0.5rem 0;
-}
-
-.cali-nav-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.cali-nav-logo a {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--primary-color);
-    text-decoration: none;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.cali-nav.scrolled .cali-nav-logo a {
-    font-size: 1.3rem;
-}
-
-.cali-nav-menu {
-    display: flex;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    gap: 2rem;
-}
-
-.cali-nav-item a {
-    color: var(--text-primary);
-    text-decoration: none;
-    font-weight: 500;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    padding: 0.5rem 0;
-    position: relative;
-}
-
-.cali-nav-item a::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: var(--primary-gradient);
-    transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.cali-nav-item a:hover::after,
-.cali-nav-item a.active::after {
-    width: 100%;
-}
-
-.cali-nav-item a:hover {
-    color: var(--primary-color);
-}
-
-/* 移动端导航栏样式 */
-@media (max-width: 768px) {
-    .cali-nav-container {
-        padding: 0 1rem;
-    }
-    
-    .cali-nav-menu {
-        display: none;
-    }
-    
-    .cali-nav.scrolled {
-        padding: 0.3rem 0;
-    }
-}
-
-/* 移动端菜单按钮 */
-.cali-nav-toggle {
-    display: none;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 30px;
-    height: 24px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 0;
-    z-index: 1001;
-}
-
-.cali-nav-toggle-line {
-    width: 100%;
-    height: 2px;
-    background: var(--text-primary);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-@media (max-width: 768px) {
-    .cali-nav-toggle {
-        display: flex;
-    }
-}
-
-/* 移动端抽屉菜单 */
-.cali-nav-drawer {
-    position: fixed;
-    top: 0;
-    right: -100%;
-    width: 80%;
-    max-width: 300px;
-    height: 100vh;
-    background: rgba(255, 255, 255, 0.98);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    z-index: 999;
-    transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    padding: 4rem 2rem 2rem;
-    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.cali-nav-drawer.active {
-    right: 0;
-}
-
-.cali-nav-drawer-menu {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-}
-
-.cali-nav-drawer-item a {
-    color: var(--text-primary);
-    text-decoration: none;
-    font-weight: 500;
-    font-size: 1.1rem;
-    padding: 0.8rem 1rem;
-    border-radius: 8px;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    display: block;
-}
-
-.cali-nav-drawer-item a:hover {
-    background: rgba(102, 126, 234, 0.1);
-    color: var(--primary-color);
-}
-
-/* 遮罩层 */
-.cali-nav-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: 998;
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.cali-nav-overlay.active {
-    opacity: 1;
-    visibility: visible;
-}
-
-/* 防止滚动穿透 */
-body.cali-menu-open {
-    overflow: hidden;
-    position: fixed;
-    width: 100%;
-}
-
-/* 汉堡菜单动画 */
-.cali-nav-toggle.active .cali-nav-toggle-line:nth-child(1) {
-    transform: rotate(45deg) translate(5px, 5px);
-}
-
-.cali-nav-toggle.active .cali-nav-toggle-line:nth-child(2) {
-    opacity: 0;
-}
-
-.cali-nav-toggle.active .cali-nav-toggle-line:nth-child(3) {
-    transform: rotate(-45deg) translate(7px, -6px);
 }

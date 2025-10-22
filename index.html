@@ -88,16 +88,7 @@
     </div>
   </nav>
 
-  
-  <div class="cali-nav-drawer" id="caliNavDrawer">
-    <div class="cali-nav-drawer-content">
-      <a href="/" class="cali-nav-drawer-item">首页</a>
-      <a href="#about" class="cali-nav-drawer-item">关于</a>
-      <a href="#skills" class="cali-nav-drawer-item">技能</a>
-      <a href="#projects" class="cali-nav-drawer-item">项目</a>
-      <a href="#contact" class="cali-nav-drawer-item">联系</a>
-    </div>
-  </div>
+
 
 
     <div class="cali-hero-content">
@@ -134,14 +125,14 @@
 
 <section class="cali-section" id="skills">
     <div class="cali-container">
-        <h2 class="cali-section-title">专业技能</h2>
+        <h2 class="cali-section-title">全栈技能矩阵</h2>
         <p class="cali-section-subtitle">
             广泛的技术栈，从设计到开发，从概念到实现
         </p>
         <div class="cali-skills-grid">
             <div class="cali-skill-item">
                 <div class="cali-skill-icon">🤖</div>
-                <h3 class="cali-skill-title">人工智能</h3>
+                <h3 class="cali-skill-title">AI训练与应用</h3>
                 <p class="cali-skill-description">
                     机器学习 • 深度学习 • 自然语言处理 • 对话系统
                 </p>
@@ -269,39 +260,22 @@ document.addEventListener('DOMContentLoaded', function() {
   
   
   document.body.classList.add('cali-loaded');
+  
+  
+  const caliNavToggle = document.getElementById('caliNavToggle');
+
+  if (caliNavToggle) {
+    caliNavToggle.addEventListener('click', function() {
+      caliNavToggle.classList.toggle('active');
+      
+      console.log('移动端菜单按钮被点击');
+    });
+  }
 });
 
 
 
 
-const caliNavToggle = document.getElementById('caliNavToggle');
-const caliNavDrawer = document.getElementById('caliNavDrawer');
-
-if (caliNavToggle && caliNavDrawer) {
-  caliNavToggle.addEventListener('click', function() {
-    caliNavToggle.classList.toggle('active');
-    caliNavDrawer.classList.toggle('active');
-    document.body.classList.toggle('cali-nav-drawer-open');
-  });
-
-  
-  document.querySelectorAll('.cali-nav-drawer-item').forEach(item => {
-    item.addEventListener('click', function() {
-      caliNavToggle.classList.remove('active');
-      caliNavDrawer.classList.remove('active');
-      document.body.classList.remove('cali-nav-drawer-open');
-    });
-  });
-
-  
-  caliNavDrawer.addEventListener('click', function(e) {
-    if (e.target === caliNavDrawer) {
-      caliNavToggle.classList.remove('active');
-      caliNavDrawer.classList.remove('active');
-      document.body.classList.remove('cali-nav-drawer-open');
-    }
-  });
-}
 
 
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
