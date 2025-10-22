@@ -328,10 +328,9 @@
 &lt;p>Before diving into specific technologies, it&amp;rsquo;s important to understand the fundamental building blocks of web development:&lt;/p>
 &lt;h3 id="html-hypertext-markup-language">HTML (HyperText Markup Language)&lt;/h3>
 &lt;p>HTML provides the structure and content of web pages. It&amp;rsquo;s the foundation upon which all websites are built.&lt;/p></description></item><item><title>关于我</title><link>https://zhangyn8.github.io/myweb/about/</link><pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate><guid>https://zhangyn8.github.io/myweb/about/</guid><description>&lt;h1 id="关于我">关于我&lt;/h1>
-&lt;p>我是Chrystal，一名&lt;strong>AI训练师&lt;/strong> × &lt;strong>前端开发工程师&lt;/strong> × &lt;strong>UI/UX设计师&lt;/strong>，专注于将人工智能技术与现代前端开发相结合，创造智能、美观且用户友好的数字体验。&lt;/p>
+&lt;p>我是Chrystal，一名AI训练师和前端开发工程师，专注于创建智能和美观的数字体验。&lt;/p>
 &lt;h2 id="我的故事">我的故事&lt;/h2>
-&lt;p>对&lt;strong>AI技术与前端开发的融合&lt;/strong>充满热情，我不断探索如何将智能化功能与优秀的用户界面设计相结合。作为细节控，我相信好的技术产品不仅要功能强大，更要有出色的用户体验和视觉设计。&lt;/p>
-&lt;p>我的理念是：&lt;strong>技术应该为人服务，让生活变得更美好&lt;/strong>。通过将AI能力与精心设计的前端界面结合，我致力于创造既智能又易用的数字产品。&lt;/p>
+&lt;p>对技术和创新的好奇心驱使我不断探索人工智能和Web开发的前沿。我相信技术应该为人服务，让生活变得更美好。&lt;/p>
 &lt;h2 id="专业技能">专业技能&lt;/h2>
 &lt;h3 id="人工智能">人工智能&lt;/h3>
 &lt;ul>
@@ -340,14 +339,11 @@
 &lt;li>自然语言处理与计算机视觉&lt;/li>
 &lt;li>大语言模型微调与应用&lt;/li>
 &lt;/ul>
-&lt;h3 id="前端开发-核心专长">前端开发 (核心专长)&lt;/h3>
+&lt;h3 id="前端开发">前端开发&lt;/h3>
 &lt;ul>
-&lt;li>&lt;strong>现代框架&lt;/strong>: React 18 (Hooks, Context, Redux Toolkit), Vue 3 (Composition API, Pinia)&lt;/li>
-&lt;li>&lt;strong>TypeScript&lt;/strong>: 类型安全开发，泛型编程，装饰器模式&lt;/li>
-&lt;li>&lt;strong>UI/UX设计&lt;/strong>: Figma设计系统，组件化思维，设计令牌(Design Tokens)&lt;/li>
-&lt;li>&lt;strong>响应式开发&lt;/strong>: Mobile-First设计，CSS Grid/Flexbox，Tailwind CSS&lt;/li>
-&lt;li>&lt;strong>性能优化&lt;/strong>: 代码分割，懒加载，虚拟滚动，Tree Shaking&lt;/li>
-&lt;li>&lt;strong>工程化&lt;/strong>: Webpack/Vite配置，Monorepo管理，微前端架构&lt;/li>
+&lt;li>前端: React, Vue.js, Hugo, 现代CSS, JavaScript/TypeScript&lt;/li>
+&lt;li>UI/UX设计: Figma, 响应式设计, 交互设计&lt;/li>
+&lt;li>前端工具: Webpack, Vite, npm/yarn&lt;/li>
 &lt;/ul>
 &lt;h3 id="设计思维">设计思维&lt;/h3>
 &lt;ul>
@@ -356,26 +352,20 @@
 &lt;li>产品思维&lt;/li>
 &lt;/ul>
 &lt;h2 id="工作经历">工作经历&lt;/h2>
-&lt;h3 id="ai训练师--前端开发工程师--科技公司-2022-至今">AI训练师 × 前端开发工程师 | 科技公司 (2022-至今)&lt;/h3>
-&lt;p>&lt;strong>双重角色：AI模型训练 + 前端界面开发&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>负责大语言模型的训练与优化，设计Prompt Engineering流程&lt;/li>
-&lt;li>开发AI应用的前端界面，将复杂的AI功能转化为直观的用户体验&lt;/li>
-&lt;li>构建AI模型与前端的无缝集成，优化响应速度和交互流畅度&lt;/li>
-&lt;li>设计并实现AI产品的用户界面，平衡功能性与美观性&lt;/li>
-&lt;/ul>
+&lt;h3 id="ai训练师--科技公司-2022-至今">AI训练师 | 科技公司 (2022-至今)&lt;/h3>
+&lt;p>负责大语言模型的训练与优化，设计和实施AI应用解决方案。&lt;/p>
 &lt;h3 id="前端开发工程师--创业公司-2020-2022">前端开发工程师 | 创业公司 (2020-2022)&lt;/h3>
-&lt;p>&lt;strong>全栈前端开发，注重用户体验&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>负责产品前端架构设计与核心功能开发（React + TypeScript）&lt;/li>
-&lt;li>建立UI组件库和设计系统，提升开发效率和一致性&lt;/li>
-&lt;li>优化前端性能，实现快速加载和流畅交互&lt;/li>
-&lt;li>与设计师紧密合作，将Figma设计稿转化为高质量代码&lt;/li>
-&lt;li>参与AI模型的前端集成，开发智能交互功能&lt;/li>
-&lt;/ul>
+&lt;p>负责产品前端界面开发，用户体验优化，以及AI模型的前端集成。&lt;/p>
 &lt;h2 id="教育背景">教育背景&lt;/h2>
 &lt;p>&lt;strong>计算机科学硕士&lt;/strong> - 知名大学 (2018-2020)&lt;br>
-&lt;strong>软件工程学士&lt;/strong> - 重点大学 (2014-2018)&lt;/p></description></item><item><title>技能专长</title><link>https://zhangyn8.github.io/myweb/skills/</link><pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate><guid>https://zhangyn8.github.io/myweb/skills/</guid><description>&lt;h1 id="技能专长">技能专长&lt;/h1>
+&lt;strong>软件工程学士&lt;/strong> - 重点大学 (2014-2018)&lt;/p>
+&lt;h2 id="联系方式">联系方式&lt;/h2>
+&lt;ul>
+&lt;li>📧 &lt;a href="mailto:chrystal@example.com">chrystal@example.com&lt;/a>&lt;/li>
+&lt;li>💼 &lt;a href="https://github.com/zhangyn8">zhangyn8&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;p>&lt;em>保持好奇，持续学习，用技术创造更美好的世界。&lt;/em>&lt;/p></description></item><item><title>技能专长</title><link>https://zhangyn8.github.io/myweb/skills/</link><pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate><guid>https://zhangyn8.github.io/myweb/skills/</guid><description>&lt;h1 id="技能专长">技能专长&lt;/h1>
 &lt;p>我在多个技术领域都有深入的学习和实践经验，以下是我的核心技能栈。&lt;/p>
 &lt;h2 id="-前端开发">💻 前端开发&lt;/h2>
 &lt;h3 id="核心技术">核心技术&lt;/h3>

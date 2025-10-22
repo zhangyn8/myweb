@@ -68,23 +68,6 @@
   color: var(--primary-color);
 }
 
-.cali-nav-item.active {
-  color: var(--primary-color);
-  font-weight: 600;
-  position: relative;
-}
-
-.cali-nav-item.active::after {
-  content: '';
-  position: absolute;
-  bottom: -4px;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background: var(--primary-gradient);
-  border-radius: 1px;
-}
-
 .cali-nav-item:after {
   content: '';
   position: absolute;
@@ -100,7 +83,71 @@
   width: 100%;
 }
 
-/* 移动端汉堡菜单已移除 */
+/* 移动端汉堡菜单 */
+.cali-nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  transition: var(--transition);
+}
+
+.cali-nav-toggle-line {
+  display: block;
+  width: 25px;
+  height: 2px;
+  background: var(--text-primary);
+  margin: 5px 0;
+  transition: var(--transition);
+  border-radius: 2px;
+}
+
+/* 移动端抽屉菜单 */
+.cali-nav-drawer {
+  position: fixed;
+  top: 70px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  transform: translateX(100%);
+  transition: transform 0.4s ease;
+  z-index: 999;
+  padding: 2rem;
+}
+
+.cali-nav-drawer.active {
+  transform: translateX(0);
+}
+
+.cali-nav-drawer-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.cali-nav-drawer-item {
+  font-size: 1.2rem;
+  color: var(--text-primary);
+  text-decoration: none;
+  padding: 1rem 0;
+  transition: var(--transition);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.cali-nav-drawer-item:hover {
+  color: var(--primary-color);
+  padding-left: 1rem;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .cali-nav-menu {
+    display: none;
+  }
   
   .cali-nav-toggle {
     display: block;
@@ -108,6 +155,10 @@
   
   .cali-nav.scrolled {
     height: 60px;
+  }
+  
+  .cali-nav-drawer {
+    top: 60px;
   }
 }cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -232,6 +283,87 @@
     }
 }
 
-/* 移动端抽屉菜单已移除 */
+/* 移动端抽屉菜单 */
+.cali-nav-drawer {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 80%;
+    max-width: 300px;
+    height: 100vh;
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    z-index: 999;
+    transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    padding: 4rem 2rem 2rem;
+    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+}
 
-/* 汉堡菜单动画已移除 */
+.cali-nav-drawer.active {
+    right: 0;
+}
+
+.cali-nav-drawer-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.cali-nav-drawer-item a {
+    color: var(--text-primary);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1.1rem;
+    padding: 0.8rem 1rem;
+    border-radius: 8px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: block;
+}
+
+.cali-nav-drawer-item a:hover {
+    background: rgba(102, 126, 234, 0.1);
+    color: var(--primary-color);
+}
+
+/* 遮罩层 */
+.cali-nav-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 998;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.cali-nav-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* 防止滚动穿透 */
+body.cali-menu-open {
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+}
+
+/* 汉堡菜单动画 */
+.cali-nav-toggle.active .cali-nav-toggle-line:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.cali-nav-toggle.active .cali-nav-toggle-line:nth-child(2) {
+    opacity: 0;
+}
+
+.cali-nav-toggle.active .cali-nav-toggle-line:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -6px);
+}
