@@ -722,47 +722,10 @@ body {
     margin-top: 3rem;
 }
 
-/* AI项目经验模块特殊背景 */
+/* 标准区块样式 - 还原为默认样式 */
 #projects {
-    background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
-    position: relative;
-    overflow: hidden;
-}
-
-#projects::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: 
-        radial-gradient(circle at 20% 20%, rgba(64, 224, 208, 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 80% 80%, rgba(138, 43, 226, 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 40% 60%, rgba(0, 191, 255, 0.05) 0%, transparent 50%);
-    animation: aiBackgroundShift 12s ease-in-out infinite;
-}
-
-@keyframes aiBackgroundShift {
-    0%, 100% { opacity: 0.6; }
-    50% { opacity: 1; }
-}
-
-#projects .cali-container {
-    position: relative;
-    z-index: 2;
-}
-
-/* AI项目标题特殊样式 */
-#projects .cali-section-title {
-    color: #00f5ff !important;
-    text-shadow: 0 0 20px rgba(0, 245, 255, 0.5);
-    font-weight: 800;
-}
-
-#projects .cali-section-subtitle {
-    color: #b0e0e6;
-    opacity: 0.9;
+    padding: 80px 0;
+    background-color: #f8f9fa;
 }
 
 .cali-project-card {
@@ -829,6 +792,15 @@ body {
 
 .cali-project-content {
     padding: 2rem;
+    transition: all 0.3s ease;
+    background-color: rgba(255, 255, 255, 0.95);
+}
+
+.cali-project-card:hover .cali-project-content {
+    background-color: rgba(0, 245, 255, 0.1); /* 使用卡片hover光晕的颜色 */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 0 0 var(--border-radius) var(--border-radius); /* 匹配卡片圆角 */
 }
 
 .cali-project-title {
@@ -839,11 +811,12 @@ body {
     transition: var(--transition-slow);
     position: relative;
     display: inline-block;
-.cali-project-card:hover .cali-project-title {
-    color: #667eea;
-    text-shadow: 0 0 10px rgba(102, 126, 234, 0.3);
-    transform: translateY(-2px);
 }
+
+.cali-project-card:hover .cali-project-title {
+    color: #ffffff;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    transform: translateY(-2px);
 }
 
 .cali-project-description {
@@ -854,7 +827,7 @@ body {
 }
 
 .cali-project-card:hover .cali-project-description {
-    color: var(--text-primary);
+    color: #ffffff;
     transform: translateY(-1px);
 }
 
@@ -1434,29 +1407,18 @@ html {
     100% { transform: rotate(360deg); }
 }
 
-/* AI项目卡片增强效果 */
+/* AI项目卡片增强效果 - 保持卡片样式 */
 .cali-project-card {
     position: relative;
     overflow: hidden;
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-/* AI项目图标特殊动画 */
+/* AI项目图标动画效果 - 移除特殊样式 */
 .cali-project-image .iconfont {
-    transition: all 0.4s ease;
+    transition: all 0.3s ease;
     position: relative;
     z-index: 2;
-}
-
-.cali-project-card:hover .cali-project-image .iconfont {
-    transform: scale(1.2) rotate(5deg);
-    filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.8));
-    animation: aiIconPulse 1s ease-in-out infinite alternate;
-}
-
-@keyframes aiIconPulse {
-    0% { transform: scale(1.2) rotate(5deg); }
-    100% { transform: scale(1.25) rotate(8deg); }
 }
 
 .cali-project-card::before {
@@ -1474,7 +1436,7 @@ html {
     z-index: 1;
 }
 
-/* AI项目卡片特殊光效 */
+/* 卡片光效 - 移除AI特殊样式 */
 .cali-project-card::after {
     content: '';
     position: absolute;
@@ -1482,23 +1444,16 @@ html {
     left: -2px;
     right: -2px;
     bottom: -2px;
-    background: linear-gradient(45deg, #667eea, #764ba2, #00f5ff, #667eea);
+    background: linear-gradient(45deg, #667eea, #764ba2, #667eea);
     border-radius: 18px;
     opacity: 0;
     z-index: -1;
     transition: opacity 0.3s ease;
-    animation: aiGlow 3s linear infinite;
-    background-size: 400% 400%;
-}
-
-@keyframes aiGlow {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+    background-size: 200% 200%;
 }
 
 .cali-project-card:hover::after {
-    opacity: 0.8;
+    opacity: 0.6;
 }
 
 .cali-project-card:hover::before {
