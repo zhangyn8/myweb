@@ -1574,30 +1574,17 @@ html {
     height: 300px;
 }
 
-/* 标题下划线动画 */
+/* 标题样式 */
 .cali-section-title {
-    position: relative;
-    display: block;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
     text-align: center;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+    display: block;
+    width: 100%;
     margin-left: auto;
     margin-right: auto;
-}
-
-.cali-section-title::after {
-    content: '';
-    position: absolute;
-    bottom: -10px;
-    left: 50%;
-    width: 0;
-    height: 3px;
-    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
-    border-radius: 2px;
-    transform: translateX(-50%);
-    transition: width 0.3s ease;
-}
-
-.cali-section-title:hover::after {
-    width: 75%;
 }
 
 /* 按钮光效增强 */
