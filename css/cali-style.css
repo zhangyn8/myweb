@@ -532,6 +532,10 @@ body {
     text-align: center;
     margin-bottom: 1rem;
     color: var(--text-primary);
+    display: block;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .cali-section-subtitle {
@@ -542,6 +546,8 @@ body {
     max-width: 600px;
     margin-left: auto;
     margin-right: auto;
+    display: block;
+    width: 100%;
 }
 
 /* Modern cards */
@@ -1571,7 +1577,10 @@ html {
 /* 标题下划线动画 */
 .cali-section-title {
     position: relative;
-    display: inline-block;
+    display: block;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .cali-section-title::after {
