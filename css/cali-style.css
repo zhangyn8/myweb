@@ -1597,7 +1597,7 @@ html {
 }
 
 .cali-section-title:hover::after {
-    width: 100%;
+    width: 75%;
 }
 
 /* 按钮光效增强 */
