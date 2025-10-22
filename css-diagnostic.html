@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS诊断工具</title>
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/cali-style.css">
+    <link rel="stylesheet" href="/css/custom.css">
+    <link rel="stylesheet" href="/css/cali-nav.css">
+    <style>
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #f8fafc;
+            color: #1e293b;
+            line-height: 1.6;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .diagnostic-header {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        .diagnostic-header h1 {
+            color: #6366f1;
+            margin-bottom: 1rem;
+            font-size: 2.5rem;
+        }
+        .test-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        .test-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-left: 4px solid #e2e8f0;
+        }
+        .test-card.success {
+            border-left-color: #10b981;
+            background: linear-gradient(135deg, #ffffff, #f0fdf4);
+        }
+        .test-card.error {
+            border-left-color: #ef4444;
+            background: linear-gradient(135deg, #ffffff, #fef2f2);
+        }
+        .test-card.warning {
+            border-left-color: #f59e0b;
+            background: linear-gradient(135deg, #ffffff, #fffbeb);
+        }
+        .css-test-element {
+            width: 100px;
+            height: 100px;
+            margin: 1rem auto;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            text-align: center;
+        }
+        .main-css-test {
+            background: linear-gradient(135deg, #ff6b6b, #4ecdc4);
+        }
+        .cali-css-test {
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            animation: fadeInUp 1s ease;
+        }
+        .custom-css-test {
+            background: linear-gradient(135deg, #f59e0b, #f97316);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+        .nav-css-test {
+            background: linear-gradient(135deg, #10b981, #059669);
+            backdrop-filter: blur(10px);
+        }
+        .status-indicator {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+        .status-success { background: #10b981; }
+        .status-error { background: #ef4444; }
+        .status-warning { background: #f59e0b; }
+        .status-loading { 
+            background: #6b7280;
+            animation: pulse 1s infinite;
+        }
+        .detailed-report {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-top: 2rem;
+        }
+        .code-block {
+            background: #1e293b;
+            color: #e2e8f0;
+            padding: 1rem;
+            border-radius: 8px;
+            font-family: 'Monaco', 'Menlo', monospace;
+            font-size: 0.9rem;
+            overflow-x: auto;
+            margin: 1rem 0;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .loading-spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid #e2e8f0;
+            border-top: 3px solid #6366f1;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="diagnostic-header">
+        <h1>🔍 CSS诊断工具</h1>
+        <p>全面检测CSS文件加载状态和样式应用情况</p>
+        <div id="loading-indicator">
+            <div class="loading-spinner"></div>
+            正在检测...
+        </div>
+    </div>
+
+    <div class="test-grid" id="test-results">
+        <!-- 测试结果将在这里动态生成 -->
+    </div>
+
+    <div class="detailed-report" id="detailed-report" style="display: none;">
+        <h2>📋 详细报告</h2>
+        <div id="report-content"></div>
+    </div>
+
+    <script>
+        class CSSDiagnostic {
+            constructor() {
+                this.results = [];
+                this.cssFiles = [
+                    { name: 'main.css', href: '/css/main.css', className: 'main-css-test' },
+                    { name: 'cali-style.css', href: '/css/cali-style.css', className: 'cali-css-test' },
+                    { name: 'custom.css', href: '/css/custom.css', className: 'custom-css-test' },
+                    { name: 'cali-nav.css', href: '/css/cali-nav.css', className: 'nav-css-test' }
+                ];
+            }
+
+            async runDiagnostics() {
+                console.log('🚀 开始CSS诊断...');
+                
+                // 1. 检查CSS文件加载状态
+                await this.checkCSSFiles();
+                
+                // 2. 检查样式应用情况
+                this.checkStyleApplication();
+                
+                // 3. 检查CSS规则冲突
+                this.checkCSSConflicts();
+                
+                // 4. 检查字体加载
+                await this.checkFontLoading();
+                
+                // 5. 显示结果
+                this.displayResults();
+                
+                document.getElementById('loading-indicator').style.display = 'none';
+                document.getElementById('detailed-report').style.display = 'block';
+                
+                console.log('✅ CSS诊断完成');
+            }
+
+            async checkCSSFiles() {
+                for (const cssFile of this.cssFiles) {
+                    try {
+                        const response = await fetch(cssFile.href);
+                        const loaded = response.ok;
+                        const size = response.headers.get('content-length') || '未知';
+                        
+                        this.results.push({
+                            type: 'file_load',
+                            name: cssFile.name,
+                            status: loaded ? 'success' : 'error',
+                            message: loaded ? `文件加载成功 (${size}字节)` : `文件加载失败: ${response.status}`,
+                            details: {
+                                href: cssFile.href,
+                                statusCode: response.status,
+                                statusText: response.statusText,
+                                size: size
+                            }
+                        });
+                        
+                        console.log(`📄 ${cssFile.name}:`, loaded ? '✅ 加载成功' : '❌ 加载失败');
+                        
+                    } catch (error) {
+                        this.results.push({
+                            type: 'file_load',
+                            name: cssFile.name,
+                            status: 'error',
+                            message: `网络错误: ${error.message}`,
+                            details: { error: error.message }
+                        });
+                        console.error(`❌ ${cssFile.name} 加载错误:`, error);
+                    }
+                }
+            }
+
+            checkStyleApplication() {
+                // 创建测试元素
+                const testContainer = document.createElement('div');
+                testContainer.style.position = 'absolute';
+                testContainer.style.left = '-9999px';
+                document.body.appendChild(testContainer);
+
+                this.cssFiles.forEach(cssFile => {
+                    const testElement = document.createElement('div');
+                    testElement.className = cssFile.className;
+                    testElement.textContent = '测试';
+                    testContainer.appendChild(testElement);
+
+                    // 检查计算样式
+                    const computedStyle = window.getComputedStyle(testElement);
+                    const hasGradient = computedStyle.backgroundImage.includes('gradient');
+                    const hasExpectedStyles = computedStyle.width === '100px' && computedStyle.height === '100px';
+
+                    this.results.push({
+                        type: 'style_application',
+                        name: cssFile.name,
+                        status: hasGradient && hasExpectedStyles ? 'success' : 'warning',
+                        message: hasGradient && hasExpectedStyles ? '样式正确应用' : '部分样式未生效',
+                        details: {
+                            hasGradient,
+                            hasExpectedStyles,
+                            computedStyles: {
+                                width: computedStyle.width,
+                                height: computedStyle.height,
+                                backgroundImage: computedStyle.backgroundImage.substring(0, 100) + '...'
+                            }
+                        }
+                    });
+
+                    console.log(`🎨 ${cssFile.name} 样式应用:`, hasGradient && hasExpectedStyles ? '✅ 正常' : '⚠️ 部分异常');
+                });
+
+                // 清理测试元素
+                document.body.removeChild(testContainer);
+            }
+
+            checkCSSConflicts() {
+                // 检查可能的CSS冲突
+                const conflicts = [];
+                
+                // 检查样式表数量
+                const styleSheets = document.styleSheets;
+                if (styleSheets.length === 0) {
+                    conflicts.push('没有加载任何样式表');
+                }
+                
+                // 检查样式表错误
+                Array.from(styleSheets).forEach((sheet, index) => {
+                    try {
+                        if (sheet.cssRules === null) {
+                            conflicts.push(`样式表 ${index} 有访问限制或错误`);
+                        }
+                    } catch (error) {
+                        conflicts.push(`样式表 ${index} 访问错误: ${error.message}`);
+                    }
+                });
+
+                this.results.push({
+                    type: 'css_conflicts',
+                    name: 'CSS冲突检测',
+                    status: conflicts.length === 0 ? 'success' : 'warning',
+                    message: conflicts.length === 0 ? '未检测到明显冲突' : `发现 ${conflicts.length} 个潜在问题`,
+                    details: { conflicts }
+                });
+
+                console.log('⚔️ CSS冲突检测:', conflicts.length === 0 ? '✅ 无冲突' : `⚠️ ${conflicts.length}个问题`);
+            }
+
+            async checkFontLoading() {
+                try {
+                    // 检查字体加载
+                    const fonts = document.fonts;
+                    if (fonts && fonts.ready) {
+                        await fonts.ready;
+                        const loadedFonts = [];
+                        const failedFonts = [];
+
+                        for (const font of fonts) {
+                            if (font.status === 'loaded') {
+                                loadedFonts.push(font.family);
+                            } else if (font.status === 'error') {
+                                failedFonts.push(font.family);
+                            }
+                        }
+
+                        this.results.push({
+                            type: 'font_loading',
+                            name: '字体加载',
+                            status: failedFonts.length === 0 ? 'success' : 'warning',
+                            message: `已加载 ${loadedFonts.length} 个字体${failedFonts.length > 0 ? `, ${failedFonts.length} 个失败` : ''}`,
+                            details: { loadedFonts, failedFonts }
+                        });
+                    }
+                } catch (error) {
+                    this.results.push({
+                        type: 'font_loading',
+                        name: '字体加载',
+                        status: 'warning',
+                        message: '字体加载检测失败',
+                        details: { error: error.message }
+                    });
+                }
+            }
+
+            displayResults() {
+                const resultsContainer = document.getElementById('test-results');
+                const reportContent = document.getElementById('report-content');
+                
+                let successCount = 0;
+                let errorCount = 0;
+                let warningCount = 0;
+
+                // 按类型分组结果
+                const groupedResults = {};
+                this.results.forEach(result => {
+                    if (!groupedResults[result.type]) {
+                        groupedResults[result.type] = [];
+                    }
+                    groupedResults[result.type].push(result);
+                    
+                    if (result.status === 'success') successCount++;
+                    else if (result.status === 'error') errorCount++;
+                    else if (result.status === 'warning') warningCount++;
+                });
+
+                // 生成测试卡片
+                Object.entries(groupedResults).forEach(([type, results]) => {
+                    results.forEach(result => {
+                        const card = document.createElement('div');
+                        card.className = `test-card ${result.status}`;
+                        
+                        const statusClass = `status-${result.status === 'success' ? 'success' : result.status === 'error' ? 'error' : 'warning'}`;
+                        
+                        card.innerHTML = `
+                            <h3><span class="status-indicator ${statusClass}"></span>${result.name}</h3>
+                            <p>${result.message}</p>
+                            ${type === 'style_application' ? `<div class="css-test-element ${result.details.computedStyles.width ? 'main-css-test' : ''}">测试元素</div>` : ''}
+                            <div class="code-block">
+                                <strong>详细信息:</strong><br>
+                                ${JSON.stringify(result.details, null, 2).replace(/\n/g, '<br>')}
+                            </div>
+                        `;
+                        
+                        resultsContainer.appendChild(card);
+                    });
+                });
+
+                // 生成详细报告
+                reportContent.innerHTML = `
+                    <h3>📊 统计摘要</h3>
+                    <div class="code-block">
+                        ✅ 成功: ${successCount}<br>
+                        ⚠️ 警告: ${warningCount}<br>
+                        ❌ 错误: ${errorCount}<br>
+                        📈 总测试项: ${this.results.length}
+                    </div>
+                    
+                    <h3>🔧 浏览器环境</h3>
+                    <div class="code-block">
+                        用户代理: ${navigator.userAgent}<br>
+                        样式表数量: ${document.styleSheets.length}<br>
+                        字体API支持: ${typeof document.fonts !== 'undefined'}
+                    </div>
+                    
+                    <h3>💡 建议</h3>
+                    <div class="code-block">
+                        ${errorCount > 0 ? '• 检查CSS文件路径和服务器配置<br>' : ''}
+                        ${warningCount > 0 ? '• 检查CSS规则冲突和加载顺序<br>' : ''}
+                        ${successCount === this.results.length ? '• 所有CSS文件加载正常，样式应用正确<br>' : ''}
+                        • 使用浏览器开发者工具进一步调试样式问题
+                    </div>
+                `;
+            }
+        }
+
+        // 页面加载完成后运行诊断
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                const diagnostic = new CSSDiagnostic();
+                diagnostic.runDiagnostics();
+            }, 500);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS诊断工具 - 简化版</title>
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/cali-style.css">
+    <link rel="stylesheet" href="/css/custom.css">
+    <link rel="stylesheet" href="/css/cali-nav.css">
+    <style>
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #f8fafc;
+            color: #1e293b;
+            line-height: 1.6;
+            padding: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .header {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        .header h1 {
+            color: #6366f1;
+            margin-bottom: 1rem;
+            font-size: 2.5rem;
+        }
+        .test-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+        .test-item {
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            margin: 0.5rem 0;
+            border-radius: 8px;
+            border-left: 4px solid #e2e8f0;
+            background: #f8fafc;
+        }
+        .test-item.success {
+            border-left-color: #10b981;
+            background: #f0fdf4;
+        }
+        .test-item.error {
+            border-left-color: #ef4444;
+            background: #fef2f2;
+        }
+        .test-item.warning {
+            border-left-color: #f59e0b;
+            background: #fffbeb;
+        }
+        .status-icon {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            margin-right: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        .status-success { background: #10b981; }
+        .status-error { background: #ef4444; }
+        .status-warning { background: #f59e0b; }
+        .test-visual {
+            width: 80px;
+            height: 80px;
+            margin: 1rem;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 12px;
+            text-align: center;
+        }
+        .main-test {
+            background: linear-gradient(135deg, #ff6b6b, #4ecdc4);
+        }
+        .cali-test {
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            animation: fadeInUp 1s ease;
+        }
+        .custom-test {
+            background: linear-gradient(135deg, #f59e0b, #f97316);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+        .nav-test {
+            background: linear-gradient(135deg, #10b981, #059669);
+            backdrop-filter: blur(10px);
+        }
+        .summary {
+            background: #1e293b;
+            color: #e2e8f0;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 2rem;
+            font-family: 'Monaco', 'Menlo', monospace;
+        }
+        .code-block {
+            background: #374151;
+            color: #e5e7eb;
+            padding: 1rem;
+            border-radius: 6px;
+            font-family: 'Monaco', 'Menlo', monospace;
+            font-size: 0.9rem;
+            margin: 1rem 0;
+            overflow-x: auto;
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        .mini-card {
+            background: white;
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🔍 CSS诊断工具</h1>
+        <p>实时检测CSS文件加载状态和样式应用情况</p>
+    </div>
+
+    <div class="test-section">
+        <h2>📁 CSS文件加载状态</h2>
+        <div id="file-tests"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>🎨 样式应用测试</h2>
+        <div class="grid" id="style-tests"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>⚙️ 浏览器环境</h2>
+        <div id="environment-tests"></div>
+    </div>
+
+    <div class="summary" id="summary"></div>
+
+    <script>
+        // 简化的CSS诊断
+        function runCSSDiagnostics() {
+            const results = {
+                files: [],
+                styles: [],
+                environment: []
+            };
+
+            // 1. 检查CSS文件加载
+            const cssFiles = [
+                { name: 'main.css', href: '/css/main.css', className: 'main-test' },
+                { name: 'cali-style.css', href: '/css/cali-style.css', className: 'cali-test' },
+                { name: 'custom.css', href: '/css/custom.css', className: 'custom-test' },
+                { name: 'cali-nav.css', href: '/css/cali-nav.css', className: 'nav-test' }
+            ];
+
+            // 2. 检查样式应用
+            cssFiles.forEach(file => {
+                const testDiv = document.createElement('div');
+                testDiv.className = `test-visual ${file.className}`;
+                testDiv.textContent = file.name.replace('.css', '');
+                
+                const computedStyle = window.getComputedStyle(testDiv);
+                const hasGradient = computedStyle.backgroundImage.includes('gradient');
+                
+                results.styles.push({
+                    name: file.name,
+                    status: hasGradient ? 'success' : 'warning',
+                    message: hasGradient ? '样式正常应用' : '样式可能未生效',
+                    element: testDiv
+                });
+            });
+
+            // 3. 检查浏览器环境
+            results.environment = [
+                {
+                    name: '样式表数量',
+                    status: document.styleSheets.length > 0 ? 'success' : 'error',
+                    message: `检测到 ${document.styleSheets.length} 个样式表`
+                },
+                {
+                    name: '字体支持',
+                    status: typeof document.fonts !== 'undefined' ? 'success' : 'warning',
+                    message: typeof document.fonts !== 'undefined' ? '支持字体API' : '字体API不可用'
+                },
+                {
+                    name: 'CSS Grid支持',
+                    status: CSS.supports('display', 'grid') ? 'success' : 'error',
+                    message: CSS.supports('display', 'grid') ? '支持CSS Grid' : '不支持CSS Grid'
+                }
+            ];
+
+            return results;
+        }
+
+        function displayResults(results) {
+            // 显示文件测试结果
+            const fileTests = document.getElementById('file-tests');
+            const linkElements = document.querySelectorAll('link[rel="stylesheet"]');
+            
+            linkElements.forEach(link => {
+                const href = link.href;
+                const filename = href.split('/').pop();
+                const success = href.includes('css') && !href.includes('fonts.googleapis');
+                
+                const item = document.createElement('div');
+                item.className = `test-item ${success ? 'success' : 'warning'}`;
+                item.innerHTML = `
+                    <div class="status-icon ${success ? 'status-success' : 'status-warning'}">${success ? '✓' : '?'}</div>
+                    <div>
+                        <strong>${filename}</strong><br>
+                        <small>${success ? '已加载' : '外部资源'}</small>
+                    </div>
+                `;
+                fileTests.appendChild(item);
+            });
+
+            // 显示样式测试结果
+            const styleTests = document.getElementById('style-tests');
+            results.styles.forEach(style => {
+                const miniCard = document.createElement('div');
+                miniCard.className = 'mini-card';
+                miniCard.appendChild(style.element);
+                miniCard.innerHTML += `
+                    <div style="margin-top: 0.5rem;">
+                        <strong>${style.name}</strong><br>
+                        <small style="color: ${style.status === 'success' ? '#10b981' : '#f59e0b'};">
+                            ${style.message}
+                        </small>
+                    </div>
+                `;
+                styleTests.appendChild(miniCard);
+            });
+
+            // 显示环境测试结果
+            const envTests = document.getElementById('environment-tests');
+            results.environment.forEach(env => {
+                const item = document.createElement('div');
+                item.className = `test-item ${env.status}`;
+                item.innerHTML = `
+                    <div class="status-icon ${env.status === 'success' ? 'status-success' : 'status-warning'}">
+                        ${env.status === 'success' ? '✓' : '!'}
+                    </div>
+                    <div>
+                        <strong>${env.name}</strong><br>
+                        <small>${env.message}</small>
+                    </div>
+                `;
+                envTests.appendChild(item);
+            });
+
+            // 显示总结
+            const summary = document.getElementById('summary');
+            const successCount = results.styles.filter(s => s.status === 'success').length;
+            const totalCount = results.styles.length;
+            
+            summary.innerHTML = `
+                <h3>📊 CSS诊断总结</h3>
+                <div class="code-block">
+                    ✅ 样式应用成功: ${successCount}/${totalCount}<br>
+                    📁 样式表数量: ${document.styleSheets.length}<br>
+                    🌐 用户代理: ${navigator.userAgent.substring(0, 50)}...<br>
+                    🎨 支持CSS Grid: ${CSS.supports('display', 'grid') ? '是' : '否'}
+                </div>
+                <p><strong>建议:</strong></p>
+                <ul>
+                    <li>如果样式未生效，检查CSS文件路径是否正确</li>
+                    <li>使用浏览器开发者工具检查具体元素的计算样式</li>
+                    <li>确认CSS选择器优先级是否正确</li>
+                    <li>检查是否有JavaScript错误影响样式应用</li>
+                </ul>
+            `;
+        }
+
+        // 页面加载完成后运行诊断
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(() => {
+                const results = runCSSDiagnostics();
+                displayResults(results);
+            }, 100);
+        });
+    </script>
+</body>
+</html>

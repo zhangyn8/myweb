@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS加载测试</title>
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/cali-style.css">
+    <style>
+        .test-box {
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            margin: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            border-radius: 10px;
+        }
+        .status {
+            margin: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .success { background: #d4edda; color: #155724; }
+        .error { background: #f8d7da; color: #721c24; }
+    </style>
+</head>
+<body>
+    <h1>CSS加载测试页面</h1>
+    <div class="status" id="css-status">正在检测CSS加载状态...</div>
+    <div class="test-box">测试盒子</div>
+    
+    <script>
+        function checkCSS() {
+            const statusDiv = document.getElementById('css-status');
+            const testBox = document.querySelector('.test-box');
+            const computedStyle = window.getComputedStyle(testBox);
+            
+            let status = [];
+            let hasErrors = false;
+            
+            // 检查基本样式
+            if (computedStyle.width === '200px') {
+                status.push('✅ 基本样式加载正常');
+            } else {
+                status.push('❌ 基本样式未生效');
+                hasErrors = true;
+            }
+            
+            // 检查CSS文件加载
+            const links = document.querySelectorAll('link[rel="stylesheet"]');
+            links.forEach(link => {
+                const href = link.href;
+                if (link.sheet) {
+                    status.push(`✅ CSS文件加载成功: ${href.split('/').pop()}`);
+                } else {
+                    status.push(`❌ CSS文件加载失败: ${href.split('/').pop()}`);
+                    hasErrors = true;
+                }
+            });
+            
+            // 检查网络错误
+            links.forEach(link => {
+                link.addEventListener('error', () => {
+                    console.error('CSS加载错误:', link.href);
+                });
+            });
+            
+            statusDiv.innerHTML = status.join('<br>');
+            statusDiv.className = hasErrors ? 'status error' : 'status success';
+            
+            // 输出调试信息
+            console.log('CSS检测完成:', {
+                userAgent: navigator.userAgent,
+                stylesheets: Array.from(document.styleSheets).map(s => s.href || 'inline'),
+                errors: hasErrors
+            });
+        }
+        
+        // 页面加载完成后检测
+        window.addEventListener('load', checkCSS);
+        setTimeout(checkCSS, 1000); // 额外延迟检测
+    </script>
+</body>
+</html>
