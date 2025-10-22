@@ -923,13 +923,7 @@ body {
     margin-bottom: 1rem;
     font-size: 3rem;
     font-weight: 700;
-    text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
-    animation: titleGlow 2s ease-in-out infinite alternate;
-}
-
-@keyframes titleGlow {
-    from { text-shadow: 0 0 20px rgba(255, 255, 255, 0.5); }
-    to { text-shadow: 0 0 30px rgba(255, 255, 255, 0.8), 0 0 40px rgba(255, 255, 255, 0.6); }
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .cali-contact-description {
@@ -962,69 +956,23 @@ body {
     align-items: center;
     gap: 0.8rem;
     padding: 1.2rem 2.5rem;
-    background: linear-gradient(45deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+    background: rgba(255, 255, 255, 0.1);
     color: var(--white);
     text-decoration: none;
     border-radius: 50px;
-    backdrop-filter: blur(15px);
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    border: 2px solid transparent;
-    position: relative;
-    overflow: hidden;
-    font-weight: 600;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    font-weight: 500;
     font-size: 1.1rem;
-    box-shadow: 
-        0 8px 25px rgba(0, 0, 0, 0.3),
-        inset 0 1px 0 rgba(255, 255, 255, 0.2);
-}
-
-.cali-contact-link::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-    transition: left 0.6s ease;
-}
-
-.cali-contact-link::after {
-    content: '';
-    position: absolute;
-    top: -2px;
-    left: -2px;
-    right: -2px;
-    bottom: -2px;
-    background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #ffeaa7, #ff6b6b);
-    background-size: 300% 300%;
-    border-radius: 50px;
-    z-index: -1;
-    opacity: 0;
-    transition: opacity 0.4s ease;
-    animation: gradientRotate 3s ease infinite;
-}
-
-@keyframes gradientRotate {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 .cali-contact-link:hover {
-    transform: translateY(-8px) scale(1.05);
-    box-shadow: 
-        0 20px 40px rgba(0, 0, 0, 0.4),
-        inset 0 1px 0 rgba(255, 255, 255, 0.3);
-    background: linear-gradient(45deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
-}
-
-.cali-contact-link:hover::before {
-    left: 100%;
-}
-
-.cali-contact-link:hover::after {
-    opacity: 1;
+    transform: translateY(-3px);
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
 }
 
 .cali-contact-link .iconfont {
@@ -1033,40 +981,20 @@ body {
 }
 
 .cali-contact-link:hover .iconfont {
-    transform: scale(1.2) rotate(10deg);
+    transform: scale(1.1);
 }
 
-/* 添加粒子效果 */
-.cali-contact-links::before {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    pointer-events: none;
-    background-image: 
-        radial-gradient(circle, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
-        radial-gradient(circle, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
-    background-size: 50px 50px, 80px 80px;
-    background-position: 0 0, 25px 25px;
-    animation: particleMove 20s linear infinite;
-}
 
-@keyframes particleMove {
-    0% { transform: translate(0, 0); }
-    100% { transform: translate(-50px, -50px); }
-}
 
-/* 联系模块进入动画 */
+/* 联系模块进入动画 - 简化版 */
 .cali-contact {
-    animation: contactSectionFadeIn 1.2s ease-out;
+    animation: contactSectionFadeIn 0.8s ease-out;
 }
 
 @keyframes contactSectionFadeIn {
     from {
         opacity: 0;
-        transform: translateY(50px);
+        transform: translateY(30px);
     }
     to {
         opacity: 1;
@@ -1074,22 +1002,21 @@ body {
     }
 }
 
-/* 联系链接依次出现动画 */
-.cali-contact-link:nth-child(1) { animation: linkFadeInUp 0.6s ease-out 0.2s both; }
-.cali-contact-link:nth-child(2) { animation: linkFadeInUp 0.6s ease-out 0.4s both; }
-.cali-contact-link:nth-child(3) { animation: linkFadeInUp 0.6s ease-out 0.6s both; }
-.cali-contact-link:nth-child(4) { animation: linkFadeInUp 0.6s ease-out 0.8s both; }
-.cali-contact-link:nth-child(5) { animation: linkFadeInUp 0.6s ease-out 1.0s both; }
-.cali-contact-link:nth-child(6) { animation: linkFadeInUp 0.6s ease-out 1.2s both; }
+/* 联系链接依次出现动画 - 简化版 */
+.cali-contact-link:nth-child(1) { animation: linkFadeInUp 0.4s ease-out 0.1s both; }
+.cali-contact-link:nth-child(2) { animation: linkFadeInUp 0.4s ease-out 0.2s both; }
+.cali-contact-link:nth-child(3) { animation: linkFadeInUp 0.4s ease-out 0.3s both; }
+.cali-contact-link:nth-child(4) { animation: linkFadeInUp 0.4s ease-out 0.4s both; }
+.cali-contact-link:nth-child(5) { animation: linkFadeInUp 0.4s ease-out 0.5s both; }
 
 @keyframes linkFadeInUp {
     from {
         opacity: 0;
-        transform: translateY(30px) scale(0.8);
+        transform: translateY(20px);
     }
     to {
         opacity: 1;
-        transform: translateY(0) scale(1);
+        transform: translateY(0);
     }
 }
 
