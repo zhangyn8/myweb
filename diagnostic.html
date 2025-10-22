@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS问题诊断</title>
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/cali-style.css">
+    <link rel="stylesheet" href="/css/custom.css">
+    <style>
+        /* 诊断样式 */
+        .diagnostic-box {
+            border: 2px solid red;
+            padding: 20px;
+            margin: 20px;
+            background: yellow;
+        }
+        
+        .test-gradient {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            margin: 20px;
+        }
+        
+        .test-variable-gradient {
+            background: var(--primary-gradient, red);
+            color: white;
+            padding: 20px;
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>CSS问题诊断工具</h1>
+    
+    <div class="diagnostic-box">
+        <h2>基础诊断</h2>
+        <p>如果这个框有红色边框和黄色背景，基本CSS在工作</p>
+    </div>
+    
+    <div class="test-gradient">
+        <h2>渐变测试</h2>
+        <p>如果看到蓝紫色渐变背景，CSS渐变在工作</p>
+    </div>
+    
+    <div class="test-variable-gradient">
+        <h2>CSS变量渐变测试</h2>
+        <p>如果看到蓝紫色渐变背景，CSS变量在工作</p>
+    </div>
+    
+    <!-- 复制实际网站的hero区域 -->
+    <section class="cali-hero" id="home">
+        <div class="cali-hero-content">
+            <div class="hero-profile-section">
+                <div class="hero-text-content">
+                    <h1 class="cali-hero-title">诊断测试标题</h1>
+                    <div class="hero-skills-tagline">AI模型训练 × 前端开发 × UI设计</div>
+                    <p class="cali-hero-description">
+                        这是一个诊断测试，用于检查CSS样式是否正确应用。
+                    </p>
+                    <div>
+                        <a href="#" class="cali-button">测试按钮</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- 技能卡片测试 -->
+    <div class="cali-skills-grid">
+        <div class="cali-skill-item triple-skill-item ai-primary-skill">
+            <div class="cali-skill-icon">🤖</div>
+            <h3 class="cali-skill-title">测试技能卡片</h3>
+            <p class="cali-skill-description">这是一个技能卡片样式测试</p>
+        </div>
+    </div>
+    
+    <!-- 详细的CSS诊断信息 -->
+    <div style="background: #f5f5f5; padding: 20px; margin: 20px; font-family: monospace;">
+        <h3>详细诊断信息</h3>
+        <div id="diagnostic-info">
+            <p>正在诊断...</p>
+        </div>
+    </div>
+    
+    <script>
+        function getDiagnosticInfo() {
+            const info = [];
+            const caliHero = document.querySelector('.cali-hero');
+            const caliHeroContent = document.querySelector('.cali-hero-content');
+            const caliHeroTitle = document.querySelector('.cali-hero-title');
+            const caliSkillItem = document.querySelector('.cali-skill-item');
+            
+            if (caliHero) {
+                const heroStyle = window.getComputedStyle(caliHero);
+                info.push(`Hero背景: ${heroStyle.background}`);
+                info.push(`Hero显示: ${heroStyle.display}`);
+                info.push(`Hero高度: ${heroStyle.minHeight}`);
+                info.push(`Hero对齐: ${heroStyle.alignItems} / ${heroStyle.justifyContent}`);
+            } else {
+                info.push('❌ 找不到.cali-hero元素');
+            }
+            
+            if (caliHeroContent) {
+                const contentStyle = window.getComputedStyle(caliHeroContent);
+                info.push(`Hero内容颜色: ${contentStyle.color}`);
+                info.push(`Hero内容最大宽度: ${contentStyle.maxWidth}`);
+            }
+            
+            if (caliHeroTitle) {
+                const titleStyle = window.getComputedStyle(caliHeroTitle);
+                info.push(`标题字体大小: ${titleStyle.fontSize}`);
+                info.push(`标题字体粗细: ${titleStyle.fontWeight}`);
+                info.push(`标题颜色: ${titleStyle.color}`);
+            }
+            
+            if (caliSkillItem) {
+                const skillStyle = window.getComputedStyle(caliSkillItem);
+                info.push(`技能卡片背景: ${skillStyle.background}`);
+                info.push(`技能卡片边框: ${skillStyle.border}`);
+                info.push(`技能卡片圆角: ${skillStyle.borderRadius}`);
+            }
+            
+            // 检查CSS变量
+            const root = document.documentElement;
+            const computedRoot = window.getComputedStyle(root);
+            info.push(`--primary-gradient: ${computedRoot.getPropertyValue('--primary-gradient') || '未定义'}`);
+            info.push(`--white: ${computedRoot.getPropertyValue('--white') || '未定义'}`);
+            info.push(`--primary-color: ${computedRoot.getPropertyValue('--primary-color') || '未定义'}`);
+            
+            return info.join('<br>');
+        }
+        
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                document.getElementById('diagnostic-info').innerHTML = getDiagnosticInfo();
+            }, 1000);
+        });
+    </script>
+</body>
+</html>

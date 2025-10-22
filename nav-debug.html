@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>导航样式调试 - 导航样式丢失检查</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            margin: 20px; 
+            background: #f5f5f5;
+        }
+        .debug-section {
+            background: white;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .debug-title {
+            color: #333;
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        .status { 
+            padding: 10px; 
+            margin: 10px 0; 
+            border-radius: 4px; 
+            font-family: monospace;
+        }
+        .success { background: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+        .error { background: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+        .warning { background: #fff3cd; color: #856404; border: 1px solid #ffeaa7; }
+        .info { background: #d1ecf1; color: #0c5460; border: 1px solid #bee5eb; }
+        .css-preview {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            padding: 15px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 12px;
+            white-space: pre-wrap;
+            margin: 10px 0;
+        }
+        .nav-demo {
+            position: relative;
+            background: white;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        .test-nav {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .test-nav-menu {
+            display: flex;
+            gap: 2rem;
+        }
+        .test-nav-item {
+            color: #1f2937;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        .test-nav-item:hover {
+            color: #2563eb;
+            background: rgba(37, 99, 235, 0.1);
+        }
+        .test-nav-item.active {
+            color: #2563eb;
+            background: rgba(37, 99, 235, 0.15);
+            font-weight: 600;
+        }
+        .test-nav-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #2563eb;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="debug-section">
+        <div class="debug-title">🔍 导航样式丢失诊断报告</div>
+        
+        <div id="css-load-status"></div>
+        <div id="nav-structure-status"></div>
+        <div id="nav-classes-status"></div>
+        <div id="nav-styles-status"></div>
+        <div id="responsive-status"></div>
+        
+        <div class="debug-title">📋 CSS文件加载检查</div>
+        <div id="css-files"></div>
+        
+        <div class="debug-title">🎨 导航样式预览</div>
+        <div class="nav-demo">
+            <div class="test-nav">
+                <a href="#" class="test-nav-logo">Chrystal</a>
+                <div class="test-nav-menu">
+                    <a href="#home" class="test-nav-item active">首页</a>
+                    <a href="#about" class="test-nav-item">关于</a>
+                    <a href="#skills" class="test-nav-item">技能</a>
+                    <a href="#projects" class="test-nav-item">项目</a>
+                    <a href="#contact" class="test-nav-item">联系</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="debug-title">🔧 修复建议</div>
+        <div id="fix-suggestions"></div>
+        
+        <div class="debug-title">📊 详细诊断</div>
+        <div id="detailed-diagnostics"></div>
+    </div>
+
+    <script>
+        function checkNavStyles() {
+            const results = {
+                cssLoad: document.getElementById('css-load-status'),
+                navStructure: document.getElementById('nav-structure-status'),
+                navClasses: document.getElementById('nav-classes-status'),
+                navStyles: document.getElementById('nav-styles-status'),
+                responsive: document.getElementById('responsive-status'),
+                cssFiles: document.getElementById('css-files'),
+                fixSuggestions: document.getElementById('fix-suggestions'),
+                detailedDiagnostics: document.getElementById('detailed-diagnostics')
+            };
+
+            // 1. 检查CSS文件加载
+            const navElement = document.querySelector('.cali-nav');
+            const computedStyles = navElement ? window.getComputedStyle(navElement) : null;
+            
+            if (!navElement) {
+                results.cssLoad.innerHTML = '<div class="status error">❌ 导航元素未找到</div>';
+                return;
+            }
+
+            // 检查关键样式
+            const background = computedStyles.background;
+            const position = computedStyles.position;
+            const display = computedStyles.display;
+            
+            let cssStatus = '';
+            if (background && background !== 'rgba(0, 0, 0, 0)') {
+                cssStatus += '<div class="status success">✅ 背景样式正常: ' + background + '</div>';
+            } else {
+                cssStatus += '<div class="status error">❌ 背景样式异常: ' + background + '</div>';
+            }
+            
+            if (position === 'fixed') {
+                cssStatus += '<div class="status success">✅ 定位样式正常: ' + position + '</div>';
+            } else {
+                cssStatus += '<div class="status error">❌ 定位样式异常: ' + position + '</div>';
+            }
+            
+            results.cssLoad.innerHTML = cssStatus;
+
+            // 2. 检查导航结构
+            const navContainer = navElement.querySelector('.cali-nav-container');
+            const navMenu = navElement.querySelector('.cali-nav-menu');
+            const navItems = navElement.querySelectorAll('.cali-nav-item');
+            
+            let structureStatus = '';
+            if (navContainer) {
+                structureStatus += '<div class="status success">✅ 导航容器存在</div>';
+            } else {
+                structureStatus += '<div class="status error">❌ 导航容器缺失</div>';
+            }
+            
+            if (navMenu) {
+                structureStatus += '<div class="status success">✅ 导航菜单存在</div>';
+            } else {
+                structureStatus += '<div class="status error">❌ 导航菜单缺失</div>';
+            }
+            
+            if (navItems.length > 0) {
+                structureStatus += '<div class="status success">✅ 导航项数量: ' + navItems.length + '</div>';
+            } else {
+                structureStatus += '<div class="status error">❌ 导航项未找到</div>';
+            }
+            
+            results.navStructure.innerHTML = structureStatus;
+
+            // 3. 检查CSS类
+            const hasNavClass = navElement.classList.contains('cali-nav');
+            const hasScrolledClass = navElement.classList.contains('scrolled');
+            
+            let classStatus = '';
+            if (hasNavClass) {
+                classStatus += '<div class="status success">✅ cali-nav 类存在</div>';
+            } else {
+                classStatus += '<div class="status error">❌ cali-nav 类缺失</div>';
+            }
+            
+            classStatus += '<div class="status info">ℹ️ 滚动状态: ' + (hasScrolledClass ? '已滚动' : '未滚动') + '</div>';
+            
+            results.navClasses.innerHTML = classStatus;
+
+            // 4. 检查响应式样式
+            const navToggle = navElement.querySelector('.cali-nav-toggle');
+            const menuDisplay = navMenu ? window.getComputedStyle(navMenu).display : 'none';
+            
+            let responsiveStatus = '';
+            if (navToggle) {
+                responsiveStatus += '<div class="status success">✅ 移动端菜单按钮存在</div>';
+            } else {
+                responsiveStatus += '<div class="status warning">⚠️ 移动端菜单按钮缺失</div>';
+            }
+            
+            responsiveStatus += '<div class="status info">ℹ️ 菜单显示状态: ' + menuDisplay + '</div>';
+            
+            results.responsive.innerHTML = responsiveStatus;
+
+            // 5. CSS文件检查
+            const cssLinks = document.querySelectorAll('link[rel="stylesheet"]');
+            let cssFilesHtml = '';
+            
+            cssLinks.forEach(link => {
+                const href = link.href;
+                if (href.includes('cali-nav.css')) {
+                    cssFilesHtml += '<div class="status success">✅ cali-nav.css 已加载: ' + href + '</div>';
+                } else if (href.includes('cali-style.css')) {
+                    cssFilesHtml += '<div class="status success">✅ cali-style.css 已加载: ' + href + '</div>';
+                } else if (href.includes('custom.css')) {
+                    cssFilesHtml += '<div class="status info">ℹ️ custom.css 已加载: ' + href + '</div>';
+                } else if (href.includes('main.css')) {
+                    cssFilesHtml += '<div class="status info">ℹ️ main.css 已加载: ' + href + '</div>';
+                }
+            });
+            
+            // 检查是否缺少cali-nav.css
+            const hasCaliNavCss = Array.from(cssLinks).some(link => link.href.includes('cali-nav.css'));
+            if (!hasCaliNavCss) {
+                cssFilesHtml += '<div class="status error">❌ cali-nav.css 未找到 - 这可能是导航样式丢失的主要原因！</div>';
+            }
+            
+            results.cssFiles.innerHTML = cssFilesHtml;
+
+            // 6. 生成修复建议
+            let fixSuggestions = '';
+            
+            if (!hasCaliNavCss) {
+                fixSuggestions += '<div class="status error">🚨 紧急修复：添加cali-nav.css文件引用</div>';
+                fixSuggestions += '<div class="css-preview">在&lt;head&gt;中添加：\n&lt;link rel="stylesheet" href="/css/cali-nav.css"&gt;</div>';
+            }
+            
+            if (background === 'rgba(0, 0, 0, 0)' || !background) {
+                fixSuggestions += '<div class="status warning">⚠️ 背景样式异常，检查CSS变量定义</div>';
+                fixSuggestions += '<div class="css-preview">/* 添加基础导航样式 */\n.cali-nav {\n  background: rgba(255, 255, 255, 0.95);\n  backdrop-filter: blur(10px);\n  position: fixed;\n  top: 0;\n  left: 0;\n  right: 0;\n  z-index: 1000;\n}</div>';
+            }
+            
+            if (!navContainer || !navMenu) {
+                fixSuggestions += '<div class="status error">❌ HTML结构不完整，检查导航HTML代码</div>';
+            }
+            
+            results.fixSuggestions.innerHTML = fixSuggestions;
+
+            // 7. 详细诊断信息
+            let detailedInfo = '<div class="debug-title">详细样式信息：</div>';
+            detailedInfo += '<div class="css-preview">导航元素计算样式：\n';
+            detailedInfo += 'background: ' + background + '\n';
+            detailedInfo += 'position: ' + position + '\n';
+            detailedInfo += 'display: ' + display + '\n';
+            detailedInfo += 'z-index: ' + computedStyles.zIndex + '\n';
+            detailedInfo += 'top: ' + computedStyles.top + '\n';
+            detailedInfo += 'left: ' + computedStyles.left + '\n';
+            detailedInfo += 'right: ' + computedStyles.right + '\n';
+            detailedInfo += '</div>';
+            
+            results.detailedDiagnostics.innerHTML = detailedInfo;
+        }
+
+        // 页面加载完成后执行检查
+        window.addEventListener('load', checkNavStyles);
+        
+        // 滚动时更新状态
+        window.addEventListener('scroll', function() {
+            setTimeout(checkNavStyles, 100);
+        });
+    </script>
+</body>
+</html>

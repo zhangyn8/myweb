@@ -1,5 +1,274 @@
 /* Cali.so Inspired Styles - Modern & Minimalist */
 
+/* 页面加载动画 */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-10px);
+    }
+    60% {
+        transform: translateY(-5px);
+    }
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes shake {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    10%, 30%, 50%, 70%, 90% {
+        transform: translateX(-5px);
+    }
+    20%, 40%, 60%, 80% {
+        transform: translateX(5px);
+    }
+}
+
+@keyframes glow {
+    from {
+        opacity: 0.2;
+        transform: scale(1);
+    }
+    to {
+        opacity: 0.4;
+        transform: scale(1.1);
+    }
+}
+
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* 滚动显示动画类 */
+.scroll-animate {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: var(--transition-slow);
+}
+
+.scroll-animate.animated {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.scroll-animate-left {
+    opacity: 0;
+    transform: translateX(-30px);
+    transition: var(--transition-slow);
+}
+
+.scroll-animate-left.animated {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.scroll-animate-right {
+    opacity: 0;
+    transform: translateX(30px);
+    transition: var(--transition-slow);
+}
+
+.scroll-animate-right.animated {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.scroll-animate-scale {
+    opacity: 0;
+    transform: scale(0.9);
+    transition: var(--transition-slow);
+}
+
+.scroll-animate-scale.animated {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* 页面加载动画延迟 */
+.delay-1 { animation-delay: 0.1s; }
+.delay-2 { animation-delay: 0.2s; }
+.delay-3 { animation-delay: 0.3s; }
+.delay-4 { animation-delay: 0.4s; }
+.delay-5 { animation-delay: 0.5s; }
+.delay-6 { animation-delay: 0.6s; }
+
+/* 悬停效果增强 */
+.hover-lift {
+    transition: var(--transition-bounce);
+}
+
+.hover-lift:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-heavy);
+}
+
+.hover-scale {
+    transition: var(--transition-bounce);
+}
+
+.hover-scale:hover {
+    transform: scale(1.05);
+}
+
+.hover-rotate {
+    transition: var(--transition);
+}
+
+.hover-rotate:hover {
+    transform: rotate(5deg) scale(1.1);
+}
+
+.hover-glow {
+    transition: var(--transition);
+}
+
+.hover-glow:hover {
+    filter: brightness(1.2) drop-shadow(0 0 20px rgba(102, 126, 234, 0.5));
+}
+
+/* 点击效果 */
+.click-effect {
+    position: relative;
+    overflow: hidden;
+}
+
+.click-effect::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.click-effect:active::before {
+    width: 300px;
+    height: 300px;
+}
+
+/* 加载动画 */
+.loading-spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    border-top: 4px solid var(--primary-color);
+    border-radius: 50%;
+    animation: rotate 1s linear infinite;
+}
+
+/* 波纹效果 */
+.ripple {
+    position: relative;
+    overflow: hidden;
+}
+
+.ripple::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.ripple:active::before {
+    width: 300px;
+    height: 300px;
+}
+
 /* Modern color palette inspired by cali.so */
 :root {
     --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -23,6 +292,8 @@
     --border-radius: 16px;
     --border-radius-small: 8px;
     --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-slow: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
 /* Modern typography */
@@ -64,20 +335,89 @@ body {
     opacity: 0.3;
 }
 
+/* Hero profile section with photo */
+.hero-profile-section {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.hero-photo-container {
+    position: relative;
+    flex-shrink: 0;
+}
+
+.hero-photo {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    transition: var(--transition);
+}
+
+.hero-photo:hover {
+    transform: scale(1.05);
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+.hero-photo-glow {
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    background: var(--accent-gradient);
+    border-radius: 50%;
+    opacity: 0.3;
+    filter: blur(20px);
+    animation: glow 3s ease-in-out infinite alternate;
+    z-index: -1;
+}
+
+@keyframes glow {
+    from {
+        opacity: 0.2;
+        transform: scale(1);
+    }
+    to {
+        opacity: 0.4;
+        transform: scale(1.1);
+    }
+}
+
+.hero-text-content {
+    flex: 1;
+    min-width: 300px;
+}
+
 .cali-hero-content {
-    text-align: center;
+    text-align: left;
     color: var(--white);
     z-index: 2;
-    max-width: 800px;
+    max-width: 1000px;
     padding: 0 2rem;
 }
 
 .cali-hero-title {
     font-size: clamp(2.5rem, 5vw, 4rem);
     font-weight: 700;
-    margin-bottom: 1.5rem;
+    margin-bottom: 0.5rem;
     line-height: 1.2;
     animation: fadeInUp 0.8s ease-out;
+}
+
+.hero-skills-tagline {
+    font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+    font-weight: 400;
+    margin-bottom: 1.5rem;
+    opacity: 0.9;
+    color: rgba(255, 255, 255, 0.9);
+    animation: fadeInUp 0.8s ease-out 0.2s both;
+    letter-spacing: 0.5px;
 }
 
 .cali-hero-subtitle {
@@ -108,14 +448,36 @@ body {
     border-radius: var(--border-radius);
     font-weight: 600;
     font-size: 1.1rem;
-    transition: var(--transition);
+    transition: var(--transition-slow);
     box-shadow: var(--shadow-light);
     animation: fadeInUp 0.8s ease-out 0.6s both;
+    position: relative;
+    overflow: hidden;
 }
 
 .cali-button:hover {
-    transform: translateY(-2px);
+    transform: translateY(-3px) scale(1.02);
     box-shadow: var(--shadow-medium);
+}
+
+.cali-button:active {
+    transform: translateY(-1px) scale(0.98);
+    transition: var(--transition-bounce);
+}
+
+.cali-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left var(--transition-slow);
+}
+
+.cali-button:hover::before {
+    left: 100%;
 }
 
 .cali-button-secondary {
@@ -123,11 +485,29 @@ body {
     color: var(--white);
     border: 2px solid var(--white);
     margin-left: 1rem;
+    position: relative;
+    overflow: hidden;
 }
 
 .cali-button-secondary:hover {
     background: var(--white);
     color: var(--primary-color);
+    transform: translateY(-3px) scale(1.02);
+}
+
+.cali-button-secondary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left var(--transition-slow);
+}
+
+.cali-button-secondary:hover::before {
+    left: 100%;
 }
 
 /* Hero social links */
@@ -238,6 +618,7 @@ body {
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 2rem;
     margin-top: 3rem;
+    align-items: stretch;
 }
 
 .cali-skill-item {
@@ -246,17 +627,83 @@ body {
     background: var(--white);
     border-radius: var(--border-radius);
     box-shadow: var(--shadow-light);
-    transition: var(--transition);
+    transition: var(--transition-bounce);
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.cali-skill-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.cali-skill-item:hover::before {
+    left: 100%;
 }
 
 .cali-skill-item:hover {
-    transform: translateY(-3px);
-    box-shadow: var(--shadow-medium);
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: var(--shadow-heavy);
+}
+
+.cali-skill-item:hover .cali-skill-icon {
+    transform: scale(1.1) rotate(5deg);
+    filter: drop-shadow(0 5px 15px rgba(102, 126, 234, 0.3));
 }
 
 .cali-skill-icon {
     width: 60px;
     height: 60px;
+    transition: var(--transition-bounce);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    background: var(--primary-gradient);
+    border-radius: 50%;
+    color: white;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+.cali-skill-title {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+    transition: var(--transition);
+}
+
+.cali-skill-item:hover .cali-skill-title {
+    color: var(--primary-color);
+    transform: translateY(-2px);
+}
+
+.cali-skill-description {
+    color: var(--text-secondary);
+    line-height: 1.6;
+    transition: var(--transition);
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cali-skill-item:hover .cali-skill-description {
+    color: var(--text-primary);
+    transform: translateY(-1px);
+}
     background: var(--accent-gradient);
     border-radius: 50%;
     display: flex;
@@ -292,12 +739,19 @@ body {
     border-radius: var(--border-radius);
     overflow: hidden;
     box-shadow: var(--shadow-light);
-    transition: var(--transition);
+    transition: var(--transition-slow);
+    position: relative;
+    cursor: pointer;
 }
 
 .cali-project-card:hover {
-    transform: translateY(-8px);
+    transform: translateY(-12px) scale(1.02);
     box-shadow: var(--shadow-heavy);
+}
+
+.cali-project-card:active {
+    transform: translateY(-6px) scale(0.98);
+    transition: var(--transition-bounce);
 }
 
 .cali-project-image {
@@ -309,6 +763,28 @@ body {
     justify-content: center;
     color: var(--white);
     font-size: 3rem;
+    transition: var(--transition-slow);
+    position: relative;
+    overflow: hidden;
+}
+
+.cali-project-image::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    transition: left var(--transition-slow);
+}
+
+.cali-project-card:hover .cali-project-image::before {
+    left: 100%;
+}
+
+.cali-project-card:hover .cali-project-image {
+    transform: scale(1.05);
 }
 
 .cali-project-content {
@@ -320,12 +796,24 @@ body {
     font-weight: 600;
     margin-bottom: 0.5rem;
     color: var(--text-primary);
+    transition: var(--transition-slow);
+}
+
+.cali-project-card:hover .cali-project-title {
+    color: var(--primary-color);
+    transform: translateY(-2px);
 }
 
 .cali-project-description {
     color: var(--text-secondary);
     line-height: 1.6;
     margin-bottom: 1.5rem;
+    transition: var(--transition-slow);
+}
+
+.cali-project-card:hover .cali-project-description {
+    color: var(--text-primary);
+    transform: translateY(-1px);
 }
 
 .cali-project-link {
@@ -335,11 +823,32 @@ body {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    transition: var(--transition);
+    transition: var(--transition-slow);
+    position: relative;
+    padding: 0.5rem 1rem;
+    border-radius: var(--border-radius);
 }
 
 .cali-project-link:hover {
     gap: 0.8rem;
+    background: rgba(52, 152, 219, 0.1);
+    transform: translateX(5px);
+}
+
+.cali-project-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: var(--primary-color);
+    transition: var(--transition-slow);
+    transform: translateX(-50%);
+}
+
+.cali-project-link:hover::after {
+    width: 80%;
 }
 
 /* Contact section */
@@ -380,13 +889,31 @@ body {
     text-decoration: none;
     border-radius: var(--border-radius);
     backdrop-filter: blur(10px);
-    transition: var(--transition);
+    transition: var(--transition-slow);
     border: 1px solid rgba(255, 255, 255, 0.2);
+    position: relative;
+    overflow: hidden;
 }
 
 .cali-contact-link:hover {
     background: rgba(255, 255, 255, 0.2);
-    transform: translateY(-2px);
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.cali-contact-link::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left var(--transition-slow);
+}
+
+.cali-contact-link:hover::before {
+    left: 100%;
 }
 
 /* Animations */
@@ -403,6 +930,43 @@ body {
 
 .fade-in-up {
     animation: fadeInUp 0.8s ease-out;
+}
+
+/* 滚动显示动画 */
+.scroll-animate {
+    animation: scrollFadeInUp 0.8s ease-out forwards;
+}
+
+@keyframes scrollFadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px) scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* 初始状态隐藏 */
+.cali-skill-item,
+.cali-project-card,
+.cali-card,
+.cali-section-title,
+.cali-section-description {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+/* 滚动动画激活状态 */
+.cali-skill-item.scroll-animate,
+.cali-project-card.scroll-animate,
+.cali-card.scroll-animate,
+.cali-section-title.scroll-animate,
+.cali-section-description.scroll-animate {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 /* Responsive design */
@@ -433,6 +997,45 @@ body {
         flex-direction: column;
         align-items: center;
     }
+    
+    /* Hero section responsive styles */
+    .hero-profile-section {
+        flex-direction: column;
+        text-align: center;
+        gap: 2rem;
+    }
+    
+    .hero-photo {
+        width: 150px;
+        height: 150px;
+    }
+    
+    .hero-text-content {
+        text-align: center;
+        min-width: auto;
+    }
+    
+    .cali-hero-content {
+        text-align: center;
+    }
+    
+    .cali-hero-title {
+        font-size: clamp(1.8rem, 4vw, 2.5rem);
+    }
+    
+    .cali-hero-description {
+        font-size: 1rem;
+    }
+    
+    .cali-button {
+        padding: 0.8rem 1.5rem;
+        font-size: 1rem;
+        margin: 0.5rem;
+    }
+    
+    .cali-button-secondary {
+        margin-left: 0;
+    }
 }
 
 /* Smooth scrolling */
@@ -456,4 +1059,39 @@ html {
 
 ::-webkit-scrollbar-thumb:hover {
     background: var(--dark-color);
+}
+
+/* 鼠标跟随效果（已禁用圆圈样式）
+.mouse-cursor {
+    position: fixed;
+    width: 20px;
+    height: 20px;
+    background: rgba(52, 152, 219, 0.3);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transition: transform 0.1s ease-out;
+    transform: translate(-50%, -50%);
+    border: 2px solid rgba(52, 152, 219, 0.5);
+}
+
+.mouse-cursor.hover {
+    transform: translate(-50%, -50%) scale(1.5);
+    background: rgba(52, 152, 219, 0.5);
+    border-color: rgba(52, 152, 219, 0.8);
+}
+*/
+
+/* 视差效果 */
+.parallax-element {
+    transition: transform 0.1s ease-out;
+}
+
+/* 鼠标悬停时的微妙浮动效果 */
+.hover-float {
+    transition: transform var(--transition-slow);
+}
+
+.hover-float:hover {
+    transform: translateY(-5px);
 }

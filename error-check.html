@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>控制台错误检查</title>
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/cali-style.css">
+    <link rel="stylesheet" href="/css/custom.css">
+</head>
+<body>
+    <h1>控制台错误检查</h1>
+    
+    <div style="border: 1px solid #ccc; padding: 20px; margin: 20px;">
+        <h2>检查控制台是否有错误</h2>
+        <p>请打开浏览器控制台查看是否有错误信息</p>
+        
+        <div class="cali-hero">
+            <div class="cali-hero-content">
+                <h1 class="cali-hero-title">测试标题</h1>
+                <p class="cali-hero-description">测试描述</p>
+                <a href="#" class="cali-button">测试按钮</a>
+            </div>
+        </div>
+    </div>
+    
+    <div id="console-info" style="border: 1px solid #ccc; padding: 20px; margin: 20px; background: #f5f5f5;">
+        <h3>捕获的错误信息:</h3>
+        <div id="errors"></div>
+    </div>
+    
+    <div id="network-info" style="border: 1px solid #ccc; padding: 20px; margin: 20px; background: #f5f5f5;">
+        <h3>网络请求状态:</h3>
+        <div id="network-status"></div>
+    </div>
+    
+    <script>
+        // 捕获控制台错误
+        const errors = [];
+        const networkStatus = [];
+        
+        window.addEventListener('error', function(e) {
+            errors.push({
+                message: e.message,
+                filename: e.filename,
+                lineno: e.lineno,
+                colno: e.colno
+            });
+            updateErrorDisplay();
+        });
+        
+        // 捕获未处理的Promise拒绝
+        window.addEventListener('unhandledrejection', function(e) {
+            errors.push({
+                message: 'Unhandled Promise Rejection: ' + e.reason,
+                filename: 'unknown',
+                lineno: 0,
+                colno: 0
+            });
+            updateErrorDisplay();
+        });
+        
+        function updateErrorDisplay() {
+            const errorDiv = document.getElementById('errors');
+            if (errors.length === 0) {
+                errorDiv.innerHTML = '<p style="color: green;">✅ 未捕获到错误</p>';
+            } else {
+                errorDiv.innerHTML = errors.map(err => 
+                    `<div style="border: 1px solid red; padding: 10px; margin: 10px 0; background: white;">
+                        <p><strong>错误:</strong> ${err.message}</p>
+                        <p><strong>文件:</strong> ${err.filename}:${err.lineno}:${err.colno}</p>
+                    </div>`
+                ).join('');
+            }
+        }
+        
+        // 检查CSS文件加载
+        function checkCSSFiles() {
+            const cssFiles = [
+                '/css/main.css',
+                '/css/cali-style.css', 
+                '/css/custom.css'
+            ];
+            
+            const networkDiv = document.getElementById('network-status');
+            
+            Promise.all(cssFiles.map(url => {
+                return fetch(url, { method: 'HEAD' })
+                    .then(response => ({
+                        url,
+                        status: response.status,
+                        ok: response.ok,
+                        statusText: response.statusText
+                    }))
+                    .catch(error => ({
+                        url,
+                        status: 'ERROR',
+                        ok: false,
+                        statusText: error.message
+                    }));
+            })).then(results => {
+                networkDiv.innerHTML = results.map(result => 
+                    `<div style="border: 1px solid ${result.ok ? 'green' : 'red'}; padding: 10px; margin: 10px 0; background: white;">
+                        <p><strong>文件:</strong> ${result.url}</p>
+                        <p><strong>状态:</strong> ${result.status} ${result.statusText}</p>
+                        <p style="color: ${result.ok ? 'green' : 'red'};">${result.ok ? '✅ 加载成功' : '❌ 加载失败'}</p>
+                    </div>`
+                ).join('');
+            });
+        }
+        
+        // 检查CSS应用情况
+        function checkCSSApplication() {
+            setTimeout(() => {
+                const hero = document.querySelector('.cali-hero');
+                const heroContent = document.querySelector('.cali-hero-content');
+                const heroTitle = document.querySelector('.cali-hero-title');
+                
+                const infoDiv = document.createElement('div');
+                infoDiv.style.cssText = 'border: 1px solid #ccc; padding: 20px; margin: 20px; background: #f9f9f9;';
+                infoDiv.innerHTML = '<h3>CSS应用检查:</h3>';
+                
+                if (hero) {
+                    const style = window.getComputedStyle(hero);
+                    infoDiv.innerHTML += `
+                        <h4>Hero元素样式:</h4>
+                        <p>background: ${style.background}</p>
+                        <p>display: ${style.display}</p>
+                        <p>min-height: ${style.minHeight}</p>
+                        <p>align-items: ${style.alignItems}</p>
+                        <p>justify-content: ${style.justifyContent}</p>
+                    `;
+                } else {
+                    infoDiv.innerHTML += '<p style="color: red;">❌ 找不到.cali-hero元素</p>';
+                }
+                
+                if (heroContent) {
+                    const style = window.getComputedStyle(heroContent);
+                    infoDiv.innerHTML += `
+                        <h4>Hero内容样式:</h4>
+                        <p>color: ${style.color}</p>
+                        <p>max-width: ${style.maxWidth}</p>
+                        <p>text-align: ${style.textAlign}</p>
+                    `;
+                }
+                
+                if (heroTitle) {
+                    const style = window.getComputedStyle(heroTitle);
+                    infoDiv.innerHTML += `
+                        <h4>Hero标题样式:</h4>
+                        <p>font-size: ${style.fontSize}</p>
+                        <p>font-weight: ${style.fontWeight}</p>
+                        <p>color: ${style.color}</p>
+                    `;
+                }
+                
+                document.body.appendChild(infoDiv);
+            }, 1000);
+        }
+        
+        // 初始化检查
+        window.addEventListener('load', function() {
+            updateErrorDisplay();
+            checkCSSFiles();
+            checkCSSApplication();
+        });
+    </script>
+</body>
+</html>

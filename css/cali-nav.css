@@ -68,6 +68,31 @@
   color: var(--primary-color, #2563eb);
 }
 
+/* 活动导航标签样式 */
+.cali-nav-item.active {
+  color: var(--primary-color, #2563eb);
+  background: rgba(37, 99, 235, 0.15);
+  font-weight: 600;
+}
+
+.cali-nav-item.active::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20px;
+  height: 3px;
+  background: var(--primary-color, #2563eb);
+  border-radius: 2px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.cali-nav-item.active::after {
+  opacity: 1;
+}
+
 /* 移动端汉堡菜单按钮 */
 .cali-nav-toggle {
   display: none;

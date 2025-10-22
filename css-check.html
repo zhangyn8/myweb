@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS应用检查</title>
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/cali-style.css">
+    <link rel="stylesheet" href="/css/custom.css">
+</head>
+<body>
+    <h1>CSS应用检查 - 简单测试</h1>
+    
+    <div style="border: 1px solid #ccc; padding: 20px; margin: 20px;">
+        <h2>直接检查</h2>
+        <p>请查看下面的元素是否有正确的样式：</p>
+        
+        <div class="cali-hero" style="min-height: 200px; border: 2px dashed red;">
+            <div class="cali-hero-content">
+                <h1 class="cali-hero-title">测试标题</h1>
+                <p class="cali-hero-description">这是一个测试描述</p>
+                <a href="#" class="cali-button">测试按钮</a>
+            </div>
+        </div>
+    </div>
+    
+    <div style="border: 1px solid #ccc; padding: 20px; margin: 20px;">
+        <h2>CSS变量检查</h2>
+        <div id="css-vars"></div>
+    </div>
+    
+    <div style="border: 1px solid #ccc; padding: 20px; margin: 20px;">
+        <h2>计算样式检查</h2>
+        <div id="computed-styles"></div>
+    </div>
+    
+    <script>
+        // 检查CSS变量
+        const root = document.documentElement;
+        const computedRoot = window.getComputedStyle(root);
+        const cssVars = [
+            '--primary-gradient',
+            '--white',
+            '--primary-color',
+            '--text-primary'
+        ];
+        
+        let varsHtml = '<h3>CSS变量:</h3>';
+        cssVars.forEach(varName => {
+            const value = computedRoot.getPropertyValue(varName);
+            varsHtml += `<p>${varName}: ${value || '未定义'}</p>`;
+        });
+        document.getElementById('css-vars').innerHTML = varsHtml;
+        
+        // 检查计算样式
+        setTimeout(() => {
+            const hero = document.querySelector('.cali-hero');
+            const heroContent = document.querySelector('.cali-hero-content');
+            const heroTitle = document.querySelector('.cali-hero-title');
+            const heroButton = document.querySelector('.cali-button');
+            
+            let stylesHtml = '<h3>计算样式:</h3>';
+            
+            if (hero) {
+                const heroStyle = window.getComputedStyle(hero);
+                stylesHtml += '<h4>Hero元素:</h4>';
+                stylesHtml += `<p>background: ${heroStyle.background}</p>`;
+                stylesHtml += `<p>display: ${heroStyle.display}</p>`;
+                stylesHtml += `<p>min-height: ${heroStyle.minHeight}</p>`;
+                stylesHtml += `<p>align-items: ${heroStyle.alignItems}</p>`;
+                stylesHtml += `<p>justify-content: ${heroStyle.justifyContent}</p>`;
+            }
+            
+            if (heroContent) {
+                const contentStyle = window.getComputedStyle(heroContent);
+                stylesHtml += '<h4>Hero内容:</h4>';
+                stylesHtml += `<p>color: ${contentStyle.color}</p>`;
+                stylesHtml += `<p>max-width: ${contentStyle.maxWidth}</p>`;
+                stylesHtml += `<p>text-align: ${contentStyle.textAlign}</p>`;
+            }
+            
+            if (heroTitle) {
+                const titleStyle = window.getComputedStyle(heroTitle);
+                stylesHtml += '<h4>Hero标题:</h4>';
+                stylesHtml += `<p>font-size: ${titleStyle.fontSize}</p>`;
+                stylesHtml += `<p>font-weight: ${titleStyle.fontWeight}</p>`;
+                stylesHtml += `<p>color: ${titleStyle.color}</p>`;
+                stylesHtml += `<p>margin-bottom: ${titleStyle.marginBottom}</p>`;
+            }
+            
+            if (heroButton) {
+                const buttonStyle = window.getComputedStyle(heroButton);
+                stylesHtml += '<h4>Hero按钮:</h4>';
+                stylesHtml += `<p>background: ${buttonStyle.background}</p>`;
+                stylesHtml += `<p>color: ${buttonStyle.color}</p>`;
+                stylesHtml += `<p>padding: ${buttonStyle.padding}</p>`;
+                stylesHtml += `<p>border-radius: ${buttonStyle.borderRadius}</p>`;
+                stylesHtml += `<p>font-weight: ${buttonStyle.fontWeight}</p>`;
+            }
+            
+            document.getElementById('computed-styles').innerHTML = stylesHtml;
+        }, 500);
+    </script>
+</body>
+</html>
