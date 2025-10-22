@@ -462,6 +462,7 @@ body {
 .cali-button:hover {
     transform: translateY(-3px) scale(1.02);
     box-shadow: var(--shadow-medium);
+    filter: brightness(1.1);
 }
 
 .cali-button:active {
@@ -1366,12 +1367,12 @@ html {
     100% { background-position: 0% 50%; }
 }
 
-/* 光效动画 */
+/* 光效动画 - 修复与按钮的冲突 */
 .glow-effect {
     position: relative;
 }
 
-.glow-effect::after {
+.glow-effect:not(.cali-button)::after {
     content: '';
     position: absolute;
     top: -2px;
@@ -1390,7 +1391,7 @@ html {
     animation: glowRotate 3s linear infinite;
 }
 
-.glow-effect:hover::after {
+.glow-effect:not(.cali-button):hover::after {
     opacity: 1;
 }
 
