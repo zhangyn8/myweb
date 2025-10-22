@@ -437,7 +437,7 @@ body {
     animation: fadeInUp 0.8s ease-out 0.4s both;
 }
 
-/* Modern buttons */
+/* Modern buttons - 优化基础样式 */
 .cali-button {
     display: inline-flex;
     align-items: center;
@@ -449,11 +449,14 @@ body {
     border-radius: var(--border-radius);
     font-weight: 600;
     font-size: 1.1rem;
-    transition: var(--transition-slow);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     box-shadow: var(--shadow-light);
     animation: fadeInUp 0.8s ease-out 0.6s both;
     position: relative;
     overflow: hidden;
+    cursor: pointer;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .cali-button:hover {
@@ -463,52 +466,7 @@ body {
 
 .cali-button:active {
     transform: translateY(-1px) scale(0.98);
-    transition: var(--transition-bounce);
-}
-
-.cali-button::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-    transition: left var(--transition-slow);
-}
-
-.cali-button:hover::before {
-    left: 100%;
-}
-
-.cali-button-secondary {
-    background: transparent;
-    color: var(--white);
-    border: 2px solid var(--white);
-    margin-left: 1rem;
-    position: relative;
-    overflow: hidden;
-}
-
-.cali-button-secondary:hover {
-    background: var(--white);
-    color: var(--primary-color);
-    transform: translateY(-3px) scale(1.02);
-}
-
-.cali-button-secondary::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-    transition: left var(--transition-slow);
-}
-
-.cali-button-secondary:hover::before {
-    left: 100%;
+    transition: all 0.1s ease;
 }
 
 /* Hero social links */
@@ -1475,14 +1433,14 @@ html {
     animation: pulse 1s ease-out;
 }
 
-/* 按钮增强效果 */
+/* 按钮增强效果 - 修复冲突 */
 .cali-button {
     position: relative;
     overflow: hidden;
     transition: all 0.3s ease;
 }
 
-.cali-button::before {
+.cali-button::after {
     content: '';
     position: absolute;
     top: 50%;
@@ -1493,15 +1451,54 @@ html {
     border-radius: 50%;
     transform: translate(-50%, -50%);
     transition: width 0.6s, height 0.6s;
+    z-index: 1;
 }
 
-.cali-button:hover::before {
+.cali-button:hover::after {
     width: 300px;
     height: 300px;
 }
 
 .cali-button:active {
     transform: scale(0.95);
+}
+
+/* 主按钮特殊样式 */
+.cali-button-primary {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: var(--white);
+    border: none;
+    box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+}
+
+.cali-button-primary:hover {
+    background: linear-gradient(135deg, #2980b9, #8e44ad);
+    box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
+    transform: translateY(-3px) scale(1.02);
+}
+
+.cali-button-primary:active {
+    transform: translateY(-1px) scale(0.98);
+}
+
+/* 次要按钮特殊样式 */
+.cali-button-secondary {
+    background: transparent;
+    color: var(--white);
+    border: 2px solid var(--white);
+    box-shadow: 0 2px 10px rgba(255, 255, 255, 0.1);
+}
+
+.cali-button-secondary:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--white);
+    border-color: var(--white);
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
+    transform: translateY(-3px) scale(1.02);
+}
+
+.cali-button-secondary:active {
+    transform: translateY(-1px) scale(0.98);
 }
 
 
@@ -1592,6 +1589,33 @@ html {
 
 .cali-section-title:hover::after {
     width: 100%;
+}
+
+/* 按钮光效增强 */
+.cali-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+    transition: left 0.6s ease;
+    z-index: 2;
+}
+
+.cali-button:hover::before {
+    left: 100%;
+}
+
+/* 按钮文本层级 */
+.cali-button span {
+    position: relative;
+    z-index: 3;
+}
+
+.cali-button::after {
+    z-index: 1;
 }
 
 /* 滚动指示器 */
