@@ -1184,13 +1184,6 @@ body {
     transform: translateY(0);
 }
 
-/* 标题hover效果 */
-.cali-section-title:hover {
-    color: var(--primary-color);
-    transform: translateY(-2px);
-    transition: all 0.3s ease;
-}
-
 /* Responsive design */
 @media (max-width: 768px) {
     .cali-section {
