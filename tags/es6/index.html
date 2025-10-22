@@ -1,194 +1,37 @@
-<!DOCTYPE html>
-<html lang="zh-cn">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Es6 - 我的个人网站</title>
-    <meta name="description" content="Chrystal的个人网站 - AI训练师 &amp; 开发者">
-    
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
-    
-    <link rel="stylesheet" href="/myweb/css/main.css">
-    <link rel="stylesheet" href="/myweb/css/custom.css">
-    
-    
-    <link rel="icon" type="image/x-icon" href="/myweb/favicon.ico">
-    
-    
-    <meta name="theme-color" content="#667eea">
-    
-    
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://zhangyn8.github.io/myweb/tags/es6/">
-    <meta property="og:title" content="Es6">
-    <meta property="og:description" content="Chrystal的个人网站 - AI训练师 &amp; 开发者">
-    
-    
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://zhangyn8.github.io/myweb/tags/es6/">
-    <meta property="twitter:title" content="Es6">
-    <meta property="twitter:description" content="Chrystal的个人网站 - AI训练师 &amp; 开发者">
-    
-    
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "WebSite",
-        "name": "我的个人网站",
-        "description": "Chrystal的个人网站 - AI训练师 \u0026 开发者",
-        "url": "https:\/\/zhangyn8.github.io\/myweb\/",
-        "author": {
-            "@type": "Person",
-            "name": "Chrystal"
-        }
-    }
-    </script>
-    
-    
-    
-    
-</head>
-<body>
-    
-    
-    
-    <div class="main-container">
-        
-        
-        
-        
-        <main class="main-content">
-            
-<div class="list-page">
-    <header class="page-header">
-        <h1 class="page-title">Es6</h1>
-        
-    </header>
-    
-    <div class="post-list">
-        
-        <article class="post-card">
-            <div class="post-meta">
-                <time datetime="2024-01-20">January 20, 2024</time>
-            </div>
-            <h2 class="post-title">
-                <a href="https://zhangyn8.github.io/myweb/posts/modern-javascript-features/">Modern JavaScript Features</a>
-            </h2>
-            <p class="post-summary"><h1 id="modern-javascript-features">Modern JavaScript Features</h1>
-<p>JavaScript has evolved significantly over the years, introducing powerful features that make development more efficient and code more readable. Let&rsquo;s explore some of the most important modern JavaScript features.</p>
-<h2 id="arrow-functions">Arrow Functions</h2>
-<p>Arrow functions provide a concise syntax for writing functions and automatically bind the <code>this</code> context.</p>
-<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#57606a">// Traditional function
-</span></span></span><span style="display:flex;"><span><span style="color:#57606a"></span><span style="color:#cf222e">function</span> <span style="color:#1f2328">add</span><span style="color:#1f2328">(</span><span style="color:#1f2328">a</span><span style="color:#1f2328">,</span> <span style="color:#1f2328">b</span><span style="color:#1f2328">)</span> <span style="color:#1f2328">{</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#cf222e">return</span> <span style="color:#1f2328">a</span> <span style="color:#0550ae">+</span> <span style="color:#1f2328">b</span><span style="color:#1f2328">;</span>
-</span></span><span style="display:flex;"><span><span style="color:#1f2328">}</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#57606a">// Arrow function
-</span></span></span><span style="display:flex;"><span><span style="color:#57606a"></span><span style="color:#cf222e">const</span> <span style="color:#1f2328">add</span> <span style="color:#0550ae">=</span> <span style="color:#1f2328">(</span><span style="color:#1f2328">a</span><span style="color:#1f2328">,</span> <span style="color:#1f2328">b</span><span style="color:#1f2328">)</span> <span style="color:#1f2328">=&gt;</span> <span style="color:#1f2328">a</span> <span style="color:#0550ae">+</span> <span style="color:#1f2328">b</span><span style="color:#1f2328">;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#57606a">// With single parameter
-</span></span></span><span style="display:flex;"><span><span style="color:#57606a"></span><span style="color:#cf222e">const</span> <span style="color:#1f2328">square</span> <span style="color:#0550ae">=</span> <span style="color:#1f2328">x</span> <span style="color:#1f2328">=&gt;</span> <span style="color:#1f2328">x</span> <span style="color:#0550ae">*</span> <span style="color:#1f2328">x</span><span style="color:#1f2328">;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#57606a">// With block body
-</span></span></span><span style="display:flex;"><span><span style="color:#57606a"></span><span style="color:#cf222e">const</span> <span style="color:#1f2328">greet</span> <span style="color:#0550ae">=</span> <span style="color:#1f2328">name</span> <span style="color:#1f2328">=&gt;</span> <span style="color:#1f2328">{</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#cf222e">return</span> <span style="color:#0a3069">`Hello, </span><span style="color:#0a3069">${</span><span style="color:#1f2328">name</span><span style="color:#0a3069">}</span><span style="color:#0a3069">!`</span><span style="color:#1f2328">;</span>
-</span></span><span style="display:flex;"><span><span style="color:#1f2328">};</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h2 id="destructuring-assignment">Destructuring Assignment</h2>
-<p>Destructuring allows you to extract values from arrays and objects in a more readable way.</p></p>
-            
-            <div class="post-tags">
-                
-                <span class="tag">javascript</span>
-                
-                <span class="tag">es6</span>
-                
-                <span class="tag">programming</span>
-                
-            </div>
-            
-        </article>
-        
-    </div>
-</div>
-
-        </main>
-    </div>
-    
-    
-    
-    
-    
-    
-    
-    <script>
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-        
-        
-        const lazyImages = document.querySelectorAll('.lazy-image');
-        
-        if ('IntersectionObserver' in window) {
-            const imageObserver = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const image = entry.target;
-                        image.classList.add('loaded');
-                        observer.unobserve(image);
-                    }
-                });
-            });
-            
-            lazyImages.forEach(image => {
-                imageObserver.observe(image);
-            });
-        } else {
-            
-            lazyImages.forEach(image => {
-                image.classList.add('loaded');
-            });
-        }
-        
-        
-        document.querySelectorAll('.project-image').forEach(image => {
-            image.addEventListener('click', function() {
-                
-                const modal = document.createElement('div');
-                modal.style.cssText = `
+<!doctype html><html lang=zh-cn><head><meta charset=UTF-8><meta name=viewport content="width=device-width,initial-scale=1"><title>Es6 - 我的个人网站</title>
+<meta name=description content="Chrystal的个人网站 - AI训练师 & 开发者"><link rel=preconnect href=https://fonts.googleapis.com><link rel=preconnect href=https://fonts.gstatic.com crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel=stylesheet><link rel=stylesheet href=/css/main.css><link rel=stylesheet href=/css/cali-style.css><link rel=stylesheet href=/css/custom.css><link rel=icon type=image/x-icon href=/favicon.ico><meta name=theme-color content="#667eea"><meta property="og:type" content="website"><meta property="og:url" content="/tags/es6/"><meta property="og:title" content="Es6"><meta property="og:description" content="Chrystal的个人网站 - AI训练师 & 开发者"><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="/tags/es6/"><meta property="twitter:title" content="Es6"><meta property="twitter:description" content="Chrystal的个人网站 - AI训练师 & 开发者"><script type=application/ld+json>{"@context":"https://schema.org","@type":"WebSite","name":"我的个人网站","description":"Chrystal的个人网站 - AI训练师 \u0026 开发者","url":"\/","author":{"@type":"Person","name":"Chrystal"}}</script></head><body><div class=main-container><main class=main-content><div class=list-page><header class=page-header><h1 class=page-title>Es6</h1></header><div class=post-list><article class=post-card><div class=post-meta><time datetime=2024-01-20>January 20, 2024</time></div><h2 class=post-title><a href=/posts/modern-javascript-features/>Modern JavaScript Features</a></h2><p class=post-summary><h1 id=modern-javascript-features>Modern JavaScript Features</h1><p>JavaScript has evolved significantly over the years, introducing powerful features that make development more efficient and code more readable. Let&rsquo;s explore some of the most important modern JavaScript features.</p><h2 id=arrow-functions>Arrow Functions</h2><p>Arrow functions provide a concise syntax for writing functions and automatically bind the <code>this</code> context.</p><div class=highlight><div style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">15
+</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-javascript data-lang=javascript><span style=display:flex><span><span style=color:#57606a>// Traditional function
+</span></span></span><span style=display:flex><span><span style=color:#57606a></span><span style=color:#cf222e>function</span> <span style=color:#1f2328>add</span><span style=color:#1f2328>(</span><span style=color:#1f2328>a</span><span style=color:#1f2328>,</span> <span style=color:#1f2328>b</span><span style=color:#1f2328>)</span> <span style=color:#1f2328>{</span>
+</span></span><span style=display:flex><span>    <span style=color:#cf222e>return</span> <span style=color:#1f2328>a</span> <span style=color:#0550ae>+</span> <span style=color:#1f2328>b</span><span style=color:#1f2328>;</span>
+</span></span><span style=display:flex><span><span style=color:#1f2328>}</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#57606a>// Arrow function
+</span></span></span><span style=display:flex><span><span style=color:#57606a></span><span style=color:#cf222e>const</span> <span style=color:#1f2328>add</span> <span style=color:#0550ae>=</span> <span style=color:#1f2328>(</span><span style=color:#1f2328>a</span><span style=color:#1f2328>,</span> <span style=color:#1f2328>b</span><span style=color:#1f2328>)</span> <span style=color:#1f2328>=&gt;</span> <span style=color:#1f2328>a</span> <span style=color:#0550ae>+</span> <span style=color:#1f2328>b</span><span style=color:#1f2328>;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#57606a>// With single parameter
+</span></span></span><span style=display:flex><span><span style=color:#57606a></span><span style=color:#cf222e>const</span> <span style=color:#1f2328>square</span> <span style=color:#0550ae>=</span> <span style=color:#1f2328>x</span> <span style=color:#1f2328>=&gt;</span> <span style=color:#1f2328>x</span> <span style=color:#0550ae>*</span> <span style=color:#1f2328>x</span><span style=color:#1f2328>;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#57606a>// With block body
+</span></span></span><span style=display:flex><span><span style=color:#57606a></span><span style=color:#cf222e>const</span> <span style=color:#1f2328>greet</span> <span style=color:#0550ae>=</span> <span style=color:#1f2328>name</span> <span style=color:#1f2328>=&gt;</span> <span style=color:#1f2328>{</span>
+</span></span><span style=display:flex><span>    <span style=color:#cf222e>return</span> <span style=color:#0a3069>`Hello, </span><span style=color:#0a3069>${</span><span style=color:#1f2328>name</span><span style=color:#0a3069>}</span><span style=color:#0a3069>!`</span><span style=color:#1f2328>;</span>
+</span></span><span style=display:flex><span><span style=color:#1f2328>};</span>
+</span></span></code></pre></td></tr></table></div></div><h2 id=destructuring-assignment>Destructuring Assignment</h2><p>Destructuring allows you to extract values from arrays and objects in a more readable way.</p></p><div class=post-tags><span class=tag>javascript</span>
+<span class=tag>es6</span>
+<span class=tag>programming</span></div></article></div></div></main></div><script>document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",function(e){e.preventDefault();const t=document.querySelector(this.getAttribute("href"));t&&t.scrollIntoView({behavior:"smooth",block:"start"})})});const lazyImages=document.querySelectorAll(".lazy-image");if("IntersectionObserver"in window){const e=new IntersectionObserver((e,t)=>{e.forEach(e=>{if(e.isIntersecting){const n=e.target;n.classList.add("loaded"),t.unobserve(n)}})});lazyImages.forEach(t=>{e.observe(t)})}else lazyImages.forEach(e=>{e.classList.add("loaded")});document.querySelectorAll(".project-image").forEach(e=>{e.addEventListener("click",function(){const e=document.createElement("div");e.style.cssText=`
                     position: fixed;
                     top: 0;
                     left: 0;
@@ -200,34 +43,9 @@
                     align-items: center;
                     z-index: 1000;
                     cursor: pointer;
-                `;
-                
-                const modalImage = document.createElement('img');
-                modalImage.src = this.src;
-                modalImage.alt = this.alt;
-                modalImage.style.cssText = `
+                `;const t=document.createElement("img");t.src=this.src,t.alt=this.alt,t.style.cssText=`
                     max-width: 90%;
                     max-height: 90%;
                     border-radius: 8px;
                     box-shadow: 0 8px 16px rgba(0,0,0,0.3);
-                `;
-                
-                modal.appendChild(modalImage);
-                document.body.appendChild(modal);
-                
-                
-                modal.addEventListener('click', function() {
-                    document.body.removeChild(modal);
-                });
-                
-                
-                document.addEventListener('keydown', function(e) {
-                    if (e.key === 'Escape' && modal.parentNode) {
-                        document.body.removeChild(modal);
-                    }
-                });
-            });
-        });
-    </script>
-</body>
-</html>
+                `,e.appendChild(t),document.body.appendChild(e),e.addEventListener("click",function(){document.body.removeChild(e)}),document.addEventListener("keydown",function(t){t.key==="Escape"&&e.parentNode&&document.body.removeChild(e)})})})</script></body></html>
