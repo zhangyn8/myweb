@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>标签换行修复验证</title>
+    <link rel="stylesheet" href="/css/cali-style.css">
+    <link rel="stylesheet" href="/css/custom.css">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            padding: 2rem;
+            background: #f5f5f5;
+        }
+        
+        .test-container {
+            max-width: 350px; /* 模拟实际项目卡片宽度 */
+            margin: 2rem auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .test-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #333;
+            text-align: center;
+        }
+        
+        .test-description {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        
+        /* 使用修复后的样式 */
+        .cali-project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+        
+        .cali-project-tech .tech-tag {
+            background: #f0f0f0;
+            color: #666;
+            padding: 0.25rem 0.75rem;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            /* 关键修复：防止标签换行时拆开 */
+            display: inline-block;
+            white-space: nowrap;
+            word-break: keep-all;
+        }
+        
+        .status {
+            margin-top: 1.5rem;
+            padding: 1rem;
+            background: #e8f4f8;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+        
+        .status.success {
+            background: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            color: #16a34a;
+        }
+        
+        /* 深色模式测试 */
+        @media (prefers-color-scheme: dark) {
+            body {
+                background: #1a1a1a;
+            }
+            
+            .test-container {
+                background: #2d2d2d;
+                color: #e5e5e5;
+            }
+            
+            .test-title {
+                color: #f0f0f0;
+            }
+            
+            .test-description {
+                color: #b3b3b3;
+            }
+            
+            .cali-project-tech .tech-tag {
+                background: rgba(255, 255, 255, 0.1);
+                color: #d1d5db;
+                border-color: rgba(255, 255, 255, 0.15);
+            }
+            
+            .status {
+                background: rgba(59, 130, 246, 0.1);
+                color: #93c5fd;
+            }
+        }
+        
+        /* 响应式测试 */
+        @media (max-width: 480px) {
+            .test-container {
+                max-width: 280px;
+                padding: 1.5rem;
+            }
+            
+            .cali-project-tech {
+                gap: 0.375rem;
+            }
+            
+            .cali-project-tech .tech-tag {
+                font-size: 0.7rem;
+                padding: 0.2rem 0.6rem;
+            }
+        }
+        
+        /* 宽度指示器 */
+        .width-indicator {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-family: monospace;
+        }
+        
+        /* 对比测试 */
+        .comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .comparison-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .comparison-title {
+            font-weight: 600;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+        
+        .problematic .tech-tag {
+            /* 模拟问题样式 */
+            display: inline;
+            white-space: normal;
+        }
+        
+        .fixed .tech-tag {
+            /* 修复后的样式 */
+            display: inline-block;
+            white-space: nowrap;
+            word-break: keep-all;
+        }
+        
+        @media (max-width: 768px) {
+            .comparison {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="width-indicator" id="widthIndicator"></div>
+    
+    <h1 style="text-align: center; color: #333;">🔧 标签换行问题修复验证</h1>
+    
+    <div class="test-container">
+        <div class="test-title">AI项目经验卡片</div>
+        <div class="test-description">大语言模型微调与优化项目</div>
+        
+        <div class="cali-project-tech">
+            <span class="tech-tag">大语言模型微调</span>
+            <span class="tech-tag">指令调优</span>
+            <span class="tech-tag">RLHF</span>
+            <span class="tech-tag">模型评估</span>
+        </div>
+        
+        <div class="status success">
+            ✅ 标签换行问题已修复
+        </div>
+    </div>
+    
+    <div class="comparison">
+        <div class="comparison-item problematic">
+            <div class="comparison-title" style="color: #dc2626;">❌ 问题状态</div>
+            <div class="cali-project-tech">
+                <span class="tech-tag">大语言模型微调</span>
+                <span class="tech-tag">指令调优</span>
+                <span class="tech-tag">RLHF</span>
+                <span class="tech-tag">模型评估</span>
+            </div>
+            <p style="font-size: 0.8rem; color: #666; margin-top: 1rem;">
+                标签可能被拆开换行，影响美观
+            </p>
+        </div>
+        
+        <div class="comparison-item fixed">
+            <div class="comparison-title" style="color: #16a34a;">✅ 修复状态</div>
+            <div class="cali-project-tech">
+                <span class="tech-tag">大语言模型微调</span>
+                <span class="tech-tag">指令调优</span>
+                <span class="tech-tag">RLHF</span>
+                <span class="tech-tag">模型评估</span>
+            </div>
+            <p style="font-size: 0.8rem; color: #666; margin-top: 1rem;">
+                标签作为一个整体换行，保持完整性
+            </p>
+        </div>
+    </div>
+    
+    <div style="text-align: center; margin: 2rem;">
+        <h3 style="color: #333; margin-bottom: 1rem;">🔍 测试说明</h3>
+        <p style="color: #666; font-size: 0.9rem; line-height: 1.6; max-width: 600px; margin: 0 auto;">
+            调整浏览器窗口大小，观察标签在不同宽度下的表现。修复后的标签会作为一个整体进行换行，
+            不会被拆开，确保视觉效果的一致性和美观性。
+        </p>
+    </div>
+    
+    <script>
+        // 实时显示窗口宽度
+        function updateWidthIndicator() {
+            const width = window.innerWidth;
+            document.getElementById('widthIndicator').textContent = `窗口宽度: ${width}px`;
+        }
+        
+        window.addEventListener('resize', updateWidthIndicator);
+        updateWidthIndicator();
+        
+        // 添加调试信息
+        console.log('🔧 标签换行修复验证页面已加载');
+        console.log('📏 当前窗口宽度:', window.innerWidth, 'px');
+        console.log('💡 请调整窗口大小测试响应式效果');
+        
+        // 检测深色模式
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            console.log('🌙 深色模式已启用');
+        } else {
+            console.log('☀️ 浅色模式');
+        }
+        
+        // 监听深色模式变化
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+            console.log(e.matches ? '🌙 切换到深色模式' : '☀️ 切换到浅色模式');
+        });
+    </script>
+</body>
+</html>

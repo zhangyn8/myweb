@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>导航栏固定测试</title>
+    <link rel="stylesheet" href="css/cali-nav.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 200vh; /* 让页面可以滚动 */
+            background: linear-gradient(to bottom, #f0f0f0, #e0e0e0);
+        }
+        
+        .test-content {
+            padding: 100px 20px 20px;
+            text-align: center;
+        }
+        
+        .status-indicator {
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            background: rgba(0,0,0,0.8);
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            z-index: 1001;
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="cali-nav" id="caliNav">
+        <div class="cali-nav-container">
+            <a href="#" class="cali-nav-logo">测试导航</a>
+            <div class="cali-nav-menu">
+                <a href="#home" class="cali-nav-item active">首页</a>
+                <a href="#about" class="cali-nav-item">关于</a>
+                <a href="#skills" class="cali-nav-item">技能</a>
+                <a href="#projects" class="cali-nav-item">项目</a>
+                <a href="#contact" class="cali-nav-item">联系</a>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- 状态指示器 -->
+    <div class="status-indicator" id="statusIndicator">
+        滚动位置: <span id="scrollPos">0</span>px<br>
+        导航栏类: <span id="navClass">无</span>
+    </div>
+    
+    <!-- 测试内容 -->
+    <div class="test-content">
+        <h1>导航栏固定测试页面</h1>
+        <p>请向下滚动页面，观察导航栏是否应该固定在顶部。</p>
+        <p>如果导航栏没有固定，说明CSS样式存在问题。</p>
+        <br><br>
+        <h2>测试说明：</h2>
+        <p>1. 导航栏应该始终固定在页面顶部</p>
+        <p>2. 滚动超过50px时，导航栏应该添加"scrolled"类</p>
+        <p>3. 背景应该变为更不透明，并显示阴影</p>
+    </div>
+    
+    <script>
+        const nav = document.getElementById('caliNav');
+        const scrollPosSpan = document.getElementById('scrollPos');
+        const navClassSpan = document.getElementById('navClass');
+        
+        window.addEventListener('scroll', function() {
+            const scrollY = window.scrollY;
+            scrollPosSpan.textContent = Math.round(scrollY);
+            
+            if (scrollY > 50) {
+                nav.classList.add('scrolled');
+                navClassSpan.textContent = 'scrolled';
+            } else {
+                nav.classList.remove('scrolled');
+                navClassSpan.textContent = '无';
+            }
+            
+            console.log('滚动位置:', scrollY, '导航栏类:', nav.className);
+        });
+        
+        // 检查导航栏计算样式
+        window.addEventListener('load', function() {
+            const computedStyle = window.getComputedStyle(nav);
+            console.log('导航栏计算样式:');
+            console.log('position:', computedStyle.position);
+            console.log('top:', computedStyle.top);
+            console.log('left:', computedStyle.left);
+            console.log('right:', computedStyle.right);
+            console.log('z-index:', computedStyle.zIndex);
+        });
+    </script>
+</body>
+</html>

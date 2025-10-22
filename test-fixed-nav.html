@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>导航栏固定测试</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 200vh; /* 创建可滚动页面 */
+            background: linear-gradient(to bottom, #f0f0f0, #e0e0e0);
+        }
+        
+        .test-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 20px;
+            text-align: center;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+        
+        .test-nav.scrolled {
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .content {
+            padding-top: 100px; /* 为固定导航栏留出空间 */
+            text-align: center;
+            font-size: 24px;
+            color: #333;
+        }
+        
+        .status {
+            position: fixed;
+            top: 120px;
+            right: 20px;
+            background: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-family: monospace;
+        }
+    </style>
+</head>
+<body>
+    <nav class="test-nav" id="testNav">
+        测试导航栏 - 应该固定在顶部
+    </nav>
+    
+    <div class="content">
+        <h1>导航栏固定测试页面</h1>
+        <p>向下滚动查看导航栏是否保持固定</p>
+        <p>滚动距离: <span id="scrollDistance">0</span>px</p>
+        <br><br><br><br><br>
+        <p>继续滚动...</p>
+        <br><br><br><br><br>
+        <p>导航栏应该始终固定在顶部</p>
+        <br><br><br><br><br>
+        <p>如果导航栏没有固定，说明有问题</p>
+    </div>
+    
+    <div class="status" id="status">导航栏状态: 正常</div>
+    
+    <script>
+        const nav = document.getElementById('testNav');
+        const scrollDistance = document.getElementById('scrollDistance');
+        const status = document.getElementById('status');
+        
+        window.addEventListener('scroll', function() {
+            const scrollY = window.scrollY;
+            scrollDistance.textContent = scrollY;
+            
+            if (scrollY > 50) {
+                nav.classList.add('scrolled');
+                status.textContent = '导航栏状态: 已滚动';
+                status.style.background = '#2196F3';
+            } else {
+                nav.classList.remove('scrolled');
+                status.textContent = '导航栏状态: 正常';
+                status.style.background = '#4CAF50';
+            }
+            
+            // 检查导航栏是否真的固定
+            const navRect = nav.getBoundingClientRect();
+            if (navRect.top !== 0) {
+                status.textContent = '导航栏状态: 未固定！';
+                status.style.background = '#f44336';
+            }
+        });
+    </script>
+</body>
+</html>

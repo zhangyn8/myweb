@@ -42,26 +42,31 @@
     </script>
 </head>
 <body>
+    <!-- 导航栏 - 移到最外层确保fixed定位正常工作 -->
+    <nav class="cali-nav" id="caliNav">
+        <div class="cali-nav-container">
+            <a href="#" class="cali-nav-logo">Chrystal</a>
+            <div class="cali-nav-menu">
+                <a href="#home" class="cali-nav-item">首页</a>
+                <a href="#about" class="cali-nav-item">关于</a>
+                <a href="#skills" class="cali-nav-item">技能</a>
+                <a href="#projects" class="cali-nav-item">项目</a>
+                <a href="#contact" class="cali-nav-item">联系</a>
+            </div>
+            <button class="cali-nav-toggle" id="caliNavToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+    
+    <!-- 移动端菜单遮罩层 -->
+    <div class="nav-overlay" id="navOverlay"></div>
+
     <div class="main-container">
         <main class="main-content">
             <section class="cali-hero" id="home">
-                <nav class="cali-nav" id="caliNav">
-                    <div class="cali-nav-container">
-                        <a href="#" class="cali-nav-logo">Chrystal</a>
-                        <div class="cali-nav-menu">
-                            <a href="#home" class="cali-nav-item">首页</a>
-                            <a href="#about" class="cali-nav-item">关于</a>
-                            <a href="#skills" class="cali-nav-item">技能</a>
-                            <a href="#projects" class="cali-nav-item">项目</a>
-                            <a href="#contact" class="cali-nav-item">联系</a>
-                        </div>
-                        <button class="cali-nav-toggle" id="caliNavToggle">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                        </button>
-                    </div>
-                </nav>
                 <div class="cali-hero-content">
                     <div class="hero-profile-section">
                         <div class="hero-photo-container">
@@ -168,6 +173,62 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="cali-project-card">
+                            <div class="cali-project-image"><i class="iconfont icon-ai-robot"></i></div>
+                            <div class="cali-project-content">
+                                <h3 class="cali-project-title">AI Agent开发平台构建</h3>
+                                <p class="cali-project-description">基于Coze和dify平台开发智能AI Agent，集成多种AI能力包括对话管理、任务执行、知识库检索等功能，实现企业级AI助手解决方案。</p>
+                                <div class="cali-project-tech">
+                                    <span class="tech-tag">Coze</span>
+                                    <span class="tech-tag">dify</span>
+                                    <span class="tech-tag">AI Agent</span>
+                                    <span class="tech-tag">对话管理</span>
+                                    <span class="tech-tag">知识库</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cali-project-card">
+                            <div class="cali-project-image"><i class="iconfont icon-computer"></i></div>
+                            <div class="cali-project-content">
+                                <h3 class="cali-project-title">AI开发工具链优化</h3>
+                                <p class="cali-project-description">运用Cursor等AI编程助手提升开发效率，构建自动化工作流程。使用n8n搭建可视化工作流，实现AI模型训练和数据处理的自动化编排。</p>
+                                <div class="cali-project-tech">
+                                    <span class="tech-tag">Cursor</span>
+                                    <span class="tech-tag">n8n</span>
+                                    <span class="tech-tag">工作流自动化</span>
+                                    <span class="tech-tag">AI编程助手</span>
+                                    <span class="tech-tag">开发效率</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cali-project-card">
+                            <div class="cali-project-image"><i class="iconfont icon-chart"></i></div>
+                            <div class="cali-project-content">
+                                <h3 class="cali-project-title">RAG与SFT技术应用</h3>
+                                <p class="cali-project-description">实现检索增强生成(RAG)架构，结合外部知识库提升模型回答准确性。运用监督微调(SFT)技术，针对特定领域数据对模型进行精准调优。</p>
+                                <div class="cali-project-tech">
+                                    <span class="tech-tag">RAG</span>
+                                    <span class="tech-tag">SFT</span>
+                                    <span class="tech-tag">检索增强</span>
+                                    <span class="tech-tag">知识库</span>
+                                    <span class="tech-tag">模型微调</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cali-project-card">
+                            <div class="cali-project-image"><i class="iconfont icon-design"></i></div>
+                            <div class="cali-project-content">
+                                <h3 class="cali-project-title">AI文档处理与展示</h3>
+                                <p class="cali-project-description">开发基于Markdown的AI文档系统，支持技术文档自动编写、代码注释生成、API文档自动化构建。实现文档的智能索引和检索功能。</p>
+                                <div class="cali-project-tech">
+                                    <span class="tech-tag">Markdown</span>
+                                    <span class="tech-tag">文档自动化</span>
+                                    <span class="tech-tag">智能索引</span>
+                                    <span class="tech-tag">代码文档</span>
+                                    <span class="tech-tag">API文档</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -231,48 +292,111 @@
 
             // 移动端菜单切换
             const navToggle = document.getElementById("caliNavToggle");
-            if (navToggle) {
-                navToggle.addEventListener("click", function() {
-                    navToggle.classList.toggle("active");
-                    console.log("移动端菜单按钮被点击");
-                });
+            const navMenu = document.querySelector(".cali-nav-menu");
+            const navOverlay = document.getElementById("navOverlay");
+            
+            function toggleMobileMenu() {
+                const isOpen = navMenu.classList.contains("active");
+                
+                if (isOpen) {
+                    // 关闭菜单
+                    navMenu.classList.remove("active");
+                    navToggle.classList.remove("active");
+                    navOverlay.classList.remove("active");
+                    document.body.classList.remove("menu-open");
+                    document.body.style.overflow = "";
+                } else {
+                    // 打开菜单
+                    navMenu.classList.add("active");
+                    navToggle.classList.add("active");
+                    navOverlay.classList.add("active");
+                    document.body.classList.add("menu-open");
+                    document.body.style.overflow = "hidden";
+                }
             }
-
-            // 设置首页导航项为活跃状态
-            const homeLink = document.querySelector('.cali-nav-item a[href="#home"]');
-            if (homeLink && homeLink.parentElement) {
-                homeLink.parentElement.classList.add("active");
+            
+            if (navToggle && navMenu && navOverlay) {
+                navToggle.addEventListener("click", toggleMobileMenu);
+                
+                // 点击遮罩层关闭菜单
+                navOverlay.addEventListener("click", toggleMobileMenu);
+                
+                // 点击导航项后关闭菜单
+                navMenu.querySelectorAll(".cali-nav-item").forEach(item => {
+                    item.addEventListener("click", toggleMobileMenu);
+                });
+                
+                // ESC键关闭菜单
+                document.addEventListener("keydown", function(e) {
+                    if (e.key === "Escape" && navMenu.classList.contains("active")) {
+                        toggleMobileMenu();
+                    }
+                });
             }
         });
 
-        // 导航高亮更新
+        // 导航高亮更新（优化版）
         function updateActiveNavigation() {
             const sections = document.querySelectorAll("section[id]");
             const navItems = document.querySelectorAll(".cali-nav-item");
             
-            let currentSection = "";
-            const scrollPosition = window.scrollY + 100;
+            console.log(`找到 ${sections.length} 个section, ${navItems.length} 个导航项`);
             
-            sections.forEach(section => {
+            let currentSection = "home"; // 默认为首页
+            const scrollPosition = window.scrollY + 120; // 增加偏移量，考虑导航栏高度
+            
+            console.log(`当前滚动位置: ${window.scrollY}px, 计算位置: ${scrollPosition}px`);
+            
+            // 从底部向上检查，确保最底部的section优先
+            for (let i = sections.length - 1; i >= 0; i--) {
+                const section = sections[i];
                 const sectionTop = section.offsetTop;
                 const sectionHeight = section.offsetHeight;
                 const sectionId = section.getAttribute("id");
                 
-                if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                console.log(`检查章节 ${sectionId}: 位置 ${sectionTop}-${sectionTop + sectionHeight}`);
+                
+                if (scrollPosition >= sectionTop) {
                     currentSection = sectionId;
+                    console.log(`匹配到章节: ${currentSection}`);
+                    break;
+                }
+            }
+            
+            // 更新导航项状态
+            navItems.forEach(item => {
+                item.classList.remove("active");
+                const href = item.getAttribute("href");
+                console.log(`导航项 href: ${href}, 目标: #${currentSection}`);
+                if (href === "#" + currentSection) {
+                    item.classList.add("active");
+                    console.log(`激活导航项: ${href}`);
                 }
             });
             
-            navItems.forEach(item => {
-                item.classList.remove("active");
-                const link = item.querySelector("a");
-                if (link && link.getAttribute("href") === "#" + currentSection) {
-                    item.classList.add("active");
-                }
-            });
+            console.log(`最终章节: ${currentSection}`);
         }
 
-        window.addEventListener("scroll", updateActiveNavigation);
+        // 节流函数，优化滚动性能
+        function throttle(func, wait) {
+            let timeout;
+            return function executedFunction(...args) {
+                const later = () => {
+                    clearTimeout(timeout);
+                    func(...args);
+                };
+                clearTimeout(timeout);
+                timeout = setTimeout(later, wait);
+            };
+        }
+        
+        // 使用节流的滚动事件监听
+        window.addEventListener("scroll", throttle(updateActiveNavigation, 100));
+        
+        // 页面加载时立即执行一次 - 延迟执行确保DOM完全加载
+        window.addEventListener("load", () => {
+            setTimeout(updateActiveNavigation, 100);
+        });
 
         // 平滑滚动
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -329,9 +453,10 @@
             console.log("鼠标跟随效果已简化");
         }
 
-        // 视差滚动效果
+        // 视差滚动效果（修复版 - 排除导航栏容器）
         function initParallaxEffect() {
-            const elements = document.querySelectorAll(".cali-hero, .cali-section-title, .hero-photo");
+            // 排除导航栏和hero-profile-section，避免影响fixed定位
+            const elements = document.querySelectorAll(".cali-section-title, .hero-photo");
             
             document.addEventListener("mousemove", (e) => {
                 const mouseX = e.clientX / window.innerWidth - 0.5;

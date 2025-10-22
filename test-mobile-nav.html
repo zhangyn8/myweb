@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>移动端导航测试</title>
+    <link rel="stylesheet" href="/css/cali-nav.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f5f5f5;
+        }
+        
+        .test-section {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+            text-align: center;
+        }
+        
+        #home { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        #about { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
+        #skills { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
+        #projects { background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); }
+        #contact { background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); }
+        
+        .status-panel {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 12px;
+            z-index: 1000;
+            max-width: 300px;
+        }
+        
+        .status-item {
+            margin: 5px 0;
+        }
+        
+        .status-item.active {
+            color: #4CAF50;
+        }
+        
+        .status-item.inactive {
+            color: #f44336;
+        }
+        
+        @media (max-width: 768px) {
+            .status-panel {
+                bottom: 10px;
+                right: 10px;
+                left: 10px;
+                max-width: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="cali-nav" id="caliNav">
+        <div class="cali-nav-container">
+            <a href="#" class="cali-nav-logo">移动端测试</a>
+            <div class="cali-nav-menu">
+                <a href="#home" class="cali-nav-item">首页</a>
+                <a href="#about" class="cali-nav-item">关于</a>
+                <a href="#skills" class="cali-nav-item">技能</a>
+                <a href="#projects" class="cali-nav-item">项目</a>
+                <a href="#contact" class="cali-nav-item">联系</a>
+            </div>
+            <button class="cali-nav-toggle" id="caliNavToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+    
+    <!-- 遮罩层 -->
+    <div class="nav-overlay" id="navOverlay"></div>
+    
+    <!-- 测试内容 -->
+    <section class="test-section" id="home">
+        <div>
+            <h1>首页</h1>
+            <p>测试移动端导航功能</p>
+        </div>
+    </section>
+    
+    <section class="test-section" id="about">
+        <div>
+            <h1>关于</h1>
+            <p>滚动测试区域</p>
+        </div>
+    </section>
+    
+    <section class="test-section" id="skills">
+        <div>
+            <h1>技能</h1>
+            <p>导航高亮测试</p>
+        </div>
+    </section>
+    
+    <section class="test-section" id="projects">
+        <div>
+            <h1>项目</h1>
+            <p>移动端适配测试</p>
+        </div>
+    </section>
+    
+    <section class="test-section" id="contact">
+        <div>
+            <h1>联系</h1>
+            <p>功能完整性测试</p>
+        </div>
+    </section>
+    
+    <!-- 状态面板 -->
+    <div class="status-panel" id="statusPanel">
+        <div class="status-item">🎯 移动端导航测试</div>
+        <div class="status-item" id="scrollStatus">📜 滚动位置: 0px</div>
+        <div class="status-item" id="activeSection">🏠 当前章节: home</div>
+        <div class="status-item" id="menuStatus">📱 菜单状态: 关闭</div>
+        <div class="status-item" id="viewportStatus">📏 视口: 未知</div>
+    </div>
+    
+    <script>
+        // 移动端菜单功能
+        const navToggle = document.getElementById("caliNavToggle");
+        const navMenu = document.querySelector(".cali-nav-menu");
+        const navOverlay = document.getElementById("navOverlay");
+        const statusPanel = document.getElementById("statusPanel");
+        
+        function toggleMobileMenu() {
+            const isOpen = navMenu.classList.contains("active");
+            
+            if (isOpen) {
+                navMenu.classList.remove("active");
+                navToggle.classList.remove("active");
+                navOverlay.classList.remove("active");
+                document.body.classList.remove("menu-open");
+                document.body.style.overflow = "";
+            } else {
+                navMenu.classList.add("active");
+                navToggle.classList.add("active");
+                navOverlay.classList.add("active");
+                document.body.classList.add("menu-open");
+                document.body.style.overflow = "hidden";
+            }
+            
+            updateStatusPanel();
+        }
+        
+        if (navToggle && navMenu && navOverlay) {
+            navToggle.addEventListener("click", toggleMobileMenu);
+            navOverlay.addEventListener("click", toggleMobileMenu);
+            
+            navMenu.querySelectorAll(".cali-nav-item").forEach(item => {
+                item.addEventListener("click", toggleMobileMenu);
+            });
+            
+            document.addEventListener("keydown", function(e) {
+                if (e.key === "Escape" && navMenu.classList.contains("active")) {
+                    toggleMobileMenu();
+                }
+            });
+        }
+        
+        // 导航高亮功能
+        function updateActiveNavigation() {
+            const sections = document.querySelectorAll("section[id]");
+            const navItems = document.querySelectorAll(".cali-nav-item");
+            
+            let currentSection = "home";
+            const scrollPosition = window.scrollY + 120;
+            
+            // 从底部向上检查
+            for (let i = sections.length - 1; i >= 0; i--) {
+                const section = sections[i];
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.offsetHeight;
+                const sectionId = section.getAttribute("id");
+                
+                if (scrollPosition >= sectionTop) {
+                    currentSection = sectionId;
+                    break;
+                }
+            }
+            
+            // 更新导航项状态
+            navItems.forEach(item => {
+                item.classList.remove("active");
+                const href = item.getAttribute("href");
+                if (href === "#" + currentSection) {
+                    item.classList.add("active");
+                }
+            });
+            
+            updateStatusPanel();
+        }
+        
+        // 更新状态面板
+        function updateStatusPanel() {
+            const scrollY = window.scrollY;
+            const sections = document.querySelectorAll("section[id]");
+            let currentSection = "home";
+            const scrollPosition = scrollY + 120;
+            
+            for (let i = sections.length - 1; i >= 0; i--) {
+                const section = sections[i];
+                const sectionTop = section.offsetTop;
+                if (scrollPosition >= sectionTop) {
+                    currentSection = section.getAttribute("id");
+                    break;
+                }
+            }
+            
+            const menuOpen = navMenu.classList.contains("active");
+            const viewportWidth = window.innerWidth;
+            const isMobile = viewportWidth <= 768;
+            
+            document.getElementById("scrollStatus").textContent = `📜 滚动位置: ${scrollY}px`;
+            document.getElementById("activeSection").textContent = `🏠 当前章节: ${currentSection}`;
+            document.getElementById("menuStatus").textContent = `📱 菜单状态: ${menuOpen ? '打开' : '关闭'}`;
+            document.getElementById("viewportStatus").textContent = `📏 视口: ${viewportWidth}px (${isMobile ? '移动端' : '桌面端'})`;
+            
+            // 更新状态样式
+            const menuStatusEl = document.getElementById("menuStatus");
+            menuStatusEl.className = menuOpen ? "status-item active" : "status-item inactive";
+            
+            const viewportStatusEl = document.getElementById("viewportStatus");
+            viewportStatusEl.className = isMobile ? "status-item active" : "status-item inactive";
+        }
+        
+        // 滚动事件监听
+        let scrollTimeout;
+        window.addEventListener("scroll", function() {
+            clearTimeout(scrollTimeout);
+            scrollTimeout = setTimeout(updateActiveNavigation, 50);
+            updateStatusPanel();
+        });
+        
+        // 窗口大小改变事件
+        window.addEventListener("resize", updateStatusPanel);
+        
+        // 初始化
+        window.addEventListener("load", function() {
+            updateActiveNavigation();
+            updateStatusPanel();
+            
+            // 添加加载动画
+            setTimeout(() => {
+                statusPanel.style.transform = "translateY(0)";
+                statusPanel.style.opacity = "1";
+            }, 500);
+        });
+        
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener("click", function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute("href"));
+                if (target) {
+                    const navHeight = document.getElementById("caliNav")?.offsetHeight || 70;
+                    const targetPosition = target.offsetTop - navHeight;
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: "smooth"
+                    });
+                }
+            });
+        });
+        
+        // 初始化样式
+        statusPanel.style.transform = "translateY(100px)";
+        statusPanel.style.opacity = "0";
+        statusPanel.style.transition = "all 0.3s ease";
+    </script>
+</body>
+</html>

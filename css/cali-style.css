@@ -322,6 +322,7 @@ body {
     background: var(--primary-gradient);
     position: relative;
     overflow: hidden;
+    padding-top: 80px; /* 为固定导航栏留出空间 */
 }
 
 .cali-hero::before {
@@ -554,6 +555,7 @@ body {
 .cali-section {
     padding: 5rem 0;
     position: relative;
+    scroll-margin-top: 80px; /* 为固定导航栏留出滚动空间 */
 }
 
 .cali-section:nth-child(even) {
@@ -826,6 +828,28 @@ body {
     transform: translateY(-1px);
 }
 
+/* 项目技术标签样式 - 修复标签换行问题 */
+.cali-project-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.cali-project-tech .tech-tag {
+    background: var(--bg-secondary);
+    color: var(--text-secondary);
+    padding: 0.25rem 0.75rem;
+    border-radius: var(--border-radius);
+    font-size: 0.75rem;
+    font-weight: 500;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    /* 关键修复：防止标签换行时拆开 */
+    display: inline-block;
+    white-space: nowrap;
+    word-break: keep-all;
+}
+
 .cali-project-link {
     color: var(--primary-color);
     text-decoration: none;
@@ -1046,6 +1070,16 @@ body {
     .cali-button-secondary {
         margin-left: 0;
     }
+    
+    /* 移动端标签样式优化 */
+    .cali-project-tech {
+        gap: 0.375rem;
+    }
+    
+    .cali-project-tech .tech-tag {
+        font-size: 0.7rem;
+        padding: 0.2rem 0.6rem;
+    }
 }
 
 /* Smooth scrolling */
@@ -1104,4 +1138,18 @@ html {
 
 .hover-float:hover {
     transform: translateY(-5px);
+}
+
+/* 深色模式下的标签样式 */
+@media (prefers-color-scheme: dark) {
+    .cali-project-tech .tech-tag {
+        background: rgba(255, 255, 255, 0.1);
+        color: var(--text-secondary-dark, #d1d5db);
+        border-color: rgba(255, 255, 255, 0.15);
+    }
+    
+    .cali-project-tech .tech-tag:hover {
+        background: rgba(255, 255, 255, 0.15);
+        color: var(--text-primary-dark, #f9fafb);
+    }
 }

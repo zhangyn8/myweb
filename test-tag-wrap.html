@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>标签换行测试</title>
+    <link rel="stylesheet" href="/css/cali-style.css">
+    <link rel="stylesheet" href="/css/custom.css">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            padding: 2rem;
+            background: #f5f5f5;
+        }
+        
+        .test-container {
+            max-width: 400px; /* 模拟项目卡片的宽度 */
+            margin: 2rem auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .test-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+        
+        /* 当前项目技术标签的样式 */
+        .cali-project-tech {
+            /* 添加样式来防止标签换行分离 */
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+        
+        .tech-tag {
+            background: #f0f0f0;
+            color: #666;
+            padding: 0.25rem 0.75rem;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            /* 防止标签内换行 */
+            white-space: nowrap;
+            display: inline-block;
+        }
+        
+        /* 测试不同宽度 */
+        .narrow-container {
+            max-width: 300px;
+        }
+        
+        .wide-container {
+            max-width: 600px;
+        }
+        
+        /* 对比测试：行内元素 vs 块级元素 */
+        .inline-test .tech-tag {
+            display: inline;
+            white-space: normal;
+        }
+        
+        .block-test .tech-tag {
+            display: inline-block;
+            white-space: nowrap;
+        }
+        
+        /* 响应式测试 */
+        @media (max-width: 480px) {
+            .test-container {
+                max-width: 280px;
+                padding: 1.5rem;
+            }
+            
+            .tech-tag {
+                font-size: 0.7rem;
+                padding: 0.2rem 0.6rem;
+            }
+        }
+        
+        .status {
+            margin-top: 1rem;
+            padding: 1rem;
+            background: #e8f4f8;
+            border-radius: 8px;
+            font-size: 0.9rem;
+        }
+        
+        .status-item {
+            margin: 0.5rem 0;
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .status-value {
+            font-weight: 600;
+            color: #2c5282;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center; color: #333;">🧪 标签换行问题测试</h1>
+    
+    <div class="test-container">
+        <div class="test-title">标准项目卡片宽度 (400px)</div>
+        <div class="cali-project-tech">
+            <span class="tech-tag">大语言模型微调</span>
+            <span class="tech-tag">指令调优</span>
+            <span class="tech-tag">RLHF</span>
+            <span class="tech-tag">模型评估</span>
+        </div>
+        <div class="status">
+            <div class="status-item">
+                <span>标签显示模式:</span>
+                <span class="status-value">inline-block + nowrap</span>
+            </div>
+            <div class="status-item">
+                <span>容器宽度:</span>
+                <span class="status-value">400px</span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="test-container narrow-container">
+        <div class="test-title">窄屏容器 (300px)</div>
+        <div class="cali-project-tech">
+            <span class="tech-tag">大语言模型微调</span>
+            <span class="tech-tag">指令调优</span>
+            <span class="tech-tag">RLHF</span>
+            <span class="tech-tag">模型评估</span>
+        </div>
+        <div class="status">
+            <div class="status-item">
+                <span>预期行为:</span>
+                <span class="status-value">标签自动换行但不分离</span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="test-container wide-container">
+        <div class="test-title">宽屏容器 (600px)</div>
+        <div class="cali-project-tech">
+            <span class="tech-tag">大语言模型微调</span>
+            <span class="tech-tag">指令调优</span>
+            <span class="tech-tag">RLHF</span>
+            <span class="tech-tag">模型评估</span>
+        </div>
+        <div class="status">
+            <div class="status-item">
+                <span>预期行为:</span>
+                <span class="status-value">所有标签在一行显示</span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="test-container">
+        <div class="test-title">❌ 问题演示：行内元素模式</div>
+        <div class="cali-project-tech inline-test">
+            <span class="tech-tag">大语言模型微调</span>
+            <span class="tech-tag">指令调优</span>
+            <span class="tech-tag">RLHF</span>
+            <span class="tech-tag">模型评估</span>
+        </div>
+        <div class="status" style="background: #fef2f2; border: 1px solid #fecaca;">
+            <div class="status-item">
+                <span>问题:</span>
+                <span class="status-value" style="color: #dc2626;">标签可能被拆开换行</span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="test-container">
+        <div class="test-title">✅ 解决方案：块级元素模式</div>
+        <div class="cali-project-tech block-test">
+            <span class="tech-tag">大语言模型微调</span>
+            <span class="tech-tag">指令调优</span>
+            <span class="tech-tag">RLHF</span>
+            <span class="tech-tag">模型评估</span>
+        </div>
+        <div class="status" style="background: #f0fdf4; border: 1px solid #bbf7d0;">
+            <div class="status-item">
+                <span>解决方案:</span>
+                <span class="status-value" style="color: #16a34a;">display: inline-block + white-space: nowrap</span>
+            </div>
+        </div>
+    </div>
+    
+    <div style="text-align: center; margin: 2rem;">
+        <p style="color: #666; font-size: 0.9rem;">
+            💡 <strong>问题原因：</strong>标签默认使用行内元素显示，当空间不足时，浏览器会在标签内的任意位置换行<br>
+            🔧 <strong>解决方案：</strong>使用 <code>display: inline-block</code> 和 <code>white-space: nowrap</code> 确保标签作为一个整体换行
+        </p>
+    </div>
+    
+    <script>
+        // 实时显示容器宽度
+        function updateWidthInfo() {
+            const containers = document.querySelectorAll('.test-container');
+            containers.forEach(container => {
+                const width = container.offsetWidth;
+                const statusValue = container.querySelector('.status-value');
+                if (statusValue && container.classList.contains('wide-container')) {
+                    statusValue.textContent = width + 'px';
+                }
+            });
+        }
+        
+        window.addEventListener('resize', updateWidthInfo);
+        updateWidthInfo();
+        
+        // 添加调试信息
+        console.log('🔍 标签换行问题测试页面已加载');
+        console.log('📱 请调整浏览器窗口大小测试响应式效果');
+    </script>
+</body>
+</html>

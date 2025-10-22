@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>最终导航测试 - 修复版</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        
+        .cali-nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: #333;
+            padding: 15px 0;
+            z-index: 1000;
+        }
+        
+        .cali-nav-menu {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+        
+        .cali-nav-item {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+        
+        .cali-nav-item.active {
+            color: #007bff;
+            font-weight: 600;
+            background: none;
+            box-shadow: none;
+            transform: none;
+        }
+        
+        .cali-nav-item.active::after {
+            content: '';
+            position: absolute;
+            bottom: 8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 24px;
+            height: 3px;
+            background: #007bff;
+            border-radius: 2px;
+            opacity: 1;
+            transition: all 0.3s ease;
+        }
+        
+        section {
+            height: 100vh;
+            padding: 80px 20px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2em;
+            border-bottom: 2px solid #ddd;
+        }
+        
+        @media (prefers-color-scheme: dark) {
+            body {
+                background: #1a1a1a;
+                color: #ffffff;
+            }
+            .cali-nav {
+                background: rgba(30, 30, 30, 0.95);
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            }
+            .cali-nav-item {
+                color: #ffffff;
+            }
+            .cali-nav-item:hover {
+                background: rgba(59, 130, 246, 0.2);
+            }
+            .cali-nav-item.active {
+                color: #3b82f6;
+            }
+            .cali-nav-item.active::after {
+                background: #3b82f6;
+            }
+        }
+        
+        #home { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; }
+        #about { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); color: white; }
+        #skills { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); color: white; }
+        #projects { background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); color: white; }
+        #contact { background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); color: white; }
+        
+        .status-panel {
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            background: rgba(0,0,0,0.8);
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            font-family: monospace;
+            font-size: 12px;
+            z-index: 1001;
+            min-width: 200px;
+        }
+        
+        .status-item {
+            margin: 5px 0;
+        }
+        
+        .status-label {
+            color: #4CAF50;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <nav class="cali-nav">
+        <div class="cali-nav-menu">
+            <a href="#home" class="cali-nav-item">首页</a>
+            <a href="#about" class="cali-nav-item">关于</a>
+            <a href="#skills" class="cali-nav-item">技能</a>
+            <a href="#projects" class="cali-nav-item">项目</a>
+            <a href="#contact" class="cali-nav-item">联系</a>
+        </div>
+    </nav>
+
+    <div class="status-panel">
+        <div class="status-item">
+            <span class="status-label">滚动位置:</span> <span id="scrollPos">0</span>px
+        </div>
+        <div class="status-item">
+            <span class="status-label">当前章节:</span> <span id="currentSection">home</span>
+        </div>
+        <div class="status-item">
+            <span class="status-label">导航项数量:</span> <span id="navCount">0</span>
+        </div>
+        <div class="status-item">
+            <span class="status-label">章节数量:</span> <span id="sectionCount">0</span>
+        </div>
+        <div class="status-item">
+            <span class="status-label">激活导航:</span> <span id="activeNav">无</span>
+        </div>
+    </div>
+
+    <section id="home">
+        <div>
+            <h1>🏠 首页</h1>
+            <p>欢迎来到我的个人网站</p>
+        </div>
+    </section>
+    <section id="about">
+        <div>
+            <h1>👤 关于我</h1>
+            <p>了解我的背景和经历</p>
+        </div>
+    </section>
+    <section id="skills">
+        <div>
+            <h1>🛠️ 技能</h1>
+            <p>我的技术能力和专业技能</p>
+        </div>
+    </section>
+    <section id="projects">
+        <div>
+            <h1>💼 项目</h1>
+            <p>我参与的项目和作品</p>
+        </div>
+    </section>
+    <section id="contact">
+        <div>
+            <h1>📧 联系</h1>
+            <p>与我取得联系</p>
+        </div>
+    </section>
+
+    <script>
+        // 最终修复版导航高亮更新函数
+        function updateActiveNavigation() {
+            const sections = document.querySelectorAll("section[id]");
+            const navItems = document.querySelectorAll(".cali-nav-item");
+            
+            // 更新调试信息
+            document.getElementById("scrollPos").textContent = Math.round(window.scrollY);
+            document.getElementById("navCount").textContent = navItems.length;
+            document.getElementById("sectionCount").textContent = sections.length;
+            
+            if (sections.length === 0 || navItems.length === 0) {
+                console.warn("未找到section或导航项");
+                return;
+            }
+            
+            let currentSection = "home"; // 默认为首页
+            const scrollPosition = window.scrollY + 120; // 增加偏移量，考虑导航栏高度
+            
+            // 从底部向上检查，确保最底部的section优先
+            for (let i = sections.length - 1; i >= 0; i--) {
+                const section = sections[i];
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.offsetHeight;
+                const sectionId = section.getAttribute("id");
+                
+                if (scrollPosition >= sectionTop) {
+                    currentSection = sectionId;
+                    break;
+                }
+            }
+            
+            // 更新调试信息
+            document.getElementById("currentSection").textContent = currentSection;
+            
+            // 更新导航项状态
+            let activeNavText = "无";
+            navItems.forEach(item => {
+                item.classList.remove("active");
+                const href = item.getAttribute("href");
+                if (href === "#" + currentSection) {
+                    item.classList.add("active");
+                    activeNavText = href;
+                }
+            });
+            
+            // 更新调试信息
+            document.getElementById("activeNav").textContent = activeNavText;
+        }
+
+        // 节流函数，优化滚动性能
+        function throttle(func, wait) {
+            let timeout;
+            return function executedFunction(...args) {
+                const later = () => {
+                    clearTimeout(timeout);
+                    func(...args);
+                };
+                clearTimeout(timeout);
+                timeout = setTimeout(later, wait);
+            };
+        }
+
+        // 使用节流的滚动事件监听
+        window.addEventListener("scroll", throttle(updateActiveNavigation, 100));
+        
+        // 页面加载时立即执行一次 - 延迟执行确保DOM完全加载
+        window.addEventListener("load", () => {
+            setTimeout(updateActiveNavigation, 100);
+        });
+
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener("click", function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute("href"));
+                if (target) {
+                    const navHeight = document.querySelector(".cali-nav")?.offsetHeight || 70;
+                    const targetPosition = target.offsetTop - navHeight;
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: "smooth"
+                    });
+                }
+            });
+        });
+        
+        // 初始化
+        document.addEventListener("DOMContentLoaded", function() {
+            updateActiveNavigation();
+        });
+    </script>
+</body>
+</html>
